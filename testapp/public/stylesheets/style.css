@@ -1,8 +1,58 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* normalize */
+body { margin: 0; }
+
+/* global styles */
+video {
+  background-color: #111;
+  width: 100%;
 }
 
-a {
-  color: #00B7FF;
+.heading {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.note {
+  text-align: center;
+}
+
+.meta {
+  text-align: center;
+  font-size: .8rem;
+  color: gray;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 980px;
+}
+
+/* room */
+.room {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-auto-rows: 450px;
+  gap: 8px;
+  margin: 0 5px;
+}
+
+.room .remote-streams {
+  background-color: #f6fbff;
+  overflow-y:scroll;
+}
+
+.room .remote-streams .ichigo{
+  background-color: #f6fbff;
+  margin: 10px 3px;
+}
+
+.room .messages {
+  background-color: #eee;
+  min-height: 150px;
+  padding: 8px;
+  margin-top: 0;
+  overflow-wrap: break-word;
+  word-wrap: normal;
+  
 }
