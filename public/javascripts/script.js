@@ -45,7 +45,7 @@ if (group == true) {
     Dialog_2.showModal();
     }
     else{
-      alert("あああああああああ");
+      // alert("あああああああああ");
       e.stopPropagation();
     }
   });
@@ -74,10 +74,22 @@ if (group == true) {
 
   function inputChange_2() {
     Enthusiasm = selectEl_2.value;
+    if(Enthusiasm == ""){
+      confirmBtn2.disabled = true;
+    }
+    else{
+      confirmBtn2.disabled = false;
+    }
   }
 
   function inputChange_3() {
     JPLevels = selectEl_3.value;
+    if(JPLevels == ""){
+      confirmBtn3.disabled = true;
+    }
+    else{
+      confirmBtn3.disabled = false;
+    }
   }
   // window.open('index.ejs', 'mywindow3','width=400, height=300, menubar=no, toolbar=yes, scrollbars=yes')
 
@@ -258,7 +270,7 @@ else{
         break;
 
         case'text':
-        alert("AAA");
+        hatsugen(data.msg);
         break;
       }
       // Show a message sent to the room and who sent
