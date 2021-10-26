@@ -28,6 +28,8 @@ var selectEl_3 = document.getElementById('select_3');
 var MLanguages = "";
 var Enthusiasm = "";
 var JPLevels = "";
+var joho ="";
+
 
 const Element1 = document.getElementById('js-messages')
 const Element2 = document.getElementById('js-sentfB')
@@ -37,14 +39,14 @@ const Element2 = document.getElementById('js-sentfB')
 if (group == true) {
   Element1.remove();
   Dialog_1.showModal();
-  confirmBtn1.addEventListener('click', () => {
+  confirmBtn1.addEventListener('click', function(e) {
     if(MLanguages!==""){
     Dialog_1.close();
     Dialog_2.showModal();
     }
     else{
-      alert("入力時にエラーが発生しました、リロードします");
-      location.reload();
+      alert("あああああああああ");
+      e.stopPropagation();
     }
   });
   confirmBtn2.addEventListener('click', () => {
@@ -54,7 +56,7 @@ if (group == true) {
   confirmBtn3.addEventListener('click', () => {
     Dialog_3.close();
 
-    let joho = "\n\n名前："+ Myname + "\n\n母語：" + MLanguages + "\n\n日本語レベル：" + JPLevels + "\n\n指摘に対する熱量：" + Enthusiasm;
+    joho = "\n\n名前："+ Myname + "\n\n母語：" + MLanguages + "\n\n日本語レベル：" + JPLevels + "\n\n指摘に対する熱量：" + Enthusiasm;
     ryugakusei.textContent += joho;
     // console.log(MLanguages, Enthusiasm, JPLevels);
   });
@@ -62,6 +64,12 @@ if (group == true) {
   function inputChange_1() {
     // alert("あああ" + selectEl_1.value);
     MLanguages = selectEl_1.value;
+    if(MLanguages == ""){
+      confirmBtn1.disabled = true;
+    }
+    else{
+      confirmBtn1.disabled = false;
+    }
   }
 
   function inputChange_2() {
@@ -127,10 +135,12 @@ else{
   //   debug: 3,
   // }));
 
-  const peer = (window.peer = new Peer({
+  var room = null;
+  var peer = (window.peer = new Peer({
     key: window.__SKYWAY_KEY__,
     debug: 3,
   }));
+
 
   // Register join handler
   joinTrigger.addEventListener('click', () => {
@@ -139,7 +149,7 @@ else{
     if (!peer.open) {
       return;
     }
-    const room = peer.joinRoom(3980, {
+      room = peer.joinRoom(3980, {
       mode: getRoomModeByHash(),
       stream: localStream,
     });
@@ -164,7 +174,7 @@ else{
       // 自分の名前をみんなに送信
       room.send({name: Myname, type: "open"});
       if(group == true){
-        room.send({name: Myname, msg: joho, type: "ryugakusei"});
+        room.send({name: Myname, msg: joho, type: "leftdown"});
       }
 
       // 参加者リストへの表示(1)
@@ -179,7 +189,7 @@ else{
             loginUsers.appendChild(inputnames[i]);
           }
         }
-      })
+      });
 
     });
 
@@ -193,7 +203,7 @@ else{
       room.send({ name: Myname, type: "login", peerId: MypeerId });
 
       if(group == true){
-        room.send({name: Myname, msg: joho, type: "ryugakusei"});
+        room.send({name: Myname, msg: joho, type: "leftdown"});
         // alert("送ったよ！");
       }
 
@@ -242,9 +252,9 @@ else{
 
         //留学生から送られてきたとき
         //代入の時の＝は一個、比較（if文）の中だったら＝は二個
-        case'ryugakusei':
-          // alert("AAA"); 
-          ryugakusei.textContent = data.msg;            
+        case'leftdown':
+          // alert(data.msg); 
+          ryugakusei.textContent += data.msg;            
         break;
 
         case'text':
@@ -313,11 +323,8 @@ else{
   recognition.start();
   const segmenter = new TinySegmenter();
 
-  recognition.onresult = (event) => {
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-      let transcript = Myname + "：" + event.results[i][0].transcript + "。\n\n";
-      // transcript = segmenter.segment(transcript).join("|");
-      transcript2 = segmenter.segment(transcript);
+  function hatsugen(transcript){
+    transcript2 = segmenter.segment(transcript);
       // console.log(transcript2);
 
       //zenbunのjunbanparent番目に一文ずつ入る
@@ -327,51 +334,62 @@ else{
 
       junbanko = 0;
 
-      transcript2.forEach(function (t) {
-        //junban++と同意
-        junbanko = junbanko + 1;
-        const a = document.createElement("a");
-        a.classList.add('ichigo');
-        //分かち書きの一語一語にaっていうタグを追加：htmlのため
-        a.innerText = t;
-        a.id = "target_" + junbanparent + "_" + junbanko;
-        // console.log(a);
-        a.onclick = (e) => {
-          // var Element = document.getElementById("target");
+    transcript2.forEach(function (t) {
+      //junban++と同意
+      junbanko = junbanko + 1;
+      const a = document.createElement("a");
+      a.classList.add('ichigo');
+      //分かち書きの一語一語にaっていうタグを追加：htmlのため
+      a.innerText = t;
+      a.id = "target_" + junbanparent + "_" + junbanko;
+      // console.log(a);
+      a.onclick = (e) => {
+        // var Element = document.getElementById("target");
 
-          n = (a.id.split("_"))[1];
-          genbun = zenbun[n - 1];
+        n = (a.id.split("_"))[1];
+        genbun = zenbun[n - 1];
 
-          junban = (a.id.split("_"))[2];
-          // // var s = Element.previousElementSibling;
-          // // var u = Element.nextElementSibling;
-          shitekibox(genbun, junban);
-          // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
-          // alert(t);
-        };
-        resultDiv.appendChild(a);
+        junban = (a.id.split("_"))[2];
+        // // var s = Element.previousElementSibling;
+        // // var u = Element.nextElementSibling;
+        shitekibox(genbun, junban);
+        // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
+        // alert(t);
+      };
+      resultDiv.appendChild(a);
 
-        resultDiv.scrollTop = resultDiv.scrollHeight;
+      resultDiv.scrollTop = resultDiv.scrollHeight;
 
 
-        function shitekibox(p, q) {
-          // console.log(p, q);
-          moji = "";
-          r = 0;
-          p.forEach(function (t) {
-            r++;
-            if (r == q) {
-              moji = moji + "□" + " ";
-            }
-            else {
-              moji = moji + t + " ";
-            }
-          });
-          // console.log(moji);
-          messages.textContent = "\n\n" + p.join(" ") + "\n" + moji;
+      function shitekibox(p, q) {
+        // console.log(p, q);
+        moji = "";
+        r = 0;
+        p.forEach(function (t) {
+          r++;
+          if (r == q) {
+            moji = moji + "□" + " ";
+          }
+          else {
+            moji = moji + t + " ";
+          }
+        });
+        // console.log(moji);
+        messages.textContent = "\n\n" + p.join(" ") + "\n" + moji;
 
-        }
-      });
+      }
+    });
+  }
+
+  //自分の発言の認識
+  recognition.onresult = (event) => {
+    for (var i = event.resultIndex; i < event.results.length; i++) {
+      var transcript = Myname + "：" + event.results[i][0].transcript + "。\n\n";
+      // transcript = segmenter.segment(transcript).join("|");
+      // alert(transcript +"ああああああ");
+      room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId });
+      hatsugen(transcript);
+      
     }
   }
 
