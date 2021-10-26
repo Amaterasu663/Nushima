@@ -38,8 +38,14 @@ if (group == true) {
   Element1.remove();
   Dialog_1.showModal();
   confirmBtn1.addEventListener('click', () => {
+    if(MLanguages!==""){
     Dialog_1.close();
     Dialog_2.showModal();
+    }
+    else{
+      alert("入力時にエラーが発生しました、リロードします");
+      location.reload();
+    }
   });
   confirmBtn2.addEventListener('click', () => {
     Dialog_2.close();
