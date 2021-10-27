@@ -50,9 +50,10 @@ video {
 .room .messages {
   background-color: #eee;
   min-height: 150px;
+  min-width: 200px;
   padding: 8px;
   margin-top: 0;
-  overflow-wrap: break-word;
-  word-wrap: normal;
+  /* overflow-wrap: break-word;
+  word-wrap: normal; */
   
 }
