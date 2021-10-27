@@ -56,7 +56,7 @@ if (group == true) {
   confirmBtn3.addEventListener('click', () => {
     Dialog_3.close();
 
-    joho = "\n\n名前："+ Myname + "\n\n母語：" + MLanguages + "\n\n日本語レベル：" + JPLevels + "\n\n指摘に対する熱量：" + Enthusiasm;
+    joho = "\n\n名前："+ Myname + "\n\n母語：" + MLanguages + "\n\n日本語レベル：\n" + JPLevels + "\n\nコメント：\n" + Enthusiasm;
     ryugakusei.textContent += joho;
     // console.log(MLanguages, Enthusiasm, JPLevels);
   });
@@ -178,7 +178,7 @@ else{
       //PeerIDとMynameの紐付け、自分を参加者リストに追加
       let Myitem = document.createElement('li');
       Myitem.id = MypeerId;
-      Myitem.textContent = Myname;
+      Myitem.textContent = Myname + "(あなた)";
       loginUsers.textContent +="\n\n"
       loginUsers.appendChild(Myitem);
       // console.log(Myitem, Myitem.id, Myitem.textContent);
