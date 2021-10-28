@@ -275,6 +275,7 @@ else{
       
 
         case 'leave':
+          alert("ああああああああああああああ");
           for (i = 0; i < loginUsers.children.length; i++) {
             if (loginUsers.children[i].id == data.id) {
               loginUsers.children[i].remove();
@@ -292,7 +293,7 @@ else{
 
     // for closing room members
     room.on('peerLeave', peerId => {
-      room.send({id: peerId, type: "leave"});
+      alert("いいいいいいいい");
       // const remoteVideo = remoteVideos.querySelector(
       //   `[data-peer-id="${peerId}"]`
       // );
@@ -306,7 +307,7 @@ else{
     // for closing myself
     room.once('close', () => {
       // sendTrigger.removeEventListener('click', onClickSend);
-
+      alert("うううううう");
       room.send({id: peerId, type: "leave"});
 
       // room.send(Myname + "：" + localText.value);
