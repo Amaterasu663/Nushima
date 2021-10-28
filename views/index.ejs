@@ -84,11 +84,14 @@
       </div>
 
       <div>
-        <pre class="messages" id="js-messages">◎指摘欄</pre>
         <pre class="messages" id="js-sentfB">◎届いた指摘</pre>
-          <button id="js-remove-trigger">不要</button><br>
-          訂正：<input type="text" id="js-local-text"><br>
-          <button id="js-send-trigger">送る</button>
+        <pre class="messages" id="js-messages">◎指摘欄</pre>
+        <label><input type="radio" name = "correct" id="js-remove-radio" value="remove">□の中身は不要</label><br>
+        <label><input type="radio" name = "correct" id="js-just-radio" value="justcorrect">□の中身のみ修正</label><br>
+        <label><input type="radio" name = "correct" id="js-all-radio" value="allcorrect">文全体を修正</label><br>
+          <!-- <button id="js-remove-trigger">不要</button><br> -->
+          訂正：<input type="text" id="js-local-text" style="text-align:left"><br>
+          <button id="js-send-trigger" disabled>送る</button>
       
         <br><br><br><br><br><br>
         <button id="js-leave-trigger">退室</button>

@@ -272,7 +272,16 @@ else{
         case'text':
         hatsugen(data.msg);
         break;
-      }
+      
+
+        case 'leave':
+          for (i = 0; i < loginUsers.children.length; i++) {
+            if (loginUsers.children[i].id == data.id) {
+              loginUsers.children[i].remove();
+            }
+          }
+        break;
+        }
       // Show a message sent to the room and who sent
       // peer.listAllPeers((peers) => {
       //   console.log("あああ" + loginChildren.length);
@@ -283,6 +292,7 @@ else{
 
     // for closing room members
     room.on('peerLeave', peerId => {
+      room.send({id: peerId, type: "leave"});
       // const remoteVideo = remoteVideos.querySelector(
       //   `[data-peer-id="${peerId}"]`
       // );
@@ -296,9 +306,13 @@ else{
     // for closing myself
     room.once('close', () => {
       // sendTrigger.removeEventListener('click', onClickSend);
-      room.send(Myname + "：" + localText.value);
-      messages1.textContent += `→${Myname}(あなた)が退出しました\n`;
-      localText.value = '';
+
+      room.send({id: peerId, type: "leave"});
+
+      // room.send(Myname + "：" + localText.value);
+      // messages1.textContent += `→${Myname}(あなた)が退出しました\n`;
+      // localText.value = '';
+
       // room.send({ name: Myname, type: "close" });
       // Array.from(remoteVideos.children).forEach(remoteVideo => {
       //   remoteVideo.srcObject.getTracks().forEach(track => track.stop());
@@ -319,6 +333,10 @@ else{
       localText.value = '';
     }
   });
+
+  const radios = document.getElementsByName('correct');
+  const len = radios.length;
+  // radios[0].checked = true;
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -387,7 +405,7 @@ else{
           }
         });
         // console.log(moji);
-        messages.textContent = "\n\n" + p.join(" ") + "\n" + moji;
+        messages.textContent += "\n\n" + p.join(" ") + "\n" + moji;
 
       }
     });
