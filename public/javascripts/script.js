@@ -277,7 +277,7 @@ else{
         case 'leave':
           alert("ああああああああああああああ");
           for (i = 0; i < loginUsers.children.length; i++) {
-            if (loginUsers.children[i].textContent.indexOf(data.value) !== -1) {
+            if (loginUsers.children[i].id == data.id) {
               loginUsers.children[i].remove();
             }
           }
@@ -309,7 +309,7 @@ else{
     room.once('close', () => {
       // sendTrigger.removeEventListener('click', onClickSend);
       // alert("うううううう");クリア
-      room.send({value: Myname, type: "leave"});
+      room.send({id: MypeerId, type: "leave"});
 
       // room.send(Myname + "：" + localText.value);
       // messages1.textContent += `→${Myname}(あなた)が退出しました\n`;
