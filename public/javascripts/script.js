@@ -342,7 +342,7 @@ else {
               moji2 = moji.replace("□", localText.value);
               break;
             case 'allcorrect':
-              moji2 = localText.value;
+              moji2 = namae + localText.value;
               break;
       // // Send message to all of the peers in the room via websocket
       // room.send(Myname + "：" + localText.value);
@@ -391,22 +391,26 @@ else {
               genbun.forEach(function (t) {
                 r++;
                 if (r == junban) {
-                  jimo = jimo + t + " ";
+                  jimo = jimo + "<font color = red>" + t + "</font>" + " ";
                   moji = moji + "□" + " ";
                 }
                 else {
-                  jimo = jimo + "<font color = red>" + t + "</font>" + " ";
+                  jimo = jimo + t + " ";
                   moji = moji + t + " ";
                 }
               });
               // console.log(moji);
-              messages.textContent = "\n\n" + jimo + "\n" + moji;
+              messages.innerHTML = "\n\n" + jimo + "\n" + moji;
               break;
 
             case 'allcorrect':
               jimo = "";
               moji = "";
-              
+              namae = "";
+              namae = genbun[0] +" "+ genbun[1] +" ";
+              jimo = namae + "<font color = red>" + genbun.slice(2).join(" ") + "</font>";
+              moji = namae + "？？？";
+              messages.innerHTML = "\n\n" + jimo + "\n" + moji;
               break;
           }
 
@@ -430,6 +434,7 @@ else {
   var junban;
   var jimo;
   var moji;
+  var namae;
 
   recognition.start();
   const segmenter = new TinySegmenter();
