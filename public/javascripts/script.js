@@ -293,7 +293,8 @@ else{
 
     // for closing room members
     room.on('peerLeave', peerId => {
-      alert("いいいいいいいい");
+      room.send({id: peerId, type: "leave"});
+      // alert("いいいいいいいい");クリア
       // const remoteVideo = remoteVideos.querySelector(
       //   `[data-peer-id="${peerId}"]`
       // );
@@ -307,7 +308,7 @@ else{
     // for closing myself
     room.once('close', () => {
       // sendTrigger.removeEventListener('click', onClickSend);
-      alert("うううううう");
+      // alert("うううううう");クリア
       room.send({id: peerId, type: "leave"});
 
       // room.send(Myname + "：" + localText.value);
