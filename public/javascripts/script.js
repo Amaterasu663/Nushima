@@ -273,7 +273,6 @@ else{
         hatsugen(data.msg);
         break;
       
-
         case 'leave':
           alert("ああああああああああああああ");
           for (i = 0; i < loginUsers.children.length; i++) {
@@ -310,7 +309,11 @@ else{
       // sendTrigger.removeEventListener('click', onClickSend);
       // alert("うううううう");クリア
       room.send({id: MypeerId, type: "leave"});
-
+      for (i = 0; i < loginUsers.children.length; i++) {
+        if (loginUsers.children[i].id == MypeerId) {
+          loginUsers.children[i].remove();
+        }
+      }
       // room.send(Myname + "：" + localText.value);
       // messages1.textContent += `→${Myname}(あなた)が退出しました\n`;
       // localText.value = '';
