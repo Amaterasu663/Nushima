@@ -34,10 +34,13 @@ var joho = "";
 const Element1 = document.getElementById('js-messages')
 const Element2 = document.getElementById('js-sentfB')
 
+const ShitekiButton = document.getElementById('shitekiButton')
+
 // モーダルダイアログ：閉じるまで、同じアプリケーションの他のウィンドウに対する操作ができないダイアログボックスのこと
 // <->モードレスダイアログ
 if (group == true) {
   Element1.remove();
+  ShitekiButton.remove();
   Dialog_1.showModal();
   confirmBtn1.addEventListener('click', function (e) {
     if (MLanguages !== "") {
@@ -407,7 +410,13 @@ else {
               jimo = "";
               moji = "";
               namae = "";
-              namae = genbun[0] +" "+ genbun[1] +" ";
+              for(i=0; i<genbun.length;i++){
+                if(genbun[i]!="："){
+                  namae = namae + genbun[i]
+                  break;
+                }
+              }
+              // namae = genbun[0] + genbun[1];
               jimo = namae + "<font color = red>" + genbun.slice(2).join(" ") + "</font>";
               moji = namae + "？？？";
               messages.innerHTML = "\n\n" + jimo + "\n" + moji;
