@@ -279,9 +279,11 @@ else {
 
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
-          AllShiteki.push([data.mg1, data.mg2, data.name]);
+          AllShiteki.push([data.msg1, data.msg2, data.name]);
           console.log(AllShiteki);
-          sentfB.innerHTML = data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人" + data.name;
+          if (group == true) {
+          sentfB.innerHTML = data.msg1 + "\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name;
+          }
           break;
       }
       // Show a message sent to the room and who sent
