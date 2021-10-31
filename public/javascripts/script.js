@@ -279,6 +279,8 @@ else {
 
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
+          AllShiteki.push([data.mg1, data.mg2, data.name]);
+          console.log(AllShiteki);
           sentfB.innerHTML = data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人" + data.name;
           break;
       }
@@ -355,6 +357,10 @@ else {
       // messages.textContent += `${Myname}: ${localText.value}\n`;
       // localText.value = '';
       }
+
+      AllShiteki.push([jimo, moji, Myname]);
+      // console.log(AllShiteki);
+
       room.send({name: Myname, type:'teisei', msg1: jimo, msg2: moji2});
       var checkresults = document.getElementById("checkresults");
       checkresults.innerHTML = "送信完了！";
@@ -459,6 +465,7 @@ else {
   var jimo;
   var moji;
   var namae;
+  var AllShiteki = new Array();
 
   recognition.start();
   const segmenter = new TinySegmenter();
