@@ -74,6 +74,7 @@
         <!-- <input type="text" placeholder="Room Name" id="js-room-id"> -->
         <br>
         <button id="js-join-trigger">参加</button>
+        <button id="js-leave-trigger">退室</button>
 
       </div>
 
@@ -91,12 +92,11 @@
         <label><input type="radio" name = "correct" value="justcorrect">選択箇所のみ修正</label><br>
         <label><input type="radio" name = "correct" value="allcorrect">文全体を修正</label><br>
           <!-- <button id="js-remove-trigger">不要</button><br> -->
-          訂正：<input type="text" id="js-local-text"><br>
+          <textarea name="text" id="js-local-text" style="width:200px; height:100px;" placeholder="選択箇所をどう訂正しますか？"></textarea><br>
           <button id="js-send-trigger" disabled>送る</button>
+          <div id="checkresults"></div>
           </pre>
-      
-        <br><br><br><br><br><br>
-        <button id="js-leave-trigger">退室</button>
+        
       </div>
       
     </div>

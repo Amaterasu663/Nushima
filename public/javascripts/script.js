@@ -13,6 +13,7 @@ if (Myname == '' || Myname == null) {
   Myname = nanashi;
 };
 
+
 //留学生用のダイアログ
 var group = confirm('留学生用のログイン画面に移行しますか');
 var Dialog_1 = document.getElementById('Dialog_1');
@@ -276,8 +277,9 @@ else {
           hatsugen(data.msg);
           break;
 
+        //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
-          sentfB.innerHTML = data.msg1 + "\n\n" + data.msg2;
+          sentfB.innerHTML = data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人" + data.name;
           break;
       }
       // Show a message sent to the room and who sent
@@ -354,6 +356,19 @@ else {
       // localText.value = '';
       }
       room.send({name: Myname, type:'teisei', msg1: jimo, msg2: moji2});
+      var checkresults = document.getElementById("checkresults");
+      checkresults.innerHTML = "送信完了！";
+      var kakunin = function(){
+        checkresults.innerHTML = "";
+      }
+      setInterval(kakunin, 3000);
+
+      for (var j = 0; j < radios.length; j++) {
+        radios[j].checked = false;
+        }
+      sendTrigger.disabled = true;
+      localText.value = "";
+      messages.innerHTML ="";
     }}
     }
   });
@@ -412,7 +427,7 @@ else {
               namae = "";
               for(i=0; i<genbun.length;i++){
                 if(genbun[i]!="："){
-                  namae = namae + genbun[i]
+                  namae = namae + genbun[i] + "："
                   break;
                 }
               }
@@ -482,6 +497,7 @@ else {
           radios[j].checked = false;
           }
         sendTrigger.disabled = true;
+        localText.value = "";
         jimo = "";
         r = 0;
         genbun.forEach(function (t) {
