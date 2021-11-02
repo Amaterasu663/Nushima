@@ -34,6 +34,8 @@ var joho = "";
 
 const Element1 = document.getElementById('js-messages')
 const Element2 = document.getElementById('js-sentfB')
+const GobackButton = document.getElementById('js-goback')
+const NextButton =document.getElementById('js-next')
 
 const ShitekiButton = document.getElementById('shitekiButton')
 
@@ -100,6 +102,8 @@ if (group == true) {
 }
 else {
   Element2.remove();
+  GobackButton.remove();
+  NextButton.remove();
 }
 
 
@@ -280,9 +284,23 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name]);
-          console.log(AllShiteki);
+          NextButton.addEventListener('click', onClickNext);
+          GobackButton.addEventListener('click', onClickGoback);
+          function onClickNext(){
+            for(i=0; i<AllShiteki.length; i++){
+              if(sentfB.innerHTML.match(AllShiteki[i][i][i])){
+                sentfB.innerHTML = AllShiteki[i+1]+ "\n" + AllShiteki[i+1] + "\n訂正してくれた人：" + AllShiteki[i+1];
+              }
+            }
+          }
+          // console.log(AllShiteki);
           if (group == true) {
-          sentfB.innerHTML = data.msg1 + "\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name;
+            if(Allshiteki.length>1){
+            NextButton.disabled = false;
+            }
+            else{
+            sentfB.innerHTML = data.msg1 + "\n" + data.msg2 + "\n訂正してくれた人：" + data.name;
+            }
           }
           break;
       }
@@ -362,14 +380,17 @@ else {
 
       AllShiteki.push([jimo, moji, Myname]);
       // console.log(AllShiteki);
-
+      
       room.send({name: Myname, type:'teisei', msg1: jimo, msg2: moji2});
       var checkresults = document.getElementById("checkresults");
+      if (group == false) {
       checkresults.innerHTML = "送信完了！";
+
       var kakunin = function(){
         checkresults.innerHTML = "";
       }
       setInterval(kakunin, 3000);
+    }
 
       for (var j = 0; j < radios.length; j++) {
         radios[j].checked = false;
@@ -433,14 +454,20 @@ else {
               jimo = "";
               moji = "";
               namae = "";
+              
               for(i=0; i<genbun.length;i++){
-                if(genbun[i]!="："){
-                  namae = namae + genbun[i] + "："
-                  break;
+                if(genbun[i] =="："){
+                    koitsu = i;
+                    // console.log(koitsu);
                 }
               }
+              for(t=0; t<koitsu+1; t++){
+                namae = namae + genbun[t];
+                // console.log(namae);
+              }
+
               // namae = genbun[0] + genbun[1];
-              jimo = namae + "<font color = red>" + genbun.slice(2).join(" ") + "</font>";
+              jimo = namae + "<font color = red>" + genbun.slice(koitsu+1).join(" ") + "</font>";
               moji = namae + "？？？";
               messages.innerHTML = "\n\n" + jimo + "\n" + moji;
               break;
@@ -467,6 +494,7 @@ else {
   var jimo;
   var moji;
   var namae;
+  var koitsu;
   var AllShiteki = new Array();
 
   recognition.start();
