@@ -295,7 +295,7 @@ else {
           }
           // console.log(AllShiteki);
           if (group == true) {
-            if(Allshiteki.length>1){
+            if(AllShiteki.length>1){
             NextButton.disabled = false;
             }
             else{
@@ -535,8 +535,8 @@ else {
           }
           if(group == false){
         sendTrigger.disabled = true;
-          }
         localText.value = "";
+          }
         jimo = "";
         r = 0;
         genbun.forEach(function (t) {
