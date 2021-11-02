@@ -285,7 +285,7 @@ else {
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name]);
           NextButton.addEventListener('click', onClickNext);
-          GobackButton.addEventListener('click', onClickGoback);
+          // GobackButton.addEventListener('click', onClickGoback);
           function onClickNext(){
             for(i=0; i<AllShiteki.length; i++){
               if(sentfB.innerHTML.match(AllShiteki[i][i][i])){
@@ -533,7 +533,9 @@ else {
         for (var j = 0; j < radios.length; j++) {
           radios[j].checked = false;
           }
+          if(group == false){
         sendTrigger.disabled = true;
+          }
         localText.value = "";
         jimo = "";
         r = 0;
