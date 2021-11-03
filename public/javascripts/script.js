@@ -297,8 +297,7 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name]);
-
-          // console.log(AllShiteki);
+          console.log(AllShiteki);
           if (group == true) {
             if(AllShiteki.length>1){
             NextButton.disabled = false;
@@ -360,14 +359,21 @@ else {
     NextButton.addEventListener('click', onClickNext);
     GobackButton.addEventListener('click', onClickGoback);
     function onClickNext(){
-          CurrentShiteki++;
-          sentfB.innerHTML = AllShiteki[CurrentShiteki]+ "\n" + AllShiteki[CurrentShiteki] + "\n訂正してくれた人：" + AllShiteki[CurrentShiteki];
-    }
+      GobackButton.disabled = false;
+      CurrentShiteki++;
+      sentfB.innerHTML = AllShiteki[CurrentShiteki][0]+ "\n" + AllShiteki[CurrentShiteki][1] + "\n訂正してくれた人：" + AllShiteki[CurrentShiteki][2];
+      if(CurrentShiteki == AllShiteki.length){
+        NextButton.disabled = true;
+    }}
 
     function onClickGoback(){
+      NextButton.disabled = false;
       CurrentShiteki--;
-      sentfB.innerHTML = AllShiteki[CurrentShiteki]+ "\n" + AllShiteki[CurrentShiteki] + "\n訂正してくれた人：" + AllShiteki[CurrentShiteki];
-}
+      sentfB.innerHTML = AllShiteki[CurrentShiteki][0]+ "\n" + AllShiteki[CurrentShiteki][1]+ "\n訂正してくれた人：" + AllShiteki[CurrentShiteki][2];
+      if(CurrentShiteki == 0){
+        GobackButton.disabled = true;
+    }
+    }
 
     sendTrigger.addEventListener('click', onClickSend);
     leaveTrigger.addEventListener('click', () => room.close(), { once: true });
