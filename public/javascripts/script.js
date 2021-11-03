@@ -62,8 +62,8 @@ if (group == true) {
   confirmBtn3.addEventListener('click', () => {
     Dialog_3.close();
 
-    joho = "\n\n名前：" + Myname + "\n\n母語：" + MLanguages + "\n\n日本語レベル：\n" + JPLevels + "\n\nコメント：\n" + Enthusiasm;
-    ryugakusei.textContent += joho;
+    joho = "<br><br>名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>コメント：<br>" + Enthusiasm;
+    ryugakusei.innerHTML += joho;
     // console.log(MLanguages, Enthusiasm, JPLevels);
   });
 
@@ -199,8 +199,8 @@ else {
       //PeerIDとMynameの紐付け、自分を参加者リストに追加
       let Myitem = document.createElement('li');
       Myitem.id = MypeerId;
-      Myitem.textContent = Myname + "(あなた)";
-      loginUsers.textContent += "\n\n"
+      Myitem.innerHTML = Myname + "(あなた)";
+      loginUsers.innerHTML += "<br><br>"
       loginUsers.appendChild(Myitem);
       // console.log(Myitem, Myitem.id, Myitem.textContent);
 
@@ -296,14 +296,14 @@ else {
 
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
-          AllShiteki.push([data.msg1, data.msg2, data.name]);
+          AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
           console.log(AllShiteki);
           if (group == true) {
             if(AllShiteki.length>1){
             NextButton.disabled = false;
             }
             else{
-            sentfB.innerHTML = data.msg1 + "\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name;
+            sentfB.innerHTML = data.msg1 + "<br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
           }
           }
           break;
@@ -361,7 +361,7 @@ else {
     function onClickNext(){
       GobackButton.disabled = false;
       CurrentShiteki++;
-      sentfB.innerHTML = AllShiteki[CurrentShiteki][0]+ "\n" + AllShiteki[CurrentShiteki][1] + "\n訂正してくれた人：" + AllShiteki[CurrentShiteki][2];
+      sentfB.innerHTML = AllShiteki[CurrentShiteki][0]+ "<br>" + AllShiteki[CurrentShiteki][1] + "<br>訂正してくれた人：" + AllShiteki[CurrentShiteki][2];
       if(CurrentShiteki == AllShiteki.length-1){
         NextButton.disabled = true;
     }}
@@ -369,7 +369,7 @@ else {
     function onClickGoback(){
       NextButton.disabled = false;
       CurrentShiteki--;
-      sentfB.innerHTML = AllShiteki[CurrentShiteki][0]+ "\n" + AllShiteki[CurrentShiteki][1]+ "\n訂正してくれた人：" + AllShiteki[CurrentShiteki][2];
+      sentfB.innerHTML = AllShiteki[CurrentShiteki][0]+ "<br>" + AllShiteki[CurrentShiteki][1]+ "<br>訂正してくれた人：" + AllShiteki[CurrentShiteki][2];
       if(CurrentShiteki == 0){
         GobackButton.disabled = true;
     }
@@ -404,7 +404,7 @@ else {
       AllShiteki.push([jimo, moji, Myname]);
       // console.log(AllShiteki);
       
-      room.send({name: Myname, type:'teisei', msg1: jimo, msg2: moji2});
+      room.send({name: Myname, type:'teisei', msg1: jimo, msg2: moji2, genbun:genbun});
       var checkresults = document.getElementById("checkresults");
       if (group == false) {
       checkresults.innerHTML = "送信完了！";
@@ -451,7 +451,7 @@ else {
                 }
               });
               // console.log(moji);
-              messages.innerHTML = "\n\n" + jimo + "\n" + moji;
+              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br>" + moji;
               break;
 
             case 'justcorrect':
@@ -470,7 +470,7 @@ else {
                 }
               });
               // console.log(moji);
-              messages.innerHTML = "\n\n" + jimo + "\n" + moji;
+              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br>" + moji;
               break;
 
             case 'allcorrect':
@@ -492,7 +492,7 @@ else {
               // namae = genbun[0] + genbun[1];
               jimo = namae + "<font color = red>" + genbun.slice(koitsu+1).join(" ") + "</font>";
               moji = namae + "？？？";
-              messages.innerHTML = "\n\n" + jimo + "\n" + moji;
+              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br>" + moji;
               break;
           }
 
@@ -563,6 +563,14 @@ else {
           }
         jimo = "";
         r = 0;
+
+        for(i=0; i<AllShiteki.length; i++){
+          if(AllShiteki[i][3]==genbun){
+            radios.style.display = 'none';
+            localText.style.display = 'none';
+            sendTrigger.style.display = 'none';
+          }
+        }
         genbun.forEach(function (t) {
           r++;
           if (r != junban) {
@@ -573,7 +581,7 @@ else {
           }
         });
         // console.log(moji);
-        messages.innerHTML = "\n\n" + jimo;
+        messages.innerHTML = "◎指摘欄<br>" + jimo;
         // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
         // alert(t);
       };
@@ -605,7 +613,7 @@ else {
   //自分の発言の認識
   recognition.onresult = (event) => {
     for (var i = event.resultIndex; i < event.results.length; i++) {
-      var transcript = Myname + "：" + event.results[i][0].transcript + "\n";
+      var transcript = Myname + "：" + event.results[i][0].transcript + "\n\n";
       // transcript = segmenter.segment(transcript).join("|");
       // alert(transcript +"ああああああ");
       room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId });

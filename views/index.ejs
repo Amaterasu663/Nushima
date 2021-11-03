@@ -10,12 +10,12 @@
 
 <body>
   <div class="container">
-    <h1 class="heading">test room</h1><br>
+    <!-- <h1 class="heading">test room</h1><br> -->
     <!-- <p class="note">
         Change Room mode (before join in a room):
         <a href="#">mesh</a> / <a href="#sfu">sfu</a>
       </p> -->
-
+      <br><br>
     <div class="room">
       <dialog id="Dialog_1">
         <form method="dialog">
@@ -68,16 +68,11 @@
 
       <div>
         <!-- <video id="js-local-stream"></video> -->
-        <pre class="messages" id="loginUsers">◎参加者リスト<br></pre>
-        <pre class="messages" id="ryugakusei">◎参加する留学生の情報<br></pre>
+        <div class="InitialData" id="loginUsers">◎参加者リスト</div><br><br>
+        <div class="InitialData" id="ryugakusei">◎参加する留学生の情報<br></div>
         <span id="js-room-mode" hidden></span>
         <!-- <input type="text" placeholder="Room Name" id="js-room-id"> -->
         <br>
-        <div class="toggle-btn">
-          <input type="checkbox" id="switch1">
-          <label for="switch1"><span></span></label>
-          <div id="swImg"></div>
-        </div>
         <button id="js-join-trigger">参加</button>
         <button id="js-leave-trigger">退室</button>
 
@@ -90,11 +85,11 @@
       </div>
 
       <div>
-        <pre class="messages" id="js-sentfB">◎届いた指摘</pre>
+        <div class="messages" id="js-sentfB">◎届いた指摘</div>
         <button id="js-goback" disabled>戻る</button>
         <button id="js-next" disabled>次へ</button>
-        <pre class="messages" id="js-messages">◎指摘欄</pre>
-        <pre id="shitekiButton">
+        <div class="messages" id="js-messages">◎指摘欄</div>
+        <pre id="shitekiButton"><br>
         <label><input type="radio" name = "correct" value="remove">選択箇所は不要</label><br>
         <label><input type="radio" name = "correct" value="justcorrect">選択箇所のみ修正</label><br>
         <label><input type="radio" name = "correct" value="allcorrect">文全体を修正</label><br>
@@ -110,6 +105,8 @@
     <br>
     <p class="meta" id="js-meta" hidden></p>
   </div>
+</body>
+
   <script src="//cdn.webrtc.ecl.ntt.com/skyway-4.4.1.js"></script>
   <script src="javascripts/key.js"></script>
 
