@@ -401,7 +401,7 @@ else {
       // localText.value = '';
       }
 
-      AllShiteki.push([jimo, moji, Myname]);
+      AllShiteki.push([jimo, moji, Myname, genbun]);
       // console.log(AllShiteki);
       
       room.send({name: Myname, type:'teisei', msg1: jimo, msg2: moji2, genbun:genbun});
@@ -550,6 +550,15 @@ else {
         n = (a.id.split("_"))[1];
         genbun = zenbun[n - 1];
 
+        for(i=0; i<AllShiteki.length; i++){
+          if(AllShiteki[i][3]==genbun){
+            alert(i +"ああああああああ");
+            // radios.style.display = 'none';
+            // localText.style.display = 'none';
+            // sendTrigger.style.display = 'none';
+          }
+        }
+
         junban = (a.id.split("_"))[2];
         // // var s = Element.previousElementSibling;
         // // var u = Element.nextElementSibling;
@@ -564,14 +573,6 @@ else {
         jimo = "";
         r = 0;
 
-        for(i=0; i<AllShiteki.length; i++){
-          if(AllShiteki[i][3]==genbun){
-            console.log(i +"ああああああああ");
-            // radios.style.display = 'none';
-            // localText.style.display = 'none';
-            // sendTrigger.style.display = 'none';
-          }
-        }
         genbun.forEach(function (t) {
           r++;
           if (r != junban) {
