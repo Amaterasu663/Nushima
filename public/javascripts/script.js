@@ -451,7 +451,7 @@ else {
                 }
               });
               // console.log(moji);
-              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br>" + moji;
+              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br><br>" + moji;
               break;
 
             case 'justcorrect':
@@ -470,7 +470,7 @@ else {
                 }
               });
               // console.log(moji);
-              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br>" + moji;
+              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br><br>" + moji;
               break;
 
             case 'allcorrect':
@@ -492,7 +492,7 @@ else {
               // namae = genbun[0] + genbun[1];
               jimo = namae + "<font color = red>" + genbun.slice(koitsu+1).join(" ") + "</font>";
               moji = namae + "？？？";
-              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br>" + moji;
+              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br><br>" + moji;
               break;
           }
 
@@ -566,9 +566,10 @@ else {
 
         for(i=0; i<AllShiteki.length; i++){
           if(AllShiteki[i][3]==genbun){
-            radios.style.display = 'none';
-            localText.style.display = 'none';
-            sendTrigger.style.display = 'none';
+            console.log(i +"ああああああああ");
+            // radios.style.display = 'none';
+            // localText.style.display = 'none';
+            // sendTrigger.style.display = 'none';
           }
         }
         genbun.forEach(function (t) {
