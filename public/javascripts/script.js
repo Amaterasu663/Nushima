@@ -376,6 +376,20 @@ else {
       }
     }
 
+  const Already = document.getElementById('already');
+  const YesButton = document.getElementById('YesButton');
+  const NoButton = document.getElementById('NoButton');
+  YesButton.addEventListener('click', onClickYes);
+  NoButton.addEventListener('click', onClickNo);
+
+  function onClickYes(){
+    Already.remove();
+  }
+
+  function onClickNo(){
+    Already.remove();
+  }
+
     sendTrigger.addEventListener('click', onClickSend);
     leaveTrigger.addEventListener('click', () => room.close(), { once: true });
 
@@ -615,20 +629,6 @@ else {
 
       // }
     });
-  }
-
-  const Already = document.getElementById('already');
-  const YesButton = document.getElementById('YesButton');
-  const NoButton = document.getElementById('NoButton');
-  YesButton.addEventListener('click', onClickYes);
-  NoButton.addEventListener('click', onClickNo);
-
-  function onClickYes(){
-    Already.remove();
-  }
-
-  function onClickNo(){
-    Already.remove();
   }
 
   //自分の発言の認識

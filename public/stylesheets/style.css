@@ -69,7 +69,7 @@ html,body, p{
   
 }
 
-.label {
+/* .label {
 	display: block;
 	background-color: #ffc;
 	margin: 10px;
@@ -82,12 +82,12 @@ html,body, p{
 	clear: both;
 	display: block;
 }
-	label input { float: left; }
-	label p {
+	label input { float: left; } */
+	/* label p {
 		float: left;
 		padding-top: 2px;
 		width: calc(100% - 24px);
-	}
+	} */
 
 /* 参加者リストと留学生のデータ */
 .room .InitialData {
