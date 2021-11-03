@@ -550,17 +550,6 @@ else {
         n = (a.id.split("_"))[1];
         genbun = zenbun[n - 1];
 
-        // for(i=0; i<AllShiteki.length; i++){
-        //   if(AllShiteki[i][3]==genbun){
-        //     // radios.style.display = 'none';
-        //     // localText.style.display = 'none';
-        //     // sendTrigger.style.display = 'none';
-        //     messages.innerHTML = "◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？"; 
-        //     messages.innerHTML += "<button id = \'YesButton\'>はい</button><button id = \'NoButton\'>いいえ</button>";
-        //     alert(i +"ああああああああ");//このアラートは効く
-        //   }
-        // }
-
         junban = (a.id.split("_"))[2];
         // // var s = Element.previousElementSibling;
         // // var u = Element.nextElementSibling;
@@ -594,8 +583,10 @@ else {
             // localText.style.display = 'none';
             // sendTrigger.style.display = 'none';
             messages.innerHTML = "◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？"; 
-            messages.innerHTML += "<button id = \'YesButton\'>はい</button><button id = \'NoButton\'>いいえ</button>";
-            alert(i +"ああああああああ");//このアラートは効く
+            messages.innerHTML += "<br><button id = \'YesButton\'>はい</button><button id = \'NoButton\'>いいえ</button>";
+            messages.innerHTML += "<br><br>《他の人の指摘》<br>";
+            messages.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>";
+            messages.innerHTML +=  AllShiteki[i][0]+ "<br>" + AllShiteki[i][1]+ "<br>訂正してくれた人：" + AllShiteki[i][2] +"</label><br><br>";
           }
         }
       };
