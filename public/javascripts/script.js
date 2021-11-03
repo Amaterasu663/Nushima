@@ -142,6 +142,19 @@ else {
     })
     .catch(console.error);
 
+    const onoffSwitch = () => {
+      const OnOff = document.getElementById("switch1");
+      if (OnOff.checked == "false") {
+        localStream.getAudioTracks().forEach((track) => (track.enabled = true));
+      } 
+      //ミュートにする場合
+      else {
+        localStream.getAudioTracks().forEach((track) => (track.enabled = false));
+      }
+    }
+    setInterval(onoffSwitch, 1000);
+  
+
   // Render local stream
   // localVideo.muted = true;
   // localVideo.srcObject = localStream;
@@ -299,8 +312,9 @@ else {
             NextButton.disabled = false;
             }
             else{
-            sentfB.innerHTML = data.msg1 + "\n" + data.msg2 + "\n訂正してくれた人：" + data.name;
-            }
+            sentfB.innerHTML = data.msg1 + "\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name;
+            
+          }
           }
           break;
       }
