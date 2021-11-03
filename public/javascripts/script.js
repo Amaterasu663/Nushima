@@ -401,7 +401,7 @@ else {
       // localText.value = '';
       }
 
-      AllShiteki.push([jimo, moji, Myname, genbun]);
+      AllShiteki.push([jimo, moji2, Myname, genbun]);
       // console.log(AllShiteki);
       
       room.send({name: Myname, type:'teisei', msg1: jimo, msg2: moji2, genbun:genbun});
@@ -585,8 +585,8 @@ else {
             messages.innerHTML = "◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？"; 
             messages.innerHTML += "<br><button id = \'YesButton\'>はい</button><button id = \'NoButton\'>いいえ</button>";
             messages.innerHTML += "<br><br>《他の人の指摘》<br>";
-            messages.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>";
-            messages.innerHTML +=  AllShiteki[i][0]+ "<br>" + AllShiteki[i][1]+ "<br>訂正してくれた人：" + AllShiteki[i][2] +"</label><br><br>";
+            messages.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'><p>";
+            messages.innerHTML +=  AllShiteki[i][0]+ "<br>" + AllShiteki[i][1]+ "<br>訂正してくれた人：" + AllShiteki[i][2] +"</p></label><br><br>";
           }
         }
       };
