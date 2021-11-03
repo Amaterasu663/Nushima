@@ -142,17 +142,17 @@ else {
     })
     .catch(console.error);
     
-    const onoffSwitch = () => {
-      const OnOff = document.getElementById("switch1");
-      if (OnOff.checked == "false") {
-        localStream.getAudioTracks().forEach((track) => (track.enabled = true));
-      } 
-      //ミュートにする場合
-      else {
-        localStream.getAudioTracks().forEach((track) => (track.enabled = false));
-      }
-    }
-    setInterval(onoffSwitch, 1000);
+    // const onoffSwitch = () => {
+    //   const OnOff = document.getElementById("switch1");
+    //   if (OnOff.checked == "false") {
+    //     localStream.getAudioTracks().forEach((track) => (track.enabled = true));
+    //   } 
+    //   //ミュートにする場合
+    //   else {
+    //     localStream.getAudioTracks().forEach((track) => (track.enabled = false));
+    //   }
+    // }
+    // setInterval(onoffSwitch, 1000);
   
 
   // Render local stream
@@ -362,7 +362,7 @@ else {
       GobackButton.disabled = false;
       CurrentShiteki++;
       sentfB.innerHTML = AllShiteki[CurrentShiteki][0]+ "\n" + AllShiteki[CurrentShiteki][1] + "\n訂正してくれた人：" + AllShiteki[CurrentShiteki][2];
-      if(CurrentShiteki == AllShiteki.length){
+      if(CurrentShiteki == AllShiteki.length-1){
         NextButton.disabled = true;
     }}
 
@@ -605,7 +605,7 @@ else {
   //自分の発言の認識
   recognition.onresult = (event) => {
     for (var i = event.resultIndex; i < event.results.length; i++) {
-      var transcript = Myname + "：" + event.results[i][0].transcript + "。\n\n";
+      var transcript = Myname + "：" + event.results[i][0].transcript + "\n";
       // transcript = segmenter.segment(transcript).join("|");
       // alert(transcript +"ああああああ");
       room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId });
