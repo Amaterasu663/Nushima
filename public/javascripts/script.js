@@ -62,7 +62,7 @@ if (group == true) {
   confirmBtn3.addEventListener('click', () => {
     Dialog_3.close();
 
-    joho = "<br><br>名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>コメント：<br>" + Enthusiasm;
+    joho = "名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>コメント：<br>" + Enthusiasm;
     ryugakusei.innerHTML += joho;
     // console.log(MLanguages, Enthusiasm, JPLevels);
   });
@@ -200,7 +200,7 @@ else {
       let Myitem = document.createElement('li');
       Myitem.id = MypeerId;
       Myitem.innerHTML = Myname + "(あなた)";
-      loginUsers.innerHTML += "<br><br>"
+      loginUsers.innerHTML += "<br>"
       loginUsers.appendChild(Myitem);
       // console.log(Myitem, Myitem.id, Myitem.textContent);
 
@@ -260,7 +260,7 @@ else {
         //既にログインしている人が他者のログインを確認したとき
         //同時に複数名がログインした場合、ちゃんと動くか怪しい
         case 'open':
-          loginUsers.children[loginUsers.children.length - 1].textContent = data.name;
+          loginUsers.children[loginUsers.children.length - 1].innerHTML = data.name;
           break;
 
         //既にログインしている人がいる中でログインしたとき
@@ -287,7 +287,7 @@ else {
         //代入の時の＝は一個、比較（if文）の中だったら＝は二個
         case 'leftdown':
           // alert(data.msg); 
-          ryugakusei.textContent += data.msg;
+          ryugakusei.innerHTML += data.msg;
           break;
 
         case 'text':
@@ -297,13 +297,13 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
-          console.log(AllShiteki);
+          // console.log(AllShiteki);
           if (group == true) {
             if(AllShiteki.length>1){
             NextButton.disabled = false;
             }
             else{
-            sentfB.innerHTML = data.msg1 + "<br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
+            sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
           }
           }
           break;
