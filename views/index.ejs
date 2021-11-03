@@ -18,7 +18,7 @@
       <br><br>
     <div class="room">
       <dialog id="Dialog_1">
-        <form method="dialog">
+        <form method="dialog"><br>
           <p><label>あなたの母語:
             <input type="text" id="select_1" onchange="inputChange_1()">
             <br><small>入力例）中国語、台湾語</small>
@@ -88,7 +88,14 @@
         <div class="messages" id="js-sentfB">◎届いた指摘</div>
         <button id="js-goback" disabled>戻る</button>
         <button id="js-next" disabled>次へ</button>
+
         <div class="messages" id="js-messages">◎指摘欄</div>
+
+        <div class="messages" id = "already">◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？<br>
+        <button id = "yesbutton">はい</button>
+        <button id = "nobutton">いいえ</button><br><br>
+        <div id = "otherscorrect">《他の人の指摘》<br></div></div>
+
         <div id="shitekiButton"><br>
         <label><input type="radio" name = "correct" value="remove">選択箇所は不要</label><br>
         <label><input type="radio" name = "correct" value="justcorrect">選択箇所のみ修正</label><br>

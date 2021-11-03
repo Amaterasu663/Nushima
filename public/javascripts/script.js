@@ -36,6 +36,8 @@ const Element1 = document.getElementById('js-messages')
 const Element2 = document.getElementById('js-sentfB')
 const GobackButton = document.getElementById('js-goback')
 const NextButton = document.getElementById('js-next')
+var Already = document.getElementById('already');
+var OthersCorrect = document.getElementById("otherscorrect");
 
 const ShitekiButton = document.getElementById('shitekiButton')
 
@@ -44,6 +46,8 @@ const ShitekiButton = document.getElementById('shitekiButton')
 if (group == true) {
   Element1.remove();
   ShitekiButton.remove();
+  Already.remove();
+  OthersCorrect.remove();
   Dialog_1.showModal();
   confirmBtn1.addEventListener('click', function (e) {
     if (MLanguages !== "") {
@@ -104,6 +108,8 @@ else {
   Element2.remove();
   GobackButton.remove();
   NextButton.remove();
+  document.getElementById("already").style.display ="none";
+  document.getElementById("otherscorrect").style.display ="none";
 }
 
 
@@ -376,20 +382,6 @@ else {
       }
     }
 
-  const Already = document.getElementById('already');
-  const YesButton = document.getElementById('YesButton');
-  const NoButton = document.getElementById('NoButton');
-  YesButton.addEventListener('click', onClickYes);
-  NoButton.addEventListener('click', onClickNo);
-
-  function onClickYes(){
-    Already.remove();
-  }
-
-  function onClickNo(){
-    Already.remove();
-  }
-
     sendTrigger.addEventListener('click', onClickSend);
     leaveTrigger.addEventListener('click', () => room.close(), { once: true });
 
@@ -517,6 +509,22 @@ else {
     }
   }
 
+  const clickedYes = document.getElementById('yesbutton');
+  const clickedNo = document.getElementById('nobutton');
+  clickedYes.addEventListener('click', onClickYes);
+  clickedNo.addEventListener('click', onClickNo);
+
+  //既にある指摘と別の指摘を送る場合
+  function onClickYes(){
+    alert("AAAAAAAAAAAAAAAAAA");
+    OthersCorrect.style.display ="none";
+  }
+
+  function onClickNo(){
+    Already.style.display ="none";
+    // detached.prependTo(Already);要素を元に戻す場合
+  }
+
   // 音声認識(分かち書き＋暫定結果の表示なし)
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
   const recognition = new SpeechRecognition();
@@ -595,14 +603,12 @@ else {
         // alert(t);
         for (i = 0; i < AllShiteki.length; i++) {
           if (AllShiteki[i][3] == genbun) {
-            // radios.style.display = 'none';
-            // localText.style.display = 'none';
-            // sendTrigger.style.display = 'none';
-            messages.innerHTML = "◎指摘欄<br><div id = already>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？";
-            messages.innerHTML += "<br><button id = \'YesButton\'>はい</button><button id = \'NoButton\'>いいえ</button>";
-            messages.innerHTML += "<br><br>《他の人の指摘》<br>";
-            messages.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'><p>";
-            messages.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正してくれた人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
+            messages.style.display ="none";
+            Already.style.display ="block";
+            OthersCorrect.style.display ="block";
+            Already.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'><p>";
+            Already.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正してくれた人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
+            //ここに選択されたラジオボタンの処理書く
           }
         }
       };
@@ -642,45 +648,6 @@ else {
 
     }
   }
-
-  // 音声認識パート2(暫定結果の表示あり)
-  // SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-  // const recognition = new SpeechRecognition();
-
-  // recognition.lang = 'ja-JP';
-  // recognition.interimResults = true;
-  // recognition.continuous = true;
-
-  // let finalTranscript = ''; // 確定した(黒の)認識結果
-  // recognition.start();
-  // const segmenter = new TinySegmenter()
-  // recognition.onresult = (event) => {
-  //   let interimTranscript = ''; // 暫定(灰色)の認識結果
-  //   for (let i = event.resultIndex; i < event.results.length; i++) {
-  //     let transcript = event.results[i][0].transcript + "。";
-  //     // transcript = segmenter.segment(transcript).join("|");
-  //     transcript = segmenter.segment(transcript)
-  //     // console.log(transcript[0]);
-  //     if (event.results[i].isFinal) {
-  //       finalTranscript += transcript;
-  //     } else {
-  //       interimTranscript = transcript;
-  //     }
-  //       transcript.forEach(function (t) {
-  //         const a = document.createElement("a");
-  //         a.classList.add('ichigo');
-  //         //分かち書きの一語一語にaっていうタグを追加：htmlのため
-  //         a.innerText = t;
-  //         console.log(a);
-  //         a.onclick = (e) => {
-  //           alert(t);
-  //         };
-  //         resultDiv.appendChild(a);
-  //     });
-  //   }
-
-  //   // resultDiv.innerHTML = name + "：" + finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>';
-  // }
 
   recognition.onend = function () {
     console.log('Speech has stopped being detected');
