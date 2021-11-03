@@ -552,12 +552,12 @@ else {
 
         for(i=0; i<AllShiteki.length; i++){
           if(AllShiteki[i][3]==genbun){
-            alert(i +"ああああああああ");
             // radios.style.display = 'none';
             // localText.style.display = 'none';
             // sendTrigger.style.display = 'none';
             messages.innerHTML = "◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？"; 
             messages.innerHTML += "<button id = \'YesButton\'>はい</button><button id = \'NoButton\'>いいえ</button>";
+            alert(i +"ああああああああ");
           }
         }
 
