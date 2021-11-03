@@ -141,7 +141,7 @@ else {
       // video: true,
     })
     .catch(console.error);
-
+    
     const onoffSwitch = () => {
       const OnOff = document.getElementById("switch1");
       if (OnOff.checked == "false") {
@@ -297,15 +297,7 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name]);
-          NextButton.addEventListener('click', onClickNext);
-          // GobackButton.addEventListener('click', onClickGoback);
-          function onClickNext(){
-            for(i=0; i<AllShiteki.length; i++){
-              if(sentfB.innerHTML.match(AllShiteki[i][i][i])){
-                sentfB.innerHTML = AllShiteki[i+1]+ "\n" + AllShiteki[i+1] + "\n訂正してくれた人：" + AllShiteki[i+1];
-              }
-            }
-          }
+
           // console.log(AllShiteki);
           if (group == true) {
             if(AllShiteki.length>1){
@@ -313,7 +305,6 @@ else {
             }
             else{
             sentfB.innerHTML = data.msg1 + "\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name;
-            
           }
           }
           break;
@@ -365,6 +356,18 @@ else {
       //   remoteVideo.remove();
       // });
     });
+
+    NextButton.addEventListener('click', onClickNext);
+    GobackButton.addEventListener('click', onClickGoback);
+    function onClickNext(){
+          CurrentShiteki++;
+          sentfB.innerHTML = AllShiteki[CurrentShiteki]+ "\n" + AllShiteki[CurrentShiteki] + "\n訂正してくれた人：" + AllShiteki[CurrentShiteki];
+    }
+
+    function onClickGoback(){
+      CurrentShiteki--;
+      sentfB.innerHTML = AllShiteki[CurrentShiteki]+ "\n" + AllShiteki[CurrentShiteki] + "\n訂正してくれた人：" + AllShiteki[CurrentShiteki];
+}
 
     sendTrigger.addEventListener('click', onClickSend);
     leaveTrigger.addEventListener('click', () => room.close(), { once: true });
@@ -510,6 +513,7 @@ else {
   var namae;
   var koitsu;
   var AllShiteki = new Array();
+  var CurrentShiteki = 0;
 
   recognition.start();
   const segmenter = new TinySegmenter();
