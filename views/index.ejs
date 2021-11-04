@@ -54,9 +54,9 @@
           <p><label>自分の間違いについて：<br>
             <select id="select_3" onchange="inputChange_3()">
               <option></option>
-              <option>どんなミスもびしばし指摘してください！</option>
-              <option>細かいミスも指摘してほしいです！</option>
-              <option>意味が伝わりにくければ指摘してください！</option>
+              <option>すごく自然な日本語を目指しています！</option>
+              <option>不自然なところがあれば、指摘してください！</option>
+              <option>意味が伝わらなければ、指摘してください！</option>
             </select>
           </label></p>
           <menu>
@@ -69,8 +69,8 @@
 
       <div>
         <!-- <video id="js-local-stream"></video> -->
-        <div class="InitialData" id="loginUsers">◎参加者リスト</div><br><br>
-        <div class="InitialData" id="ryugakusei">◎参加する留学生の情報<br></div>
+        <div class="PremierData" id="loginUsers">◎参加者リスト</div><br><br>
+        <div class="DeuxiemeData" id="ryugakusei">◎参加する留学生の情報<br></div>
         <span id="js-room-mode" hidden></span>
         <!-- <input type="text" placeholder="Room Name" id="js-room-id"> -->
         <br>
@@ -96,7 +96,9 @@
         <button id = "yesbutton">はい</button>
         <button id = "nobutton">いいえ</button><br><br>
         <div id = "otherscorrect">《他の人の指摘》<br></div>
-        <div id = "smallexplanation">その場合、下の指摘からベストなものを選択して送信してください。<br></div></div>
+        <div id = "smallexplanation">その場合、下の指摘からベストなものを選択して送信してください。<br></div>
+        <div id = "othersShitekibox"></div>
+      </div>
 
         <div id="shitekiButton"><br>
         <label><input type="radio" name = "correct" value="remove">選択箇所は不要</label><br>

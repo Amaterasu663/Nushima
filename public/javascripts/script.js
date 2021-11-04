@@ -306,6 +306,7 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
+          //いいねの数をカウントアップ→表示用のAllshitekiをつくる
           // console.log(AllShiteki);
           if (group == true) {
             if (AllShiteki.length > 1) {
@@ -343,6 +344,7 @@ else {
       // messages.textContent += `=== ${peerId} left ===\n`;
     });
 
+    leaveTrigger.addEventListener('click', () => room.close(), { once: true });
     // for closing myself
     room.once('close', () => {
       // sendTrigger.removeEventListener('click', onClickSend);
@@ -353,6 +355,7 @@ else {
           loginUsers.children[i].remove();
         }
       }
+      alert("退室完了");
       // room.send(Myname + "：" + localText.value);
       // messages1.textContent += `→${Myname}(あなた)が退出しました\n`;
       // localText.value = '';
@@ -386,7 +389,7 @@ else {
     }
 
     sendTrigger.addEventListener('click', onClickSend);
-    leaveTrigger.addEventListener('click', () => room.close(), { once: true });
+    // leaveTrigger.addEventListener('click', () => room.close(), { once: true });
 
     // 「送る」を押したとき働く関数
     function onClickSend() {
@@ -512,6 +515,7 @@ else {
     }
   }
 
+  const othersShitekibox = document.getElementById('othersShitekibox');
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
   Yes.addEventListener('click', onClickYes);
@@ -519,7 +523,6 @@ else {
 
   //既にある指摘と別の指摘を送る場合
   function onClickYes(){
-    alert("AAAAAAAAAAAAAAAAAA");
     OthersCorrect.style.display ="none";
   }
   //ラジオボタン（いいね！）の選択をさせる場合
@@ -547,6 +550,8 @@ else {
   var koitsu;
   var AllShiteki = new Array();
   var CurrentShiteki = 0;
+  // var othersShiteki1;
+  // var othersShiteki2;
 
   recognition.start();
   const segmenter = new TinySegmenter();
@@ -605,15 +610,18 @@ else {
         // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
         // alert(t);
         if(group == false){
+          othersShitekibox.innerHTML = "";
         for (i = 0; i < AllShiteki.length; i++) {
           if (AllShiteki[i][3] == genbun) {
             ShitekiButton.style.display ="none";
             messages.style.display ="none";
             Already.style.display ="block";
             OthersCorrect.style.display ="block";
-            Already.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>👍<p>";
-            Already.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正してくれた人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
-            //ここに選択されたラジオボタンの処理書く
+            othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>👍<p>";
+            othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正してくれた人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
+            othersShitekibox.innerHTML += othersShiteki1;
+            othersShitekibox.innerHTML += othersShiteki2;
+
           }
         }}
       };
