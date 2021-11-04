@@ -637,6 +637,25 @@ else {
         if(group == false){
           MyShiteki.innerHTML ="";
           othersShitekibox.innerHTML = "";
+
+          for (i = 0; i < AllShiteki.length; i++) {
+            if (AllShiteki[i][3] == genbun && AllShiteki[i][2] != Myname) {
+              alert(i + "あああああああああああああああ");
+              ShitekiButton.style.display ="none";
+              messages.style.display ="none";
+              MyShiteki.style.display = "none";
+              checkmine.style.display = "none";
+              checkedmine.style.display ="none";
+              Already.style.display ="block";
+              OthersCorrect.style.display ="block";
+              othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>👍<p>";
+              othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
+              othersShitekibox.innerHTML += othersShiteki1;
+              othersShitekibox.innerHTML += othersShiteki2;
+  
+            }
+          }
+
         for (i = 0; i < AllShiteki.length; i++) {
           if(AllShiteki[i][3] == genbun && AllShiteki[i][2] == Myname){
             // messages.innerHTML ="";
@@ -646,23 +665,8 @@ else {
             MyShiteki.style.display ="block";
             checkedmine.style.display ="block";
             MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
-          }
-
-          if (AllShiteki[i][3] == genbun && AllShiteki[i][2] != Myname) {
-            ShitekiButton.style.display ="none";
-            messages.style.display ="none";
-            MyShiteki.style.display = "none";
-            checkmine.style.display = "none";
-            checkedmine.style.display ="none";
-            Already.style.display ="block";
-            OthersCorrect.style.display ="block";
-            othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>👍<p>";
-            othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
-            othersShitekibox.innerHTML += othersShiteki1;
-            othersShitekibox.innerHTML += othersShiteki2;
-
-          }
-        }
+          }}
+      
       }
       };
       resultDiv.appendChild(a);
