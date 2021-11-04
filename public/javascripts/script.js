@@ -36,8 +36,9 @@ const Element1 = document.getElementById('js-messages')
 const Element2 = document.getElementById('js-sentfB')
 const GobackButton = document.getElementById('js-goback')
 const NextButton = document.getElementById('js-next')
-var Already = document.getElementById('already');
-var OthersCorrect = document.getElementById("otherscorrect");
+const Already = document.getElementById('already');
+const OthersCorrect = document.getElementById("otherscorrect");
+const SmallExplanation = document.getElementById("smallexplanation");
 
 const ShitekiButton = document.getElementById('shitekiButton')
 
@@ -46,8 +47,9 @@ const ShitekiButton = document.getElementById('shitekiButton')
 if (group == true) {
   Element1.remove();
   ShitekiButton.remove();
-  Already.remove();
-  OthersCorrect.remove();
+  Already.style.display ="none";
+  OthersCorrect.style.display ="none";
+  SmallExplanation.style.display ="none";
   Dialog_1.showModal();
   confirmBtn1.addEventListener('click', function (e) {
     if (MLanguages !== "") {
@@ -110,6 +112,7 @@ else {
   NextButton.remove();
   document.getElementById("already").style.display ="none";
   document.getElementById("otherscorrect").style.display ="none";
+  SmallExplanation.style.display ="none";
 }
 
 
@@ -509,20 +512,20 @@ else {
     }
   }
 
-  const clickedYes = document.getElementById('yesbutton');
-  const clickedNo = document.getElementById('nobutton');
-  clickedYes.addEventListener('click', onClickYes);
-  clickedNo.addEventListener('click', onClickNo);
+  const Yes = document.getElementById('yesbutton');
+  const No = document.getElementById('nobutton');
+  Yes.addEventListener('click', onClickYes);
+  No.addEventListener('click', onClickNo);
 
   //既にある指摘と別の指摘を送る場合
   function onClickYes(){
     alert("AAAAAAAAAAAAAAAAAA");
     OthersCorrect.style.display ="none";
   }
-
+  //ラジオボタン（いいね！）の選択をさせる場合
   function onClickNo(){
     Already.style.display ="none";
-    // detached.prependTo(Already);要素を元に戻す場合
+    SmallExplanation.style.display ="block";
   }
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
@@ -601,16 +604,18 @@ else {
         messages.innerHTML = "◎指摘欄<br>" + jimo;
         // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
         // alert(t);
+        if(group == false){
         for (i = 0; i < AllShiteki.length; i++) {
           if (AllShiteki[i][3] == genbun) {
+            ShitekiButton.style.display ="none";
             messages.style.display ="none";
             Already.style.display ="block";
             OthersCorrect.style.display ="block";
-            Already.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'><p>";
+            Already.innerHTML += "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>👍<p>";
             Already.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正してくれた人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
             //ここに選択されたラジオボタンの処理書く
           }
-        }
+        }}
       };
       resultDiv.appendChild(a);
 
