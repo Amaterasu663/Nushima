@@ -85,8 +85,8 @@ if (group == true) {
   }
 
   function inputChange_2() {
-    Enthusiasm = selectEl_2.value;
-    if (Enthusiasm == "") {
+    JPLevels = selectEl_2.value;
+    if (JPLevels == "") {
       confirmBtn2.disabled = true;
     }
     else {
@@ -95,8 +95,8 @@ if (group == true) {
   }
 
   function inputChange_3() {
-    JPLevels = selectEl_3.value;
-    if (JPLevels == "") {
+    Enthusiasm = selectEl_3.value;
+    if (Enthusiasm == "") {
       confirmBtn3.disabled = true;
     }
     else {
