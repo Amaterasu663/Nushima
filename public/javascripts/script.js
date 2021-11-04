@@ -317,7 +317,17 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
+          var count={};
           //いいねの数をカウントアップ→表示用のAllshitekiをつくる
+          for(i=0;i<AllShiteki.length;i++){
+            var elm1 = AllShiteki[i][0];
+            var elm2 = AllShiteki[i][1];
+            var elm3 = AllShiteki[i][3];
+            count[elm1] = (count[elm1] || 0) + 1;
+            count[elm2] = (count[elm1] || 0) + 2;
+            count[elm3] = (count[elm2] || 0) + 3;
+            console.log(count[elm1]);
+          }
           // console.log(AllShiteki);
           if (group == true) {
             if (AllShiteki.length > 1) {
@@ -531,9 +541,11 @@ else {
   const metoosend = document.getElementById("Metoosend");
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
+  const radios2 = document.getElementsByName('bestanswer');
   checkedmine.addEventListener('click', onClickedMine);
   Yes.addEventListener('click', onClickYes);
   No.addEventListener('click', onClickNo);
+  metoosend.addEventListener('click', onClickMeToo);
 
   function onClickedMine(){
     MyShiteki.style.display = "none";
@@ -554,6 +566,22 @@ else {
   function onClickNo(){
     SmallExplanation.style.display ="block";
     metoosend.style.display = "block";
+    metoosend.disabled = false;
+  }
+
+  function onClickMeToo(){
+    for (var i = 0; i < radios2.length; i++) {
+      if (radios2[i].checked == true) {
+        console.log(AllShiteki[i][1]);
+        AllShiteki.push([AllShiteki[i][0], AllShiteki[i][1], Myname, genbun]);
+        room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[i][0], msg2: AllShiteki[i][1], genbun: genbun});
+          }
+    }
+    Already.style.display = "none";
+    OthersCorrect.style.display ="none";
+    othersShitekibox.style.display = "none";
+    messages.style.display = "block";
+    ShitekiButton.style.display = "block";
   }
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
@@ -639,8 +667,8 @@ else {
           othersShitekibox.innerHTML = "";
 
           for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3] == genbun && AllShiteki[i][2] != Myname) {
-              alert(i + "あああああああああああああああ");
+            if (AllShiteki[i][3] == genbun) {
+              // console.log(i + "あああああああああああああああ");
               ShitekiButton.style.display ="none";
               messages.style.display ="none";
               MyShiteki.style.display = "none";
@@ -648,7 +676,8 @@ else {
               checkedmine.style.display ="none";
               Already.style.display ="block";
               OthersCorrect.style.display ="block";
-              othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=\'remove\'>👍<p>";
+              othersShitekibox.style.display ="block";
+              othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value="+ i + ">👍<p>";
               othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
               othersShitekibox.innerHTML += othersShiteki1;
               othersShitekibox.innerHTML += othersShiteki2;
