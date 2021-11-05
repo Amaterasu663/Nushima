@@ -349,7 +349,7 @@ else {
               NextButton.disabled = false;
             }
             else{
-            if(ThumbsUp==0) {
+            if(ThumbsUp!=0) {
               sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name + "　👍" + ThumbsUp;
             }
             else{
