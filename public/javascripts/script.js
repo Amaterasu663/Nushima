@@ -329,7 +329,7 @@ else {
               NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
             }
             else{
-              ThumbsUp++;
+              // ThumbsUp++;
               NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, ThumbsUp]);
             }
           }
@@ -415,7 +415,7 @@ else {
       GobackButton.disabled = false;
       CurrentShiteki++;
       // "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name + "　👍" + ThumbsUp;
-      sentfB.innerHTML = "◎届いた指摘<br>" + AllShiteki[CurrentShiteki][0] + "<br><br>" + AllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + AllShiteki[CurrentShiteki][2] + "　👍" + ThumbsUp;
+      sentfB.innerHTML = "◎届いた指摘<br>" + AllShiteki[CurrentShiteki][0] + "<br><br>" + AllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + AllShiteki[CurrentShiteki][2] + "　👍";
       if (CurrentShiteki == AllShiteki.length - 1) {
         NextButton.disabled = true;
       }
@@ -424,7 +424,7 @@ else {
     function onClickGoback() {
       NextButton.disabled = false;
       CurrentShiteki--;
-      sentfB.innerHTML = "◎届いた指摘<br>" + AllShiteki[CurrentShiteki][0] + "<br><br>" + AllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + AllShiteki[CurrentShiteki][2] + "　👍" + ThumbsUp;
+      sentfB.innerHTML = "◎届いた指摘<br>" + AllShiteki[CurrentShiteki][0] + "<br><br>" + AllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + AllShiteki[CurrentShiteki][2] + "　👍";
       if (CurrentShiteki == 0) {
         GobackButton.disabled = true;
       }
