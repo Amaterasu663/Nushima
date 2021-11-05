@@ -444,10 +444,10 @@ else {
               moji2 = moji;
               break;
             case 'justcorrect':
-              moji2 = moji.replace("□", localText.value);
+              moji2 = moji.replace("□", "<font color = green>" + localText.value + "</font>");
               break;
             case 'allcorrect':
-              moji2 = namae + localText.value;
+              moji2 = namae + "<font color = green>" + localText.value + "</font>";
               break;
             // // Send message to all of the peers in the room via websocket
             // room.send(Myname + "：" + localText.value);
