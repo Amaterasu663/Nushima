@@ -274,6 +274,8 @@ else {
       await newVideo.play().catch(console.error);
     });
 
+
+
     //自分が誰かからメッセージを受け取ったときのイベント
     room.on('data', ({ data, src }) => {
       switch (data.type) {
@@ -316,26 +318,44 @@ else {
 
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
-          AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
-          var count={};
+          ThumbsUp = 0;
+          AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]); 
           //いいねの数をカウントアップ→表示用のAllshitekiをつくる
+          //全くおんなじ指摘だったら、pushしない方法にする
+
+          if(AllShiteki.length>1){
           for(i=0;i<AllShiteki.length;i++){
-            var elm1 = AllShiteki[i][0];
-            var elm2 = AllShiteki[i][1];
-            var elm3 = AllShiteki[i][3];
-            count[elm1] = (count[elm1] || 0) + 1;
-            count[elm2] = (count[elm1] || 0) + 2;
-            count[elm3] = (count[elm2] || 0) + 3;
-            console.log(count[elm1]);
+            if(AllShiteki[i][0]!=data.msg1 && AllShiteki[i][1]!=data.msg2 && AllShiteki[i][3]!=data.name){
+              NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
+            }
+            else{
+              ThumbsUp++;
+              NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, ThumbsUp]);
+            }
           }
+          }
+          // for(i=0; i<numberofI.length;i++){
+          // if(numberofI[i][0] == numberofI[i+1][0]){
+          //   ThumbsUp++;
+          // }
+          // // else{
+
+          // // }
+          // }
+
           // console.log(AllShiteki);
           if (group == true) {
-            if (AllShiteki.length > 1) {
+            if (NewAllShiteki.length > 1) {
               NextButton.disabled = false;
             }
-            else {
+            else{
+            if(ThumbsUp==0) {
+              sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name + "　👍" + ThumbsUp;
+            }
+            else{
               sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
             }
+          }
           }
           break;
       }
@@ -574,7 +594,7 @@ else {
       if (radios2[i].checked == true) {
         console.log(AllShiteki[i][1]);
         AllShiteki.push([AllShiteki[i][0], AllShiteki[i][1], Myname, genbun]);
-        room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[i][0], msg2: AllShiteki[i][1], genbun: genbun});
+        room.send({ name: AllShiteki[i][2], type: 'teisei', msg1: AllShiteki[i][0], msg2: AllShiteki[i][1], genbun: genbun});
           }
     }
     Already.style.display = "none";
@@ -602,6 +622,8 @@ else {
   var namae;
   var koitsu;
   var AllShiteki = new Array();
+  var NewAllShiteki = new Array();
+  // var numberofI = new Array();
   var CurrentShiteki = 0;
   // var othersShiteki1;
   // var othersShiteki2;
