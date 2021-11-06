@@ -339,6 +339,11 @@ else {
 
             if(NewAllShiteki.length == i){
               NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
+              if(NewAllShiteki.length == 1){
+              sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
+              NextButton.disabled = true;
+              GobackButton.disabled = true;
+            }
               // sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
               // CurrentShiteki = NewAllShiteki.length-1;
               // NextButton.disabled = true;
