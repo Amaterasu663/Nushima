@@ -318,22 +318,19 @@ else {
 
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
-          ThumbsUp = 0;
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]); 
           //いいねの数をカウントアップ→表示用のAllshitekiをつくる
           //全くおんなじ指摘だったら、pushしない方法にする
 
-          if(AllShiteki.length>1){
-          for(i=0;i<AllShiteki.length;i++){
-            if(AllShiteki[i][0]!=data.msg1 && AllShiteki[i][1]!=data.msg2 && AllShiteki[i][3]!=data.name){
-              NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
+          for(i=0;i<NewAllShiteki.length;i++){
+            if(NewAllShiteki[i][0]!=data.msg1 && NewAllShiteki[i][1]!=data.msg2){
+              NewAllShiteki[i][4]++;
             }
             else{
-              // ThumbsUp++;
-              NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, ThumbsUp]);
+              NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
             }
           }
-          }
+
           // for(i=0; i<numberofI.length;i++){
           // if(numberofI[i][0] == numberofI[i+1][0]){
           //   ThumbsUp++;
@@ -595,7 +592,7 @@ else {
       if (radios2[i].checked == true) {
         console.log(AllShiteki[i][1]);
         AllShiteki.push([AllShiteki[i][0], AllShiteki[i][1], Myname, genbun]);
-        room.send({ name: AllShiteki[i][2], type: 'teisei', msg1: AllShiteki[i][0], msg2: AllShiteki[i][1], genbun: genbun});
+        room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[i][0], msg2: AllShiteki[i][1], genbun: genbun});
           }
     }
     Already.style.display = "none";
