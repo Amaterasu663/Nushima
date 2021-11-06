@@ -326,25 +326,25 @@ else {
           for(i=0;i<NewAllShiteki.length;i++){
             if(NewAllShiteki[i][0]==data.msg1 && NewAllShiteki[i][1]==data.msg2){
               NewAllShiteki[i][4]++;
-              sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[i][0] + "<br><br>" + NewAllShiteki[i][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[i][2] + "　👍" + NewAllShiteki[i][4];
-              CurrentShiteki = i;
-              if(i == NewAllShiteki.length-1){
-                NextButton.disabled = true;
-              }
-              if(i == 0){
-                GobackButton.disabled = true;
-              }
+              // sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[i][0] + "<br><br>" + NewAllShiteki[i][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[i][2] + "　👍" + NewAllShiteki[i][4];
+              // CurrentShiteki = i;
+              // if(i == NewAllShiteki.length-1){
+              //   NextButton.disabled = true;
+              // }
+              // if(i == 0){
+              //   GobackButton.disabled = true;
+              // }
               break;
             }}
 
             if(NewAllShiteki.length == i){
               NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
-              sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
-              CurrentShiteki = NewAllShiteki.length-1;
-              NextButton.disabled = true;
-              if(NewAllShiteki.length == 1){
-                GobackButton.disabled = true;
-              }
+              // sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
+              // CurrentShiteki = NewAllShiteki.length-1;
+              // NextButton.disabled = true;
+              // if(NewAllShiteki.length == 1){
+              //   GobackButton.disabled = true;
+              // }
             }
 
           // for(i=0; i<numberofI.length;i++){
