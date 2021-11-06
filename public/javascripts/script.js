@@ -342,7 +342,7 @@ else {
             NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
             // alert("あああああああああああ"+CurrentShiteki);
             if (NewAllShiteki.length == 1) {
-              sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
+              sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
               NextButton.disabled = true;
               GobackButton.disabled = true;
             }
@@ -609,11 +609,13 @@ else {
   function onClickMeToo() {
     for (var i = 0; i < radios2.length; i++) {
       if (radios2[i].checked == true) {
-        console.log(AllShiteki[i][1]);
-        AllShiteki.push([AllShiteki[i][0], AllShiteki[i][1], Myname, genbun]);
-        room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[i][0], msg2: AllShiteki[i][1], genbun: genbun });
+        // console.log(AllShiteki[i][1]);
+        Radiojunban = radios2[i].value
       }
     }
+    AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun]);
+    room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
+
     Already.style.display = "none";
     OthersCorrect.style.display = "none";
     othersShitekibox.style.display = "none";
@@ -642,6 +644,7 @@ else {
   var NewAllShiteki = new Array();
   // var numberofI = new Array();
   var CurrentShiteki = 0;
+  var Radiojunban;
   // var othersShiteki1;
   // var othersShiteki2;
 
@@ -707,6 +710,7 @@ else {
 
           for (i = 0; i < AllShiteki.length; i++) {
             if (AllShiteki[i][3] == genbun) {
+              // Radiojunban++;
               // console.log(i + "あああああああああああああああ");
               ShitekiButton.style.display = "none";
               messages.style.display = "none";
@@ -714,10 +718,12 @@ else {
               checkmine.style.display = "none";
               checkedmine.style.display = "none";
               Already.style.display = "block";
+              SmallExplanation.style.display = "none";
               OthersCorrect.style.display = "block";
               othersShitekibox.style.display = "block";
+              metoosend.disabled = true;
               othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
-              othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br><br>";
+              othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
               othersShitekibox.innerHTML += othersShiteki1;
               othersShitekibox.innerHTML += othersShiteki2;
 
