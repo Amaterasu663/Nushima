@@ -713,7 +713,9 @@ else {
     OthersCorrect.style.display = "none";
     othersShitekibox.style.display = "none";
     Element0.style.display = "block";
+    messages.innerHTML = "";
     messages.style.display = "block";
+    ShitekiButton.style.display = "none";
 
     // ShitekiButton.style.display = "block";
   }
@@ -808,7 +810,7 @@ else {
           othersShitekibox.innerHTML = "";
 
           for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3] == genbun) {
+            if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
               // Radiojunban++;
               // console.log(i + "あああああああああああああああ");
               Element0.style.display = "none";
@@ -830,7 +832,7 @@ else {
           }
 
           for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3] == genbun && AllShiteki[i][2] == Myname) {
+            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
               // messages.innerHTML ="";
               Already.style.display = "none";
               OthersCorrect.style.display = "none";
