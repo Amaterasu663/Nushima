@@ -4,7 +4,7 @@ body { margin: 0; }
 html,body, p{
   height: 100%;
   font-size: 13px;
-  /* background-color:#b4deff; */
+  background-color:#678983;
 }
 
 /* global styles */
@@ -25,7 +25,7 @@ html,body, p{
 .meta {
   text-align: center;
   font-size: .8rem;
-  color: gray;
+  /* color: gray; */
 }
 
 .container {
@@ -45,19 +45,21 @@ html,body, p{
 }
 
 .room .remote-streams {
-  background-color: #f6fbff;
+  border-radius: 10px;
+  background-color: #F0E9D2;
   overflow-y:scroll;
   max-height: 550px;
 }
 
 .room .remote-streams .ichigo{
-  background-color: #f6fbff;
+  background-color: #F0E9D2;
   margin: 10px 3px;
 }
 
 /* 指摘欄、届いた指摘 */
 .room .messages {
-  background-color: #eee;
+  border-radius: 10px;
+  background-color: #E6DDC4;
   min-height: 150px;
   min-width: 200px;
   max-height: 300px;
@@ -72,7 +74,8 @@ html,body, p{
 
 /* 参加者リスト */
 .room .PremierData {
-  background-color: #eee;
+  border-radius: 10px;
+  background-color: #E6DDC4;
   min-height: 150px;
   min-width: 200px;
   max-height: 300px;
@@ -84,7 +87,8 @@ html,body, p{
 }
 
 .room .DeuxiemeData {
-  background-color: #eee;
+  border-radius: 10px;
+  background-color: #E6DDC4;
   min-height: 150px;
   min-width: 200px;
   max-height: 300px;
