@@ -32,7 +32,6 @@ var JPLevels = "";
 var joho = "";
 
 const Element0 = document.getElementById('TosendFB')
-const Element1 = document.getElementById('js-messages')
 const Element2 = document.getElementById('ToshowFB')
 const GobackButton = document.getElementById('js-goback')
 const IgotitButton = document.getElementById('js-igotit')
@@ -51,8 +50,8 @@ const checkedmine = document.getElementById("CheckedMine");
 // モーダルダイアログ：閉じるまで、同じアプリケーションの他のウィンドウに対する操作ができないダイアログボックスのこと
 // <->モードレスダイアログ
 if (group == true) {
-  Element1.remove();
-  ShitekiButton.remove();
+  Element0.style.display = "none";
+  ShitekiButton.style.display = "none";
   Already.style.display = "none";
   OthersCorrect.style.display = "none";
   SmallExplanation.style.display = "none";
@@ -117,17 +116,18 @@ if (group == true) {
 
 }
 else {
-  Element2.remove();
-  GobackButton.remove();
-  NextButton.remove();
-  IgotitButton.remove();
-  IdontgetitButton.remove();
+  Element2.style.display = "none";
+  GobackButton.style.display = "none";
+  NextButton.style.display = "none";
+  IgotitButton.style.display = "none";
+  IdontgetitButton.style.display = "none";
   document.getElementById("already").style.display = "none";
   document.getElementById("otherscorrect").style.display = "none";
   SmallExplanation.style.display = "none";
   metoosend.style.display = "none";
   checkmine.style.display = "none";
   checkedmine.style.display = "none";
+  ShitekiButton.style.display = "none";
 }
 
 
@@ -320,9 +320,19 @@ else {
           hatsugen(data.msg);
           break;
 
+        case 'understand':
+          for(i=0;i<AllShiteki;i++){
+            if(AllShiteki[i][3]==data.genbun && AllShiteki[i][2]==Myname){
+              //表示追加
+              AllShiteki[i][4]=data.msg;
+              break;
+            }
+          }
+          break;
+
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
-          AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun]);
+          AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
           //いいねの数をカウントアップ→表示用のAllshitekiをつくる
 
           // NextButton.disabled = false;
@@ -343,7 +353,7 @@ else {
           }
 
           if (NewAllShiteki.length == i) {
-            NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
+            NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0, 0]);
             // alert("あああああああああああ"+CurrentShiteki);
             if (NewAllShiteki.length == 1) {
               sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
@@ -437,10 +447,14 @@ else {
     GobackButton.addEventListener('click', onClickGoback);
     function onClickIgotit(){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
+      NewAllShiteki[CurrentShiteki][5] = 1;
+      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5] });
     }
 
     function onClickIdontgetit(){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
+      NewAllShiteki[CurrentShiteki][5] = 2;
+      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5] });
     }
 
     function onClickNext() {
@@ -488,26 +502,27 @@ else {
             // localText.value = '';
           }
 
-          AllShiteki.push([jimo, moji2, Myname, genbun]);
+          AllShiteki.push([jimo, moji2, Myname, genbun,0]);
           // console.log(AllShiteki);
 
           room.send({ name: Myname, type: 'teisei', msg1: jimo, msg2: moji2, genbun: genbun });
           var checkresults = document.getElementById("checkresults");
-          if (group == false) {
-            checkresults.innerHTML = "送信完了！";
+          // if (group == false) {
+          //   checkresults.innerHTML = "送信完了！";
 
-            var kakunin = function () {
-              checkresults.innerHTML = "";
-            }
-            setInterval(kakunin, 3000);
-          }
+          //   var kakunin = function () {
+          //     checkresults.innerHTML = "";
+          //   }
+          //   setInterval(kakunin, 3000);
+          // }
 
           for (var j = 0; j < radios.length; j++) {
             radios[j].checked = false;
           }
           sendTrigger.disabled = true;
           localText.value = "";
-          messages.innerHTML = "";
+          messages.innerHTML ="";
+          ShitekiButton.style.display = "none";
         }
       }
     }
@@ -539,7 +554,7 @@ else {
                 }
               });
               // console.log(moji);
-              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br><br>" + moji;
+              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
               break;
 
             case 'justcorrect':
@@ -558,7 +573,7 @@ else {
                 }
               });
               // console.log(moji);
-              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br><br>" + moji;
+              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
               break;
 
             case 'allcorrect':
@@ -580,7 +595,7 @@ else {
               // namae = genbun[0] + genbun[1];
               jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
               moji = namae + "？？？";
-              messages.innerHTML = "◎指摘欄<br>" + jimo + "<br><br>" + moji;
+              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
               break;
           }
 
@@ -596,7 +611,7 @@ else {
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
   const radios2 = document.getElementsByName('bestanswer');
-  const checkｍesults = document.getElementById('checkｍesults');
+  // const checkｍesults = document.getElementById('checkｍesults');
   checkedmine.addEventListener('click', onClickedMine);
   Yes.addEventListener('click', onClickYes);
   No.addEventListener('click', onClickNo);
@@ -605,8 +620,8 @@ else {
   function onClickedMine() {
     MyShiteki.style.display = "none";
     checkmine.style.display = "none";
-    messages.style.display = "block";
-    ShitekiButton.style.display = "block";
+    Element0.style.display = "block";
+    // ShitekiButton.style.display = "block";
   }
 
   //既にある指摘と別の指摘を送る場合
@@ -614,8 +629,9 @@ else {
     Already.style.display = "none";
     OthersCorrect.style.display = "none";
     othersShitekibox.style.display = "none";
-    messages.style.display = "block";
+    Element0.style.display = "block";
     ShitekiButton.style.display = "block";
+    messages.style.display = "block";
   }
   //ラジオボタン（いいね！）の選択をさせる場合
   function onClickNo() {
@@ -631,7 +647,7 @@ else {
         Radiojunban = radios2[i].value
       }
     }
-    AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun]);
+    AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
     room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
 
     // if (group == false) {
@@ -646,8 +662,8 @@ else {
     Already.style.display = "none";
     OthersCorrect.style.display = "none";
     othersShitekibox.style.display = "none";
-    messages.style.display = "block";
-    ShitekiButton.style.display = "block";
+    Element0.style.display = "block";
+    // ShitekiButton.style.display = "block";
   }
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
@@ -726,9 +742,12 @@ else {
           else {
             jimo = jimo + "<font color = red>" + t + "</font>" + " ";
           }
+          
         });
         // console.log(moji);
-        messages.innerHTML = "◎指摘欄<br>" + jimo;
+        messages.innerHTML = "<br>" + jimo;
+        ShitekiButton.style.display = "block";
+
         // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
         // alert(t);
         if (group == false) {
@@ -739,8 +758,8 @@ else {
             if (AllShiteki[i][3] == genbun) {
               // Radiojunban++;
               // console.log(i + "あああああああああああああああ");
-              ShitekiButton.style.display = "none";
-              messages.style.display = "none";
+              Element0.style.display = "none";
+              // messages.style.display = "none";
               MyShiteki.style.display = "none";
               checkmine.style.display = "none";
               checkedmine.style.display = "none";
@@ -765,7 +784,18 @@ else {
               checkmine.style.display = "block";
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
-              MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+              if(AllShiteki[i][3]==0){
+                MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+              }
+              if(AllShiteki[i][3]==1){
+                MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
+              }
+              if(AllShiteki[i][3]==2){
+                MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
+              }
+              else{
+                MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+              }
             }
           }
 
@@ -773,12 +803,10 @@ else {
       };
       resultDiv.appendChild(a);
 
-      // resultDiv.addEventListener( "mouseover", function scrollsan(e) {
-      //   if(!resultDiv.onmouseover){
+
+        if(dontscroll == false){
           resultDiv.scrollTop = resultDiv.scrollHeight;
-      //   }
-      //   setInterval(scrollsan, 1000);
-      // })
+        }
 
       //genbunがp（配列）で、junbanがq
       // function shitekibox(p, q) {
@@ -800,6 +828,14 @@ else {
       // }
     });
   }
+
+  var dontscroll = false;
+  resultDiv.addEventListener( "mouseenter", function() {
+    dontscroll = true;
+  })
+  resultDiv.addEventListener( "mouseleave", function(){
+    dontscroll = false;
+  })
 
   //自分の発言の認識
   recognition.onresult = (event) => {

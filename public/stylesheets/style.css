@@ -4,7 +4,7 @@ body { margin: 0; }
 html,body{
   height: 100%;
   font-size: 13px;
-  background-color:#A2B29F;
+  background-color:#CEE5D0;
 }
 
 /* global styles */
@@ -46,29 +46,29 @@ html,body{
 
 .room .remote-streams {
   border: solid;
-  border-color: #99A799;
+  border-color: #FFBF86;
 
   border-radius: 10px;
-  background-color: #F8EDE3;
+  background-color: #fffcf9;
   overflow-y:scroll;
   max-height: 550px;
 }
 
 .room .remote-streams .ichigo{
-  background-color: #F8EDE3;
+  background-color: #fffcf9;
   margin: 10px 3px;
 }
 
 /* 指摘欄、届いた指摘 */
 .room .messages {
   border: solid;
-  border-color: #F8EDE3;
+  border-color: #FFBF86;
 
   border-radius: 10px;
-  background-color: #BDD2B6;
+  background-color: #F3F0D7;
   min-height: 150px;
   min-width: 200px;
-  max-height: 300px;
+  max-height: 400px;
   padding: 8px;
   margin-top: 0;
   overflow-x: visible;
@@ -81,10 +81,10 @@ html,body{
 /* 参加者リスト */
 .room .PremierData {
   border: solid;
-  border-color: #F8EDE3;
+  border-color: #FFBF86;
 
   border-radius: 10px;
-  background-color: #BDD2B6;
+  background-color: #F3F0D7;
   min-height: 150px;
   min-width: 200px;
   max-height: 300px;
@@ -97,10 +97,10 @@ html,body{
 
 .room .DeuxiemeData {
   border: solid;
-  border-color: #F8EDE3;
+  border-color: #FFBF86;
 
   border-radius: 10px;
-  background-color: #BDD2B6;
+  background-color: #F3F0D7;
   min-height: 150px;
   min-width: 200px;
   max-height: 400px;
@@ -115,9 +115,29 @@ html,body{
   /* font-size: 18px; */
   display: inline-block;
   padding: 0.5em 1em 0.3em;
-  color: #798777;
+  color: #000000;
   border-radius: 25px;
-  background-color: #F8EDE3;
+  background-color: #FFBF86;
   border: none;
   cursor: pointer;
+  }
+
+  .Button-style2 {
+    /* font-size: 18px; */
+    display: inline-block;
+    padding: 0.5em 1em 0.3em;
+    color: #000000;
+    border-radius: 25px;
+    background-color: #FFBF86;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    left: 180px;
+    }
+
+  .Button-style:disabled {
+    background-color: #fddbbd;
+  }
+  .Button-style2:disabled {
+    background-color: #fddbbd;
   }
