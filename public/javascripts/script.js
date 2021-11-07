@@ -653,7 +653,8 @@ else {
     MyShiteki.style.display = "none";
     checkmine.style.display = "none";
     Element0.style.display = "block";
-    // messages.style.display = "block";
+    messages.innerHTML = "";
+    messages.style.display = "block";
     // ShitekiButton.style.display = "block";
   }
 
@@ -731,8 +732,6 @@ else {
 
   
   function hatsugen(transcript) {
-    messages.innerHTML = "";
-    messages.style.display = "block";
     transcript2 = segmenter.segment(transcript);
     // console.log(transcript2);
 
