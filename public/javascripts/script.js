@@ -804,13 +804,13 @@ else {
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
               if(AllShiteki[i][4]==0){
-                MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
               }
-              if(AllShiteki[i][4]==1){
-                MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
+              else if(AllShiteki[i][4]==1){
+                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
               }
-              if(AllShiteki[i][4]==2){
-                MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
+              else if(AllShiteki[i][4]==2){
+                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
               }
             }
           }
