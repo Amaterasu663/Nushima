@@ -721,6 +721,7 @@ else {
 
   
   function hatsugen(transcript) {
+    messages.innerHTML = "";
     messages.style.display = "block";
     transcript2 = segmenter.segment(transcript);
     // console.log(transcript2);
