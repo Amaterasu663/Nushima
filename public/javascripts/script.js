@@ -325,8 +325,12 @@ else {
             if(AllShiteki[i][3]==data.genbun && AllShiteki[i][2]==Myname){
               //表示追加
               AllShiteki[i][4]=data.msg;
-              NewAllShiteki[i][5]=data.msg;
               break;
+            }
+          }
+          for(i=0;i<NewAllShiteki;i++){
+            if(NewAllShiteki[i][3]==data.genbun && NewAllShiteki[i][2]==Myname){
+              NewAllShiteki[i][5]=data.msg;
             }
           }
           break;
