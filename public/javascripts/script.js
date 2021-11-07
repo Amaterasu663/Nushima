@@ -332,14 +332,14 @@ else {
 
         case 'understand':
           for(i=0;i<AllShiteki.length;i++){
-            if(AllShiteki[i][3]==data.genbun && AllShiteki[i][2]==Myname){
+            if(AllShiteki[i][3]==data.genbun && AllShiteki[i][2]==data.name){
               //表示追加
               AllShiteki[i][4]=data.msg;
               break;
             }
           }
           for(i=0;i<NewAllShiteki.length;i++){
-            if(NewAllShiteki[i][3]==data.genbun && NewAllShiteki[i][2]==Myname){
+            if(NewAllShiteki[i][3]==data.genbun && NewAllShiteki[i][2]==data.name){
               NewAllShiteki[i][5]=data.msg;
               break;
             }
@@ -465,13 +465,14 @@ else {
     function onClickIgotit(){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
       NewAllShiteki[CurrentShiteki][5] = 1;
-      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5] });
+      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2] });
+      // alert(NewAllShiteki[CurrentShiteki][5]);
     }
 
     function onClickIdontgetit(){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
       NewAllShiteki[CurrentShiteki][5] = 2;
-      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5] });
+      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2]  });
     }
 
     function onClickNext() {
