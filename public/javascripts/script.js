@@ -719,7 +719,9 @@ else {
   recognition.start();
   const segmenter = new TinySegmenter();
 
+  
   function hatsugen(transcript) {
+    messages.style.display = "block";
     transcript2 = segmenter.segment(transcript);
     // console.log(transcript2);
 
