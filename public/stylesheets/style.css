@@ -45,6 +45,9 @@ html,body{
 }
 
 .room .remote-streams {
+  border: solid;
+  border-color: #99A799;
+
   border-radius: 10px;
   background-color: #F8EDE3;
   overflow-y:scroll;
@@ -58,6 +61,9 @@ html,body{
 
 /* 指摘欄、届いた指摘 */
 .room .messages {
+  border: solid;
+  border-color: #F8EDE3;
+
   border-radius: 10px;
   background-color: #BDD2B6;
   min-height: 150px;
@@ -74,6 +80,9 @@ html,body{
 
 /* 参加者リスト */
 .room .PremierData {
+  border: solid;
+  border-color: #F8EDE3;
+
   border-radius: 10px;
   background-color: #BDD2B6;
   min-height: 150px;
@@ -87,16 +96,19 @@ html,body{
 }
 
 .room .DeuxiemeData {
+  border: solid;
+  border-color: #F8EDE3;
+
   border-radius: 10px;
   background-color: #BDD2B6;
   min-height: 150px;
   min-width: 200px;
-  max-height: 300px;
+  max-height: 400px;
   padding: 8px;
   margin-top: 0;
   overflow-x: visible;
   word-wrap: normal;
-  overflow-y:scroll;
+  /* overflow-y:scroll; */
 }
 
 .Button-style {

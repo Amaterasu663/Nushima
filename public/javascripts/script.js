@@ -31,9 +31,9 @@ var Enthusiasm = "";
 var JPLevels = "";
 var joho = "";
 
-
+const Element0 = document.getElementById('TosendFB')
 const Element1 = document.getElementById('js-messages')
-const Element2 = document.getElementById('js-sentfB')
+const Element2 = document.getElementById('ToshowFB')
 const GobackButton = document.getElementById('js-goback')
 const NextButton = document.getElementById('js-next')
 const Already = document.getElementById('already');
@@ -309,7 +309,7 @@ else {
         //代入の時の＝は一個、比較（if文）の中だったら＝は二個
         case 'leftdown':
           // alert(data.msg); 
-          ryugakusei.innerHTML = data.msg;
+          ryugakusei.innerHTML = "◎参加する留学生の情報<br>"+ data.msg;
           break;
 
         case 'text':
@@ -401,6 +401,8 @@ else {
       // messages.textContent += `=== ${peerId} left ===\n`;
     });
 
+
+
     leaveTrigger.addEventListener('click', () => room.close(), { once: true });
     // for closing myself
     room.once('close', () => {
@@ -425,6 +427,7 @@ else {
       // });
     });
 
+    
     NextButton.addEventListener('click', onClickNext);
     GobackButton.addEventListener('click', onClickGoback);
     function onClickNext() {
@@ -572,6 +575,7 @@ else {
       }
     }
   }
+ 
 
   const othersShitekibox = document.getElementById('othersShitekibox');
   const MyShiteki = document.getElementById("MyShiteki");
@@ -579,6 +583,7 @@ else {
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
   const radios2 = document.getElementsByName('bestanswer');
+  const checkｍesults = document.getElementById('checkｍesults');
   checkedmine.addEventListener('click', onClickedMine);
   Yes.addEventListener('click', onClickYes);
   No.addEventListener('click', onClickNo);
@@ -615,6 +620,15 @@ else {
     }
     AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun]);
     room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
+
+    // if (group == false) {
+    //   checkｍesults.innerHTML = "👍の送信完了！";
+
+    //   var kakunin = function () {
+    //     checkｍesults.innerHTML = "";
+    //   }
+    //   setInterval(kakunin, 3000);
+    // }
 
     Already.style.display = "none";
     OthersCorrect.style.display = "none";
@@ -746,7 +760,12 @@ else {
       };
       resultDiv.appendChild(a);
 
-      resultDiv.scrollTop = resultDiv.scrollHeight;
+      // resultDiv.addEventListener( "mouseover", function scrollsan(e) {
+      //   if(!resultDiv.onmouseover){
+          resultDiv.scrollTop = resultDiv.scrollHeight;
+      //   }
+      //   setInterval(scrollsan, 1000);
+      // })
 
       //genbunがp（配列）で、junbanがq
       // function shitekibox(p, q) {

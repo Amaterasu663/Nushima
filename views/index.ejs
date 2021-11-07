@@ -88,24 +88,29 @@
       </div>
 
       <div>
-        <div class="messages" id="js-sentfB">◎届いた指摘</div>
+        <div id = "ToshowFB">
+        <div class="messages" id="js-sentfB">◎届いた指摘</div><br>
         <button id="js-goback" disabled class="Button-style">戻る</button>
+        <button id="js-igotit" disabled class="Button-style">理解した！</button>
         <button id="js-next" disabled class="Button-style">次へ</button>
+        </div>
 
+        <div id = "TosendFB">
         <div class="messages" id="js-messages">◎指摘欄</div>
         <div id="shitekiButton"><br>
           <label><input type="radio" name = "correct" value="remove">選択箇所は不要</label><br>
           <label><input type="radio" name = "correct" value="justcorrect">選択箇所のみ修正</label><br>
           <label><input type="radio" name = "correct" value="allcorrect">文全体を修正</label><br>
             <!-- <button id="js-remove-trigger">不要</button><br> -->
-            <br><textarea name="text" id="js-local-text" style="width:200px; height:100px;" placeholder="選択箇所をどう訂正しますか？"></textarea><br>
-            <button id="js-send-trigger" class="Button-style" disabled >送る</button>
+            <br><textarea name="text" id="js-local-text" style="width:200px; height:100px; background-color:#F8EDE3; border-radius: 10px;" placeholder="選択箇所をどう訂正しますか？"></textarea>
+            <br><button id="js-send-trigger" class="Button-style" disabled >送る</button>
             <div id="checkresults"></div>
-            </div>
+        </div>
+        </div>
 
         <div class="messages" id = "already">◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？<br>
-        <button id = "yesbutton">はい</button>
-        <button id = "nobutton">いいえ</button><br><br>
+        <button id = "yesbutton" class="Button-style" >はい</button>
+        <button id = "nobutton" class="Button-style" >いいえ</button><br><br>
         <div id = "otherscorrect">《他の人の指摘》<br></div>
         <div id = "smallexplanation">その場合、下の指摘からベストなものを選択して送信してください。<br></div>
         <div id = "othersShitekibox"></div>
