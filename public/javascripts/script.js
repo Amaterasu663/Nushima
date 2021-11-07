@@ -49,7 +49,17 @@ const checkedmine = document.getElementById("CheckedMine");
 
 // モーダルダイアログ：閉じるまで、同じアプリケーションの他のウィンドウに対する操作ができないダイアログボックスのこと
 // <->モードレスダイアログ
-if (group == true) {
+if (group == true&&Myname=="管理") {
+  Element0.style.display = "none";
+  ShitekiButton.style.display = "none";
+  Already.style.display = "none";
+  OthersCorrect.style.display = "none";
+  SmallExplanation.style.display = "none";
+  metoosend.style.display = "none";
+  checkmine.style.display = "none";
+  checkedmine.style.display = "none";
+  }
+else if(group == true){
   Element0.style.display = "none";
   ShitekiButton.style.display = "none";
   Already.style.display = "none";
@@ -78,7 +88,7 @@ if (group == true) {
     Dialog_3.close();
 
     joho = "名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>コメント：<br>" + Enthusiasm + "<br><br>";
-    ryugakusei.innerHTML += joho;
+    ryugakusei.innerHTML = joho;
     // console.log(MLanguages, Enthusiasm, JPLevels);
   });
 
