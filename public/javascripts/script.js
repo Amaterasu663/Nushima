@@ -331,15 +331,30 @@ else {
           break;
 
         case 'understand':
-          for(i=0;i<AllShiteki.length;i++){
-            if(AllShiteki[i][3]==data.genbun && AllShiteki[i][2]==data.name){
+          // console.log(data.genbun+data.name+data.msg);ここで、data.msgは届いてる
+          // console.log("オールしてきの長さ" +AllShiteki.length);
+          for(i=0; i<AllShiteki.length; i++){
+            // console.log(AllShiteki[i][3]);
+            // console.log(data.genbun);
+            // alert(AllShiteki[i][2]);
+            // alert(data.name);
+            // if(AllShiteki[i][3].join(",")==data.genbun.join(",")){
+            //   console.log("1つ目の条件");
+            // }
+
+            if(AllShiteki[i][3].join(",")==data.genbun.join(",") && AllShiteki[i][2]==data.name){
               //表示追加
+              // alert("ああああああああ");
+              // alert(AllShiteki[i][4]);
+
               AllShiteki[i][4]=data.msg;
+              // alert(AllShiteki[i][4]);
+              
               break;
             }
           }
           for(i=0;i<NewAllShiteki.length;i++){
-            if(NewAllShiteki[i][3]==data.genbun && NewAllShiteki[i][2]==data.name){
+            if(NewAllShiteki[i][3].join(",")==data.genbun.join(",") && NewAllShiteki[i][2]==data.name){
               NewAllShiteki[i][5]=data.msg;
               break;
             }
@@ -825,7 +840,7 @@ else {
               checkmine.style.display = "block";
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
-              alert(AllShiteki[i][4]);
+              // alert(AllShiteki[i][4]);
               if(AllShiteki[i][4]==0){
                 MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
               }
