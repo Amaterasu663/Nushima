@@ -240,7 +240,7 @@ else {
 
       // 自分の名前をみんなに送信
       room.send({ name: Myname, type: "open" });
-      if (group == true) {
+      if (group == true && Myname !="管理") {
         room.send({ name: Myname, msg: joho, type: "leftdown" });
       }
 
@@ -269,7 +269,7 @@ else {
 
       room.send({ name: Myname, type: "login", peerId: MypeerId });
 
-      if (group == true) {
+      if (group == true && Myname !="管理") {
         room.send({ name: Myname, msg: joho, type: "leftdown" });
         // alert("送ったよ！");
       }
