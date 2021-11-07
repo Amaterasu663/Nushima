@@ -35,6 +35,8 @@ const Element0 = document.getElementById('TosendFB')
 const Element1 = document.getElementById('js-messages')
 const Element2 = document.getElementById('ToshowFB')
 const GobackButton = document.getElementById('js-goback')
+const IgotitButton = document.getElementById('js-igotit')
+const IdontgetitButton =document.getElementById('js-idontgetit')
 const NextButton = document.getElementById('js-next')
 const Already = document.getElementById('already');
 const OthersCorrect = document.getElementById("otherscorrect");
@@ -118,6 +120,8 @@ else {
   Element2.remove();
   GobackButton.remove();
   NextButton.remove();
+  IgotitButton.remove();
+  IdontgetitButton.remove();
   document.getElementById("already").style.display = "none";
   document.getElementById("otherscorrect").style.display = "none";
   SmallExplanation.style.display = "none";
@@ -427,9 +431,18 @@ else {
       // });
     });
 
-    
+    IgotitButton.addEventListener('click', onClickIgotit);
+    IdontgetitButton.addEventListener('click', onClickIdontgetit);
     NextButton.addEventListener('click', onClickNext);
     GobackButton.addEventListener('click', onClickGoback);
+    function onClickIgotit(){
+      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
+    }
+
+    function onClickIdontgetit(){
+      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
+    }
+
     function onClickNext() {
       GobackButton.disabled = false;
       CurrentShiteki++;
