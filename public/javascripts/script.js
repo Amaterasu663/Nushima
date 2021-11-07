@@ -468,10 +468,10 @@ else {
       if(NewAllShiteki[CurrentShiteki][5]==0){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
       }
-      if(NewAllShiteki[CurrentShiteki][5]==1){
+      else if(NewAllShiteki[CurrentShiteki][5]==1){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
       }
-      if(NewAllShiteki[CurrentShiteki][5]==2){
+      else if(NewAllShiteki[CurrentShiteki][5]==2){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
       }
       if (CurrentShiteki == NewAllShiteki.length - 1) {
@@ -485,10 +485,10 @@ else {
       if(NewAllShiteki[CurrentShiteki][5]==0){
         sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
         }
-        if(NewAllShiteki[CurrentShiteki][5]==1){
+        else if(NewAllShiteki[CurrentShiteki][5]==1){
         sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
         }
-        if(NewAllShiteki[CurrentShiteki][5]==2){
+        else if(NewAllShiteki[CurrentShiteki][5]==2){
         sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
         }
         if (CurrentShiteki == 0) {
@@ -807,6 +807,7 @@ else {
               checkmine.style.display = "block";
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
+              alert(AllShiteki[i][3]+AllShiteki[i][4]);
               if(AllShiteki[i][4]==0){
                 MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
               }
