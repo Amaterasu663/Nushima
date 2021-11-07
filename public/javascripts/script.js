@@ -325,6 +325,7 @@ else {
             if(AllShiteki[i][3]==data.genbun && AllShiteki[i][2]==Myname){
               //表示追加
               AllShiteki[i][4]=data.msg;
+              NewAllShiteki[i][5]=data.msg;
               break;
             }
           }
@@ -460,8 +461,15 @@ else {
     function onClickNext() {
       GobackButton.disabled = false;
       CurrentShiteki++;
-      // "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name + "　👍" + ThumbsUp;
+      if(NewAllShiteki[CurrentShiteki][5]==0){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
+      }
+      if(NewAllShiteki[CurrentShiteki][5]==1){
+      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
+      }
+      if(NewAllShiteki[CurrentShiteki][5]==2){
+      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
+      }
       if (CurrentShiteki == NewAllShiteki.length - 1) {
         NextButton.disabled = true;
       }
@@ -470,8 +478,16 @@ else {
     function onClickGoback() {
       NextButton.disabled = false;
       CurrentShiteki--;
-      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
-      if (CurrentShiteki == 0) {
+      if(NewAllShiteki[CurrentShiteki][5]==0){
+        sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
+        }
+        if(NewAllShiteki[CurrentShiteki][5]==1){
+        sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
+        }
+        if(NewAllShiteki[CurrentShiteki][5]==2){
+        sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
+        }
+        if (CurrentShiteki == 0) {
         GobackButton.disabled = true;
       }
     }
@@ -621,6 +637,7 @@ else {
     MyShiteki.style.display = "none";
     checkmine.style.display = "none";
     Element0.style.display = "block";
+    messages.style.display = "block";
     // ShitekiButton.style.display = "block";
   }
 
@@ -663,6 +680,8 @@ else {
     OthersCorrect.style.display = "none";
     othersShitekibox.style.display = "none";
     Element0.style.display = "block";
+    messages.style.display = "block";
+
     // ShitekiButton.style.display = "block";
   }
 
@@ -784,13 +803,13 @@ else {
               checkmine.style.display = "block";
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
-              if(AllShiteki[i][3]==0){
+              if(AllShiteki[i][4]==0){
                 MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
               }
-              if(AllShiteki[i][3]==1){
+              if(AllShiteki[i][4]==1){
                 MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
               }
-              if(AllShiteki[i][3]==2){
+              if(AllShiteki[i][4]==2){
                 MyShiteki.innerHTML += AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
               }
               else{
