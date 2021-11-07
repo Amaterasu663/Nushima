@@ -1,7 +1,7 @@
 /* normalize */
 body { margin: 0; }
 
-html,body, p{
+html,body{
   height: 100%;
   font-size: 13px;
   background-color:#A2B29F;
@@ -98,3 +98,14 @@ html,body, p{
   word-wrap: normal;
   overflow-y:scroll;
 }
+
+.Button-style {
+  /* font-size: 18px; */
+  display: inline-block;
+  padding: 0.5em 1em 0.3em;
+  color: #798777;
+  border-radius: 25px;
+  background-color: #F8EDE3;
+  border: none;
+  cursor: pointer;
+  }
