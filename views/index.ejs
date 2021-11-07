@@ -17,6 +17,7 @@
       </p> -->
       <br><br>
     <div class="room">
+      <!-- <div class ="dialog"> -->
       <dialog id="Dialog_1">
         <form method="dialog"><br>
           <p><label>あなたの母語:
@@ -65,6 +66,7 @@
           </menu>
         </form>
       </dialog>
+    <!-- </div> -->
 
 
       <div>
@@ -74,8 +76,8 @@
         <span id="js-room-mode" hidden></span>
         <!-- <input type="text" placeholder="Room Name" id="js-room-id"> -->
         <br>
-        <button id="js-join-trigger">参加</button>
-        <button id="js-leave-trigger">退室</button>
+        <button id="js-join-trigger" class="Button-style">参加</button>
+        <button id="js-leave-trigger" class="Button-style">退室</button>
 
       </div>
 
@@ -87,8 +89,8 @@
 
       <div>
         <div class="messages" id="js-sentfB">◎届いた指摘</div>
-        <button id="js-goback" disabled>戻る</button>
-        <button id="js-next" disabled>次へ</button>
+        <button id="js-goback" disabled class="Button-style">戻る</button>
+        <button id="js-next" disabled class="Button-style">次へ</button>
 
         <div class="messages" id="js-messages">◎指摘欄</div>
         <div id="shitekiButton"><br>
@@ -97,7 +99,7 @@
           <label><input type="radio" name = "correct" value="allcorrect">文全体を修正</label><br>
             <!-- <button id="js-remove-trigger">不要</button><br> -->
             <br><textarea name="text" id="js-local-text" style="width:200px; height:100px;" placeholder="選択箇所をどう訂正しますか？"></textarea><br>
-            <button id="js-send-trigger" disabled>送る</button>
+            <button id="js-send-trigger" class="Button-style" disabled >送る</button>
             <div id="checkresults"></div>
             </div>
 
@@ -107,12 +109,13 @@
         <div id = "otherscorrect">《他の人の指摘》<br></div>
         <div id = "smallexplanation">その場合、下の指摘からベストなものを選択して送信してください。<br></div>
         <div id = "othersShitekibox"></div>
-        <button id = "Metoosend" disabled>決定</button>
+        <button id = "Metoosend" class="Button-style" disabled>決定</button>
+        <div id="checkｍesults"></div>
       </div><br><br>
 
         <div class="messages" id = "CheckMine">選択した場所について、あなたは既に指摘をしました。<br>※誰かの指摘に👍した場合も、自分の表示としてここに表示されます。<br><br>
           <div id = "MyShiteki"></div>
-          <button id = "CheckedMine">確認</button>
+          <button id = "CheckedMine" class="Button-style" >確認</button>
         </div>
         
       </div>
