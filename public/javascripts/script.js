@@ -321,7 +321,7 @@ else {
           break;
 
         case 'understand':
-          for(i=0;i<AllShiteki;i++){
+          for(i=0;i<AllShiteki.length;i++){
             if(AllShiteki[i][3]==data.genbun && AllShiteki[i][2]==Myname){
               //表示追加
               AllShiteki[i][4]=data.msg;
@@ -331,6 +331,7 @@ else {
           for(i=0;i<NewAllShiteki;i++){
             if(NewAllShiteki[i][3]==data.genbun && NewAllShiteki[i][2]==Myname){
               NewAllShiteki[i][5]=data.msg;
+              break;
             }
           }
           break;
@@ -450,6 +451,7 @@ else {
     IdontgetitButton.addEventListener('click', onClickIdontgetit);
     NextButton.addEventListener('click', onClickNext);
     GobackButton.addEventListener('click', onClickGoback);
+
     function onClickIgotit(){
       sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
       NewAllShiteki[CurrentShiteki][5] = 1;
@@ -641,7 +643,7 @@ else {
     MyShiteki.style.display = "none";
     checkmine.style.display = "none";
     Element0.style.display = "block";
-    messages.style.display = "block";
+    // messages.style.display = "block";
     // ShitekiButton.style.display = "block";
   }
 
@@ -802,6 +804,9 @@ else {
           for (i = 0; i < AllShiteki.length; i++) {
             if (AllShiteki[i][3] == genbun && AllShiteki[i][2] == Myname) {
               // messages.innerHTML ="";
+              Already.style.display = "none";
+              OthersCorrect.style.display = "none";
+              othersShitekibox.style.display = "none";
               ShitekiButton.style.display = "none";
               messages.style.display = "none";
               checkmine.style.display = "block";
