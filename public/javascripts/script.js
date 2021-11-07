@@ -338,7 +338,7 @@ else {
               break;
             }
           }
-          for(i=0;i<NewAllShiteki;i++){
+          for(i=0;i<NewAllShiteki.length;i++){
             if(NewAllShiteki[i][3]==data.genbun && NewAllShiteki[i][2]==Myname){
               NewAllShiteki[i][5]=data.msg;
               break;
@@ -824,7 +824,7 @@ else {
               checkmine.style.display = "block";
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
-              alert(AllShiteki[i][3]+AllShiteki[i][4]);
+              alert(AllShiteki[i][4]);
               if(AllShiteki[i][4]==0){
                 MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
               }
