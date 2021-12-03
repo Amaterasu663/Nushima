@@ -18,16 +18,16 @@ if (Myname == '' || Myname == null) {
 var group = confirm('留学生用のログイン画面に移行しますか');
 var Dialog_1 = document.getElementById('Dialog_1');
 var Dialog_2 = document.getElementById('Dialog_2');
-var Dialog_3 = document.getElementById('Dialog_3');
+// var Dialog_3 = document.getElementById('Dialog_3');
 const confirmBtn1 = document.getElementById('confirmBtn1');
 const confirmBtn2 = document.getElementById('confirmBtn2');
-const confirmBtn3 = document.getElementById('confirmBtn3');
+// const confirmBtn3 = document.getElementById('confirmBtn3');
 var selectEl_1 = document.getElementById('select_1');
 var selectEl_2 = document.getElementById('select_2');
-var selectEl_3 = document.getElementById('select_3');
+// var selectEl_3 = document.getElementById('select_3');
 
 var MLanguages = "";
-var Enthusiasm = "";
+// var Enthusiasm = "";
 var JPLevels = "";
 var joho = "";
 
@@ -82,13 +82,14 @@ else if(group == true){
   });
   confirmBtn2.addEventListener('click', () => {
     Dialog_2.close();
-    Dialog_3.showModal();
-  });
-  confirmBtn3.addEventListener('click', () => {
-    Dialog_3.close();
+  //   Dialog_3.showModal();
+  // });
+  // confirmBtn3.addEventListener('click', () => {
+  //   Dialog_3.close();
 
-    joho = "名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>コメント：<br>" + Enthusiasm + "<br><br>";
-    ryugakusei.innerHTML = joho;
+    // joho = "名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>コメント：<br>" + Enthusiasm + "<br><br>";
+    joho = "名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>";
+    ryugakusei.innerHTML += joho;
     // console.log(MLanguages, Enthusiasm, JPLevels);
   });
 
@@ -113,15 +114,15 @@ else if(group == true){
     }
   }
 
-  function inputChange_3() {
-    Enthusiasm = selectEl_3.value;
-    if (Enthusiasm == "") {
-      confirmBtn3.disabled = true;
-    }
-    else {
-      confirmBtn3.disabled = false;
-    }
-  }
+  // function inputChange_3() {
+  //   Enthusiasm = selectEl_3.value;
+  //   if (Enthusiasm == "") {
+  //     confirmBtn3.disabled = true;
+  //   }
+  //   else {
+  //     confirmBtn3.disabled = false;
+  //   }
+  // }
   // window.open('index.ejs', 'mywindow3','width=400, height=300, menubar=no, toolbar=yes, scrollbars=yes')
 
 }
