@@ -493,9 +493,9 @@ else {
     // }
   });
 
-  // const radios = document.getElementsByName('correct');
+  const radios = document.getElementsByName('correct');
 
-  // // radios[0].checked = true;
+  radios[0].checked = true;
 
   // for (var i = 0; i < radios.length; i++) {
   //   radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
@@ -703,7 +703,6 @@ else {
   function hatsugen(p) {
     transcript2 = segmenter.segment(p);
     junbanko = 0;
-    alert(transcript2);
 
     transcript2.forEach(function (t) {
       //junban++と同意
@@ -712,15 +711,16 @@ else {
       a.classList.add('ichigo');
       //分かち書きの一語一語にaっていうタグを追加：htmlのため
       a.innerText = t;
-      a.id = "target_" + junbanparent + "_" + junbanko;
+      a.id = "target_" + junbanparent2 + "_" + junbanko;
 
       a.onclick = (e) => {
         // var Element = document.getElementById("target");
-      genbun = zenbun[junbanparent - 1];
-
+      console.log(a.id);
+      FBList.style.display = "none";
+      Element0.style.display = "block";
+      genbun = p;
       junban = (a.id.split("_"))[2];
-        // // var s = Element.previousElementSibling;
-        // // var u = Element.nextElementSibling;
+
         // shitekibox(genbun, junban);
         for (var j = 0; j < radios.length; j++) {
           radios[j].checked = false;
@@ -826,6 +826,7 @@ else {
 
       // }
     });
+    junbanparent2++;
   }
 
   var dontscroll = false;
