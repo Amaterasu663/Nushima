@@ -52,6 +52,7 @@ html,body{
   background-color: #fffcf9;
   overflow-y:scroll;
   max-height: 550px;
+  padding: 8px;
 }
 
 .room .remote-streams .ichigo{
@@ -59,13 +60,31 @@ html,body{
   margin: 10px 3px;
 }
 
-/* 指摘欄、届いた指摘 */
+/* 指摘欄 */
 .room .messages {
   border: solid;
   border-color: #FFBF86;
 
   border-radius: 10px;
   background-color: #F3F0D7;
+  min-height: 150px;
+  min-width: 200px;
+  max-height: 400px;
+  padding: 8px;
+  margin-top: 0;
+  overflow-x: visible;
+  word-wrap: normal;
+  overflow-y:scroll;
+  
+}
+
+/* 届いた指摘 */
+.room .messages0 {
+  border: solid;
+  border-color: #FFBF86;
+
+  border-radius: 10px;
+  background-color: #fffcf9;
   min-height: 150px;
   min-width: 200px;
   max-height: 400px;

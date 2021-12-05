@@ -18,56 +18,54 @@ if (Myname == '' || Myname == null) {
 var group = confirm('留学生用のログイン画面に移行しますか');
 var Dialog_1 = document.getElementById('Dialog_1');
 var Dialog_2 = document.getElementById('Dialog_2');
-// var Dialog_3 = document.getElementById('Dialog_3');
 const confirmBtn1 = document.getElementById('confirmBtn1');
 const confirmBtn2 = document.getElementById('confirmBtn2');
-// const confirmBtn3 = document.getElementById('confirmBtn3');
 var selectEl_1 = document.getElementById('select_1');
 var selectEl_2 = document.getElementById('select_2');
-// var selectEl_3 = document.getElementById('select_3');
 
 var MLanguages = "";
-// var Enthusiasm = "";
 var JPLevels = "";
 var joho = "";
 
-const Element0 = document.getElementById('TosendFB')
-const Element2 = document.getElementById('ToshowFB')
-const GobackButton = document.getElementById('js-goback')
-const IgotitButton = document.getElementById('js-igotit')
-const IdontgetitButton =document.getElementById('js-idontgetit')
-const NextButton = document.getElementById('js-next')
+const FBList = document.getElementById('FBList');
+const HahButtons = document.getElementById('remote-bottons');
+const NativeSpeakers = document.getElementById('nativeSpeakers');
+const Element0 = document.getElementById('TosendFB');
+const Element2 = document.getElementById('ToshowFB');
+const revisebyKanri = document.getElementById('reviseRecognition');
+const GobackButton = document.getElementById('js-goback');
+const IgotitButton = document.getElementById('js-igotit');
+const IdontgetitButton =document.getElementById('js-idontgetit');
+const NextButton = document.getElementById('js-next');
 const Already = document.getElementById('already');
 const OthersCorrect = document.getElementById("otherscorrect");
 const SmallExplanation = document.getElementById("smallexplanation");
 
-const ShitekiButton = document.getElementById('shitekiButton')
+const ShitekiButton = document.getElementById('shitekiButton');
 const metoosend = document.getElementById("Metoosend");
 
 const checkmine = document.getElementById("CheckMine");
 const checkedmine = document.getElementById("CheckedMine");
 
+  ShitekiButton.style.display = "none";
+  Already.style.display = "none";
+  OthersCorrect.style.display = "none";
+  SmallExplanation.style.display = "none";
+  metoosend.style.display = "none";
+  checkmine.style.display = "none";
+  checkedmine.style.display = "none";
+
 // モーダルダイアログ：閉じるまで、同じアプリケーションの他のウィンドウに対する操作ができないダイアログボックスのこと
 // <->モードレスダイアログ
-if (group == true&&Myname=="管理") {
+if(group == true　&& Myname=="管理"){
+  HahButtons.remove();
+  NativeSpeakers.remove();
+}
+else if(group == true　&& Myname!="管理"){
   Element0.style.display = "none";
-  ShitekiButton.style.display = "none";
-  Already.style.display = "none";
-  OthersCorrect.style.display = "none";
-  SmallExplanation.style.display = "none";
-  metoosend.style.display = "none";
-  checkmine.style.display = "none";
-  checkedmine.style.display = "none";
-  }
-else if(group == true){
-  Element0.style.display = "none";
-  ShitekiButton.style.display = "none";
-  Already.style.display = "none";
-  OthersCorrect.style.display = "none";
-  SmallExplanation.style.display = "none";
-  metoosend.style.display = "none";
-  checkmine.style.display = "none";
-  checkedmine.style.display = "none";
+  HahButtons.remove();
+  NativeSpeakers.remove();
+  revisebyKanri.remove();
 
   Dialog_1.showModal();
   confirmBtn1.addEventListener('click', function (e) {
@@ -76,25 +74,16 @@ else if(group == true){
       Dialog_2.showModal();
     }
     else {
-      // alert("あああああああああ");
       e.stopPropagation();
     }
   });
   confirmBtn2.addEventListener('click', () => {
     Dialog_2.close();
-  //   Dialog_3.showModal();
-  // });
-  // confirmBtn3.addEventListener('click', () => {
-  //   Dialog_3.close();
-
-    // joho = "名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>コメント：<br>" + Enthusiasm + "<br><br>";
     joho = "名前：" + Myname + "<br><br>母語：" + MLanguages + "<br><br>日本語レベル：<br>" + JPLevels + "<br><br>";
     ryugakusei.innerHTML += joho;
-    // console.log(MLanguages, Enthusiasm, JPLevels);
   });
 
   function inputChange_1() {
-    // alert("あああ" + selectEl_1.value);
     MLanguages = selectEl_1.value;
     if (MLanguages == "") {
       confirmBtn1.disabled = true;
@@ -114,31 +103,11 @@ else if(group == true){
     }
   }
 
-  // function inputChange_3() {
-  //   Enthusiasm = selectEl_3.value;
-  //   if (Enthusiasm == "") {
-  //     confirmBtn3.disabled = true;
-  //   }
-  //   else {
-  //     confirmBtn3.disabled = false;
-  //   }
-  // }
-  // window.open('index.ejs', 'mywindow3','width=400, height=300, menubar=no, toolbar=yes, scrollbars=yes')
-
 }
 else {
-  Element2.style.display = "none";
-  GobackButton.style.display = "none";
-  NextButton.style.display = "none";
-  IgotitButton.style.display = "none";
-  IdontgetitButton.style.display = "none";
-  document.getElementById("already").style.display = "none";
-  document.getElementById("otherscorrect").style.display = "none";
-  SmallExplanation.style.display = "none";
-  metoosend.style.display = "none";
-  checkmine.style.display = "none";
-  checkedmine.style.display = "none";
-  ShitekiButton.style.display = "none";
+  Element0.style.display = "none";
+  Element2.remove();
+  revisebyKanri.remove();
 }
 
 
@@ -177,32 +146,6 @@ else {
     })
     .catch(console.error);
 
-  // const onoffSwitch = () => {
-  //   const OnOff = document.getElementById("switch1");
-  //   if (OnOff.checked == "false") {
-  //     localStream.getAudioTracks().forEach((track) => (track.enabled = true));
-  //   } 
-  //   //ミュートにする場合
-  //   else {
-  //     localStream.getAudioTracks().forEach((track) => (track.enabled = false));
-  //   }
-  // }
-  // setInterval(onoffSwitch, 1000);
-
-
-  // Render local stream
-  // localVideo.muted = true;
-  // localVideo.srcObject = localStream;
-  // localVideo.playsInline = true;
-  // await localVideo.play().catch(console.error);
-
-  // eslint-disable-next-line require-atomic-updates
-  // name が半角英数字で問題ない場合
-  // const peer = (window.peer = new Peer(Myname, {
-  //   key: window.__SKYWAY_KEY__,
-  //   debug: 3,
-  // }));
-
   var room = null;
   var peer = (window.peer = new Peer({
     key: window.__SKYWAY_KEY__,
@@ -221,10 +164,6 @@ else {
       mode: getRoomModeByHash(),
       stream: localStream,
     });
-    // const room = peer.joinRoom(roomId.value, {
-    //   mode: getRoomModeByHash(),
-    //   stream: localStream,
-    // });
 
     var inputnames = new Array();
     MypeerId = room._peerId;
@@ -328,6 +267,11 @@ else {
           break;
 
         case 'text':
+          originalHatsugen(data.msg);
+          break;
+
+        case 'revised':
+          // alert("スイッチ構文です");いけてない
           hatsugen(data.msg);
           break;
 
@@ -429,297 +373,269 @@ else {
       // messages1.textContent += `${data}\n`;
     });
 
-    // for closing room members
+    // 退室時の処理（for closing room members
     room.on('peerLeave', peerId => {
       for (i = 0; i < loginUsers.children.length; i++) {
         if (loginUsers.children[i].id == peerId) {
           loginUsers.children[i].remove();
         }
       }
-      // alert("いいいいいいいい");クリア
-      // const remoteVideo = remoteVideos.querySelector(
-      //   `[data-peer-id="${peerId}"]`
-      // );
-      // remoteVideo.srcObject.getTracks().forEach(track => track.stop());
-      // remoteVideo.srcObject = null;
-      // remoteVideo.remove();
-
-      // messages.textContent += `=== ${peerId} left ===\n`;
     });
-
-
 
     leaveTrigger.addEventListener('click', () => room.close(), { once: true });
     // for closing myself
     room.once('close', () => {
-      // sendTrigger.removeEventListener('click', onClickSend);
-      // alert("うううううう");クリア
-      // room.send({id: MypeerId, type: "leave"});
       for (i = 0; i < loginUsers.children.length; i++) {
         if (loginUsers.children[i].id == MypeerId) {
           loginUsers.children[i].remove();
         }
       }
       alert("退室完了");
-      // room.send(Myname + "：" + localText.value);
-      // messages1.textContent += `→${Myname}(あなた)が退出しました\n`;
-      // localText.value = '';
-
-      // room.send({ name: Myname, type: "close" });
-      // Array.from(remoteVideos.children).forEach(remoteVideo => {
-      //   remoteVideo.srcObject.getTracks().forEach(track => track.stop());
-      //   remoteVideo.srcObject = null;
-      //   remoteVideo.remove();
-      // });
     });
 
-    IgotitButton.addEventListener('click', onClickIgotit);
-    IdontgetitButton.addEventListener('click', onClickIdontgetit);
-    NextButton.addEventListener('click', onClickNext);
-    GobackButton.addEventListener('click', onClickGoback);
+    //え？ボタンが押されたとき
+    const hahButton = document.getElementById('Button-Hah');
 
-    function onClickIgotit(){
-      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
-      NewAllShiteki[CurrentShiteki][5] = 1;
-      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2] });
-      // alert(NewAllShiteki[CurrentShiteki][5]);
+    if(group == false){
+    hahButton.addEventListener('click', onClickHah);
+    function onClickHah (){
+      alert("hah");
+    }
     }
 
-    function onClickIdontgetit(){
-      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
-      NewAllShiteki[CurrentShiteki][5] = 2;
-      room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2]  });
-    }
+    // //届いた指摘に対する言語学習者のリアクション
+    // IgotitButton.addEventListener('click', onClickIgotit);
+    // IdontgetitButton.addEventListener('click', onClickIdontgetit);
+    // NextButton.addEventListener('click', onClickNext);
+    // GobackButton.addEventListener('click', onClickGoback);
 
-    function onClickNext() {
-      GobackButton.disabled = false;
-      CurrentShiteki++;
-      if(NewAllShiteki[CurrentShiteki][5]==0){
-      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
-      }
-      else if(NewAllShiteki[CurrentShiteki][5]==1){
-      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
-      }
-      else if(NewAllShiteki[CurrentShiteki][5]==2){
-      sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
-      }
-      if (CurrentShiteki == NewAllShiteki.length - 1) {
-        NextButton.disabled = true;
-      }
-    }
-
-    function onClickGoback() {
-      NextButton.disabled = false;
-      CurrentShiteki--;
-      if(NewAllShiteki[CurrentShiteki][5]==0){
-        sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
-        }
-        else if(NewAllShiteki[CurrentShiteki][5]==1){
-        sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
-        }
-        else if(NewAllShiteki[CurrentShiteki][5]==2){
-        sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
-        }
-        if (CurrentShiteki == 0) {
-        GobackButton.disabled = true;
-      }
-    }
-
-    sendTrigger.addEventListener('click', onClickSend);
-    // leaveTrigger.addEventListener('click', () => room.close(), { once: true });
-
-    // 「送る」を押したとき働く関数
-    function onClickSend() {
-      var moji2 = "";
-      for (var j = 0; j < radios.length; j++) {
-        if (radios[j].checked == true) {
-          sendTrigger.disabled = false;
-          switch (radios[j].value) {
-            case 'remove':
-              moji2 = moji;
-              break;
-            case 'justcorrect':
-              moji2 = moji.replace("□", "<font color = green>" + localText.value + "</font>");
-              break;
-            case 'allcorrect':
-              moji2 = namae + "<font color = green>" + localText.value + "</font>";
-              break;
-            // // Send message to all of the peers in the room via websocket
-            // room.send(Myname + "：" + localText.value);
-
-            // messages.textContent += `${Myname}: ${localText.value}\n`;
-            // localText.value = '';
-          }
-
-          AllShiteki.push([jimo, moji2, Myname, genbun,0]);
-          // console.log(AllShiteki);
-
-          room.send({ name: Myname, type: 'teisei', msg1: jimo, msg2: moji2, genbun: genbun });
-          var checkresults = document.getElementById("checkresults");
-          // if (group == false) {
-          //   checkresults.innerHTML = "送信完了！";
-
-          //   var kakunin = function () {
-          //     checkresults.innerHTML = "";
-          //   }
-          //   setInterval(kakunin, 3000);
-          // }
-
-          for (var j = 0; j < radios.length; j++) {
-            radios[j].checked = false;
-          }
-          sendTrigger.disabled = true;
-          localText.value = "";
-          messages.innerHTML ="";
-          ShitekiButton.style.display = "none";
-        }
-      }
-    }
-  });
-
-  const radios = document.getElementsByName('correct');
-
-  // radios[0].checked = true;
-
-  for (var i = 0; i < radios.length; i++) {
-    radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
-      for (var j = 0; j < radios.length; j++) {
-        if (radios[j].checked == true) {
-          sendTrigger.disabled = false;
-          switch (radios[j].value) {
-            case 'remove':
-              jimo = "";
-              moji = "";
-              r = 0;
-              genbun.forEach(function (t) {
-                r++;
-                if (r != junban) {
-                  jimo = jimo + t + " ";
-                  //moji += t + " "と下は同意
-                  moji = moji + t + " ";
-                }
-                else {
-                  jimo = jimo + "<font color = red>" + t + "</font>" + " ";
-                }
-              });
-              // console.log(moji);
-              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
-              break;
-
-            case 'justcorrect':
-              jimo = "";
-              moji = "";
-              r = 0;
-              genbun.forEach(function (t) {
-                r++;
-                if (r == junban) {
-                  jimo = jimo + "<font color = red>" + t + "</font>" + " ";
-                  moji = moji + "□" + " ";
-                }
-                else {
-                  jimo = jimo + t + " ";
-                  moji = moji + t + " ";
-                }
-              });
-              // console.log(moji);
-              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
-              break;
-
-            case 'allcorrect':
-              jimo = "";
-              moji = "";
-              namae = "";
-
-              for (i = 0; i < genbun.length; i++) {
-                if (genbun[i] == "：") {
-                  koitsu = i;
-                  // console.log(koitsu);
-                }
-              }
-              for (t = 0; t < koitsu + 1; t++) {
-                namae = namae + genbun[t];
-                // console.log(namae);
-              }
-
-              // namae = genbun[0] + genbun[1];
-              jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
-              moji = namae + "？？？";
-              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
-              break;
-          }
-
-        }
-      }
-    }
-  }
- 
-
-  const othersShitekibox = document.getElementById('othersShitekibox');
-  const MyShiteki = document.getElementById("MyShiteki");
-  const metoosend = document.getElementById("Metoosend");
-  const Yes = document.getElementById('yesbutton');
-  const No = document.getElementById('nobutton');
-  const radios2 = document.getElementsByName('bestanswer');
-  // const checkｍesults = document.getElementById('checkｍesults');
-  checkedmine.addEventListener('click', onClickedMine);
-  Yes.addEventListener('click', onClickYes);
-  No.addEventListener('click', onClickNo);
-  metoosend.addEventListener('click', onClickMeToo);
-
-  function onClickedMine() {
-    MyShiteki.style.display = "none";
-    checkmine.style.display = "none";
-    Element0.style.display = "block";
-    messages.innerHTML = "";
-    messages.style.display = "block";
-    // ShitekiButton.style.display = "block";
-  }
-
-  //既にある指摘と別の指摘を送る場合
-  function onClickYes() {
-    Already.style.display = "none";
-    OthersCorrect.style.display = "none";
-    othersShitekibox.style.display = "none";
-    Element0.style.display = "block";
-    ShitekiButton.style.display = "block";
-    messages.style.display = "block";
-  }
-  //ラジオボタン（いいね！）の選択をさせる場合
-  function onClickNo() {
-    SmallExplanation.style.display = "block";
-    metoosend.style.display = "block";
-    metoosend.disabled = false;
-  }
-
-  function onClickMeToo() {
-    for (var i = 0; i < radios2.length; i++) {
-      if (radios2[i].checked == true) {
-        // console.log(AllShiteki[i][1]);
-        Radiojunban = radios2[i].value
-      }
-    }
-    AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
-    room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
-
-    // if (group == false) {
-    //   checkｍesults.innerHTML = "👍の送信完了！";
-
-    //   var kakunin = function () {
-    //     checkｍesults.innerHTML = "";
-    //   }
-    //   setInterval(kakunin, 3000);
+    // function onClickIgotit(){
+    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
+    //   NewAllShiteki[CurrentShiteki][5] = 1;
+    //   room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2] });
     // }
 
-    Already.style.display = "none";
-    OthersCorrect.style.display = "none";
-    othersShitekibox.style.display = "none";
-    Element0.style.display = "block";
-    messages.innerHTML = "";
-    messages.style.display = "block";
-    ShitekiButton.style.display = "none";
+    // function onClickIdontgetit(){
+    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
+    //   NewAllShiteki[CurrentShiteki][5] = 2;
+    //   room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2]  });
+    // }
 
-    // ShitekiButton.style.display = "block";
-  }
+    // function onClickNext() {
+    //   GobackButton.disabled = false;
+    //   CurrentShiteki++;
+    //   if(NewAllShiteki[CurrentShiteki][5]==0){
+    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
+    //   }
+    //   else if(NewAllShiteki[CurrentShiteki][5]==1){
+    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
+    //   }
+    //   else if(NewAllShiteki[CurrentShiteki][5]==2){
+    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
+    //   }
+    //   if (CurrentShiteki == NewAllShiteki.length - 1) {
+    //     NextButton.disabled = true;
+    //   }
+    // }
+
+    // function onClickGoback() {
+    //   NextButton.disabled = false;
+    //   CurrentShiteki--;
+    //   if(NewAllShiteki[CurrentShiteki][5]==0){
+    //     sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
+    //     }
+    //     else if(NewAllShiteki[CurrentShiteki][5]==1){
+    //     sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
+    //     }
+    //     else if(NewAllShiteki[CurrentShiteki][5]==2){
+    //     sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
+    //     }
+    //     if (CurrentShiteki == 0) {
+    //     GobackButton.disabled = true;
+    //   }
+    // }
+
+    // sendTrigger.addEventListener('click', onClickSend);
+
+    // // 「送る」を押したとき働く関数
+    // function onClickSend() {
+    //   var moji2 = "";
+    //   for (var j = 0; j < radios.length; j++) {
+    //     if (radios[j].checked == true) {
+    //       sendTrigger.disabled = false;
+    //       switch (radios[j].value) {
+    //         case 'remove':
+    //           moji2 = moji;
+    //           break;
+    //         case 'justcorrect':
+    //           moji2 = moji.replace("□", "<font color = green>" + localText.value + "</font>");
+    //           break;
+    //         case 'allcorrect':
+    //           moji2 = namae + "<font color = green>" + localText.value + "</font>";
+    //           break;
+    //       }
+
+    //       AllShiteki.push([jimo, moji2, Myname, genbun,0]);
+    //       // console.log(AllShiteki);
+
+    //       room.send({ name: Myname, type: 'teisei', msg1: jimo, msg2: moji2, genbun: genbun });
+    //       var checkresults = document.getElementById("checkresults");
+
+    //       for (var j = 0; j < radios.length; j++) {
+    //         radios[j].checked = false;
+    //       }
+    //       sendTrigger.disabled = true;
+    //       localText.value = "";
+    //       messages.innerHTML ="";
+    //       ShitekiButton.style.display = "none";
+    //     }
+    //   }
+    // }
+  });
+
+  // const radios = document.getElementsByName('correct');
+
+  // // radios[0].checked = true;
+
+  // for (var i = 0; i < radios.length; i++) {
+  //   radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
+  //     for (var j = 0; j < radios.length; j++) {
+  //       if (radios[j].checked == true) {
+  //         sendTrigger.disabled = false;
+  //         switch (radios[j].value) {
+  //           case 'remove':
+  //             jimo = "";
+  //             moji = "";
+  //             r = 0;
+  //             genbun.forEach(function (t) {
+  //               r++;
+  //               if (r != junban) {
+  //                 jimo = jimo + t + " ";
+  //                 //moji += t + " "と下は同意
+  //                 moji = moji + t + " ";
+  //               }
+  //               else {
+  //                 jimo = jimo + "<font color = red>" + t + "</font>" + " ";
+  //               }
+  //             });
+  //             // console.log(moji);
+  //             messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
+  //             break;
+
+  //           case 'justcorrect':
+  //             jimo = "";
+  //             moji = "";
+  //             r = 0;
+  //             genbun.forEach(function (t) {
+  //               r++;
+  //               if (r == junban) {
+  //                 jimo = jimo + "<font color = red>" + t + "</font>" + " ";
+  //                 moji = moji + "□" + " ";
+  //               }
+  //               else {
+  //                 jimo = jimo + t + " ";
+  //                 moji = moji + t + " ";
+  //               }
+  //             });
+  //             // console.log(moji);
+  //             messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
+  //             break;
+
+  //           case 'allcorrect':
+  //             jimo = "";
+  //             moji = "";
+  //             namae = "";
+
+  //             for (i = 0; i < genbun.length; i++) {
+  //               if (genbun[i] == "：") {
+  //                 koitsu = i;
+  //                 // console.log(koitsu);
+  //               }
+  //             }
+  //             for (t = 0; t < koitsu + 1; t++) {
+  //               namae = namae + genbun[t];
+  //               // console.log(namae);
+  //             }
+
+  //             // namae = genbun[0] + genbun[1];
+  //             jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
+  //             moji = namae + "？？？";
+  //             messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
+  //             break;
+  //         }
+
+  //       }
+  //     }
+  //   }
+  // }
+ 
+//他の人が既に指摘をしていたときのリアクション
+  // const othersShitekibox = document.getElementById('othersShitekibox');
+  // const MyShiteki = document.getElementById("MyShiteki");
+  // const metoosend = document.getElementById("Metoosend");
+  // const Yes = document.getElementById('yesbutton');
+  // const No = document.getElementById('nobutton');
+  // const radios2 = document.getElementsByName('bestanswer');
+  // // const checkｍesults = document.getElementById('checkｍesults');
+  // checkedmine.addEventListener('click', onClickedMine);
+  // Yes.addEventListener('click', onClickYes);
+  // No.addEventListener('click', onClickNo);
+  // metoosend.addEventListener('click', onClickMeToo);
+
+  // function onClickedMine() {
+  //   MyShiteki.style.display = "none";
+  //   checkmine.style.display = "none";
+  //   Element0.style.display = "block";
+  //   messages.innerHTML = "";
+  //   messages.style.display = "block";
+  //   // ShitekiButton.style.display = "block";
+  // }
+
+  // //既にある指摘と別の指摘を送る場合
+  // function onClickYes() {
+  //   Already.style.display = "none";
+  //   OthersCorrect.style.display = "none";
+  //   othersShitekibox.style.display = "none";
+  //   Element0.style.display = "block";
+  //   ShitekiButton.style.display = "block";
+  //   messages.style.display = "block";
+  // }
+  // //ラジオボタン（いいね！）の選択をさせる場合
+  // function onClickNo() {
+  //   SmallExplanation.style.display = "block";
+  //   metoosend.style.display = "block";
+  //   metoosend.disabled = false;
+  // }
+
+  // function onClickMeToo() {
+  //   for (var i = 0; i < radios2.length; i++) {
+  //     if (radios2[i].checked == true) {
+  //       // console.log(AllShiteki[i][1]);
+  //       Radiojunban = radios2[i].value
+  //     }
+  //   }
+  //   AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
+  //   room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
+
+  //   // if (group == false) {
+  //   //   checkｍesults.innerHTML = "👍の送信完了！";
+
+  //   //   var kakunin = function () {
+  //   //     checkｍesults.innerHTML = "";
+  //   //   }
+  //   //   setInterval(kakunin, 3000);
+  //   // }
+
+  //   Already.style.display = "none";
+  //   OthersCorrect.style.display = "none";
+  //   othersShitekibox.style.display = "none";
+  //   Element0.style.display = "block";
+  //   messages.innerHTML = "";
+  //   messages.style.display = "block";
+  //   ShitekiButton.style.display = "none";
+
+  //   // ShitekiButton.style.display = "block";
+  // }
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -731,6 +647,7 @@ else {
   enableAutomaticPunctuation = true;
 
   junbanparent = 0;
+  var transcript2;
   var zenbun = new Array();
   var genbun;
   var junban;
@@ -740,26 +657,46 @@ else {
   var koitsu;
   var AllShiteki = new Array();
   var NewAllShiteki = new Array();
-  // var numberofI = new Array();
   var CurrentShiteki = 0;
   var Radiojunban;
   // var othersShiteki1;
   // var othersShiteki2;
+  // const Kanri = document.getElementById('js-kanri');
 
+  if(group == true){
   recognition.start();
+  }
   const segmenter = new TinySegmenter();
 
-  
-  function hatsugen(transcript) {
-    transcript2 = segmenter.segment(transcript);
-    // console.log(transcript2);
-
+  function originalHatsugen(transcript){
     //zenbunのjunbanparent番目に一文ずつ入る
-    zenbun[junbanparent] = transcript2;
-
+    zenbun[junbanparent] = transcript;
     junbanparent++;
+    // console.log(zenbun);
+      var div = document.createElement("div");
+      revisebyKanri.appendChild(div);
+      div.innerText = transcript;
+      div.id = "target_" + junbanparent;
+      div.onclick = (e) => {
+        div.contentEditable = 'true';
+      }
+      div.oninput = (e) => {
+        var preparation = div.innerText
+        // console.log(preparation);
+        room.send({ msg: preparation, type: "revised" });
+      }
+  }
+  
+  function hatsugen(t) {
+    var transcript2 = segmenter.segment(t);
+    alert(transcript2);
 
-    junbanko = 0;
+    // //zenbunのjunbanparent番目に一文ずつ入る
+    // zenbun[junbanparent] = transcript2;
+
+    // junbanparent++;
+
+    // junbanko = 0;
 
     transcript2.forEach(function (t) {
       //junban++と同意
@@ -858,11 +795,11 @@ else {
 
         }
       };
-      resultDiv.appendChild(a);
+      revisebyKanri.appendChild(a);
 
 
         if(dontscroll == false){
-          resultDiv.scrollTop = resultDiv.scrollHeight;
+          revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
         }
 
       //genbunがp（配列）で、junbanがq
@@ -887,22 +824,24 @@ else {
   }
 
   var dontscroll = false;
-  resultDiv.addEventListener( "mouseenter", function() {
+  revisebyKanri.addEventListener( "mouseenter", function() {
     dontscroll = true;
   })
-  resultDiv.addEventListener( "mouseleave", function(){
+  revisebyKanri.addEventListener( "mouseleave", function(){
     dontscroll = false;
   })
 
-  //自分の発言の認識
+  //留学生の発言の認識（更新2021/12/05）
   recognition.onresult = (event) => {
     for (var i = event.resultIndex; i < event.results.length; i++) {
       var transcript = Myname + "：" + event.results[i][0].transcript + "\n\n";
       // transcript = segmenter.segment(transcript).join("|");
       // alert(transcript +"ああああああ");
       room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId });
-      hatsugen(transcript);
 
+      //後で消す部分
+      originalHatsugen(transcript);
+      // revisebyKanri.innerHTML += transcript + "<br><br>";
     }
   }
 

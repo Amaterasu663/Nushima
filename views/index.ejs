@@ -15,15 +15,15 @@
         Change Room mode (before join in a room):
         <a href="#">mesh</a> / <a href="#sfu">sfu</a>
       </p> -->
-      <br><br>
+    <br><br>
     <div class="room">
       <!-- <div class ="dialog"> -->
       <dialog id="Dialog_1">
         <form method="dialog"><br>
           <p><label>あなたの母語:
-            <input type="text" id="select_1" onchange="inputChange_1()">
-            <br><small>入力例）中国語、台湾語</small>
-          </label></p>
+              <input type="text" id="select_1" onchange="inputChange_1()">
+              <br><small>入力例）中国語、台湾語</small>
+            </label></p>
           <menu>
             <button id="confirmBtn1" value="default" disabled>続ける</button>
             <!-- <button value="cancel">Cancel</button> -->
@@ -34,39 +34,21 @@
       <dialog id="Dialog_2">
         <form method="dialog">
           <p><label>自分の日本語レベル:
-            <select id="select_2" onchange="inputChange_2()">
-              <option></option>
-              <option>JLPT N1（とてもよく理解できる）</option>
-              <option>JLPT N2（結構理解できる）</option>
-              <option>JLPT N3（ほぼ理解できる）</option>
-              <option>JLPT N4（基本的な日本語がわかる）</option>
-              <option>JLPT N5（基本的な日本語がほぼわかる）</option>
-            </select>
-          </label></p>
+              <select id="select_2" onchange="inputChange_2()">
+                <option></option>
+                <option>JLPT N1（とてもよく理解できる）</option>
+                <option>JLPT N2（結構理解できる）</option>
+                <option>JLPT N3（ほぼ理解できる）</option>
+                <option>JLPT N4（基本的な日本語がわかる）</option>
+                <option>JLPT N5（基本的な日本語がほぼわかる）</option>
+              </select>
+            </label></p>
           <menu>
             <button id="confirmBtn2" value="default" disabled>完了</button>
             <!-- <button value="cancel">Cancel</button> -->
           </menu>
         </form>
       </dialog>
-
-      <!-- <dialog id="Dialog_3">
-        <form method="dialog">
-          <p><label>自分の間違いについて：<br>
-            <select id="select_3" onchange="inputChange_3()">
-              <option></option>
-              <option>すごく自然な日本語を目指しています！</option>
-              <option>不自然なところがあれば、指摘してください！</option>
-              <option>意味が伝わらなければ、指摘してください！</option>
-            </select>
-          </label></p>
-          <menu>
-            <button id="confirmBtn3" value="default" disabled>完了</button>
-            <button value="cancel">Cancel</button> -->
-          <!-- </menu>
-        </form>
-      </dialog> -->
-    <!-- </div> -->
 
 
       <div>
@@ -77,72 +59,89 @@
         <!-- <input type="text" placeholder="Room Name" id="js-room-id"> -->
         <br>
         <center>
-        <button id="js-join-trigger" class="Button-style">参加</button>
-        <button id="js-leave-trigger" class="Button-style">退室</button>
-          </center>
-      </div>
-
-      <!-- <div class="remote-streams" id="js-remote-streams"></div> -->
-
-      <div class="remote-streams" id="resultDiv">
-        <div class="ichigo"></div>
-      </div>
-
-      <div>
-        <div id = "ToshowFB">
-        <div class="messages" id="js-sentfB">◎届いた指摘</div><br>
-        <center>
-        <button id="js-igotit" class="Button-style">理解した！</button>
-        <button id="js-idontgetit" class="Button-style">後で確認する</button>
+          <button id="js-join-trigger" class="Button-style">参加</button>
+          <button id="js-leave-trigger" class="Button-style">退室</button>
         </center>
-        <br>
-        <button id="js-goback" disabled class="Button-style">戻る</button>
-        <button id="js-next" disabled class="Button-style2">次へ</button>
+      </div>
+
+      <!-- 日本人側での表示（初期） -->
+      <div id="remote-bottons">
+        <button id="Button-Hah">え？</button><br>
+      </div>
+
+      <!-- 日本人側での表示（指摘の際） -->
+      <div id=nativeSpeakers>
+        <div id="FBList">
+          <div class="messages">◎参加する留学生の発言<br>
+            <div id="FBContent"><br></div>
+          </div>
+          <br>
         </div>
 
-        <div id = "TosendFB">
-        <div class="messages">◎指摘欄
-          <div id="js-messages"></div>
-        <div id="shitekiButton"><br>
-          <label><input type="radio" name = "correct" value="remove">選択箇所は不要</label><br>
-          <label><input type="radio" name = "correct" value="justcorrect">選択箇所のみ修正</label><br>
-          <label><input type="radio" name = "correct" value="allcorrect">文全体を修正</label><br>
-            <!-- <button id="js-remove-trigger">不要</button><br> -->
-            <br><textarea name="text" id="js-local-text" style="width:250px; height:100px; background-color:#fffcf9; border-radius: 10px;" placeholder="選択箇所をどう訂正しますか？"></textarea>
-            <br><center><button id="js-send-trigger" class="Button-style" disabled >送る</button></center>
-            <div id="checkresults"></div>
+        <div id="TosendFB">
+          <div class="messages">◎指摘欄
+            <div id="js-messages"></div>
+            <div id="shitekiButton"><br>
+              <label><input type="radio" name="correct" value="remove">選択箇所は不要</label><br>
+              <label><input type="radio" name="correct" value="justcorrect">選択箇所のみ修正</label><br>
+              <label><input type="radio" name="correct" value="allcorrect">文全体を修正</label><br>
+              <!-- <button id="js-remove-trigger">不要</button><br> -->
+              <br><textarea name="text" id="js-local-text"
+                style="width:250px; height:100px; background-color:#fffcf9; border-radius: 10px;"
+                placeholder="選択箇所をどう訂正しますか？"></textarea>
+              <br>
+              <center><button id="js-send-trigger" class="Button-style" disabled>送る</button></center>
+              <div id="checkresults"></div>
+            </div>
           </div>
         </div>
+
+        <div class="messages" id="already">◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？<br>
+          <button id="yesbutton" class="Button-style">はい</button>
+          <button id="nobutton" class="Button-style">いいえ</button><br><br>
+          <div id="otherscorrect">《他の人の指摘》<br></div>
+          <div id="smallexplanation">その場合、下の指摘からベストなものを選択して送信してください。<br></div>
+          <div id="othersShitekibox"></div>
+          <button id="Metoosend" class="Button-style" disabled>決定</button>
+          <div id="checkｍesults"></div>
         </div>
 
-        <div class="messages" id = "already">◎指摘欄<br>既に誰かが指摘したようです。<br>これとは別の指摘を送りますか？<br>
-        <button id = "yesbutton" class="Button-style" >はい</button>
-        <button id = "nobutton" class="Button-style" >いいえ</button><br><br>
-        <div id = "otherscorrect">《他の人の指摘》<br></div>
-        <div id = "smallexplanation">その場合、下の指摘からベストなものを選択して送信してください。<br></div>
-        <div id = "othersShitekibox"></div>
-        <button id = "Metoosend" class="Button-style" disabled>決定</button>
-        <div id="checkｍesults"></div>
+        <div class="messages" id="CheckMine">選択した場所について、あなたは既に指摘をしました。<br>※誰かの指摘に👍した場合も、自分の表示としてここに表示されます。<br><br>
+          <div id="MyShiteki"></div>
+          <button id="CheckedMine" class="Button-style">確認</button>
+        </div>
+
       </div>
 
-        <div class="messages" id = "CheckMine">選択した場所について、あなたは既に指摘をしました。<br>※誰かの指摘に👍した場合も、自分の表示としてここに表示されます。<br><br>
-          <div id = "MyShiteki"></div>
-          <button id = "CheckedMine" class="Button-style" >確認</button>
-        </div>
-        
+      <!-- 管理の表示 -->
+      <div id="reviseRecognition" class="remote-streams">
+          <div id="js-kanri">◎文字起こしの修正</div>
       </div>
-      
+
+      <!-- 留学生側での表示 -->
+      <div class="messages0" id="ToshowFB">
+        <div　id="js-sentfB">◎届いた指摘</div>
+        <!-- <br><center>
+          <button id="js-igotit" class="Button-style">理解した！</button>
+          <button id="js-idontgetit" class="Button-style">後で確認する</button>
+          </center><br> -->
+        <!-- <button id="js-goback" disabled class="Button-style">戻る</button>
+          <button id="js-next" disabled class="Button-style2">次へ</button> -->
+
+        <!-- <div class="ichigo"></div> -->
+      </div>
+
+      <br>
+      <p class="meta" id="js-meta" hidden></p>
     </div>
-    <br>
-    <p class="meta" id="js-meta" hidden></p>
   </div>
 </body>
 
-  <script src="//cdn.webrtc.ecl.ntt.com/skyway-4.4.1.js"></script>
-  <script src="javascripts/key.js"></script>
+<script src="//cdn.webrtc.ecl.ntt.com/skyway-4.4.1.js"></script>
+<script src="javascripts/key.js"></script>
 
-  <script type="text/javascript" src="javascripts/tiny_segmenter.js" charset="UTF-8"></script>
+<script type="text/javascript" src="javascripts/tiny_segmenter.js" charset="UTF-8"></script>
 
-  <script src="javascripts/script.js"></script>
+<script src="javascripts/script.js"></script>
 
 </html>
