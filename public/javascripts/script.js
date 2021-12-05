@@ -681,7 +681,8 @@ else {
       div.innerText = transcript;
       div.id = "target_" + junbanparent;
       var btn = document.createElement("button");
-      btn.value = "送信";
+      btn.innerText = "送信";
+      revisebyKanri.appendChild(btn);
 
       if(dontscroll == false){
         revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
@@ -693,32 +694,31 @@ else {
 
       btn.onclick = (e) => {
         preparation = div.innerText;
+        div.contentEditable = "false";
+        btn.remove();
         room.send({ msg: preparation, type: "revised" });
       }
   }
-
   
-  function hatsugen(q) {
-    transcript2 = segmenter.segment(q);
+  function hatsugen(p) {
+    transcript2 = segmenter.segment(p);
     junbanko = 0;
-    junbanparent2 ++;
+    alert(transcript2);
 
     transcript2.forEach(function (t) {
       //junban++と同意
       junbanko = junbanko + 1;
       var a = document.createElement("a");
-      alert(a);
       a.classList.add('ichigo');
       //分かち書きの一語一語にaっていうタグを追加：htmlのため
       a.innerText = t;
-      a.id = "target_" + junbanparent2 + "_" + junbanko;
+      a.id = "target_" + junbanparent + "_" + junbanko;
+
       a.onclick = (e) => {
         // var Element = document.getElementById("target");
-        n = (a.id.split("_"))[1];
-        genbun = zenbun[n - 1];
+      genbun = zenbun[junbanparent - 1];
 
-        junban = (a.id.split("_"))[2];
-        console.log(a.id);
+      junban = (a.id.split("_"))[2];
         // // var s = Element.previousElementSibling;
         // // var u = Element.nextElementSibling;
         // shitekibox(genbun, junban);
