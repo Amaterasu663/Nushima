@@ -662,7 +662,7 @@ else {
   // var othersShiteki2;
   // const Kanri = document.getElementById('js-kanri');
 
-  if(group == true){
+  if(group == true && Myname!="管理"){
   recognition.start();
   }
   const segmenter = new TinySegmenter();
