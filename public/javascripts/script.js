@@ -493,9 +493,9 @@ else {
     // }
   });
 
-  const radios = document.getElementsByName('correct');
+  // const radios = document.getElementsByName('correct');
 
-  radios[0].checked = true;
+  // radios[0].checked = true;
 
   // for (var i = 0; i < radios.length; i++) {
   //   radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
