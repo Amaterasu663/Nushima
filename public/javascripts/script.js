@@ -124,6 +124,7 @@ else {
   const ryugakusei = document.getElementById('ryugakusei');
   const loginUsers = document.getElementById('loginUsers');
   const messages = document.getElementById('js-messages');
+  const FBContent = document.getElementById('FBContent');
   const sentfB = document.getElementById('js-sentfB');
   const meta = document.getElementById('js-meta');
   const sdkSrc = document.querySelector('script[src*=skyway]');
@@ -791,12 +792,12 @@ else {
 
         }
       };
-      messages.appendChild(a);
+      FBContent.appendChild(a);
 
 
-        if(dontscroll2 == false){
-          messages.scrollTop = messages.scrollHeight;
-        }
+        // if(dontscroll2 == false){
+        //   FBContent.scrollTop = FBContent.scrollHeight;
+        // }
 
       //genbunがp（配列）で、junbanがq
       // function shitekibox(p, q) {
