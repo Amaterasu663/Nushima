@@ -662,7 +662,7 @@ else {
   // var othersShiteki2;
   // const Kanri = document.getElementById('js-kanri');
 
-  if(group == true && Myname!="管理"){
+  if(group == true){
   recognition.start();
   }
   const segmenter = new TinySegmenter();
@@ -829,10 +829,10 @@ else {
 
   var dontscroll2 = false;
   messages.addEventListener( "mouseenter", function() {
-    dontscroll = true;
+    dontscroll2 = true;
   })
   messages.addEventListener( "mouseleave", function(){
-    dontscroll = false;
+    dontscroll2 = false;
   })
 
   //留学生の発言の認識（更新2021/12/05）
