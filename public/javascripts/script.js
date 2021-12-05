@@ -647,6 +647,7 @@ else {
   enableAutomaticPunctuation = true;
 
   junbanparent = 0;
+  junbanparent2 = 0;
   var transcript2;
   var zenbun = new Array();
   var genbun;
@@ -661,6 +662,8 @@ else {
   var Radiojunban;
   // var othersShiteki1;
   // var othersShiteki2;
+  var btn;
+  var preparation;
   // const Kanri = document.getElementById('js-kanri');
 
   if(group == true && Myname!="管理"){
@@ -677,6 +680,8 @@ else {
       revisebyKanri.appendChild(div);
       div.innerText = transcript;
       div.id = "target_" + junbanparent;
+      var btn = document.createElement("button");
+      btn.value = "送信";
 
       if(dontscroll == false){
         revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
@@ -685,32 +690,35 @@ else {
       div.onclick = (e) => {
         div.contentEditable = 'true';
       }
-      div.oninput = (e) => {
-        var preparation = div.innerText
-        // console.log(preparation);
+
+      btn.onclick = (e) => {
+        preparation = div.innerText;
         room.send({ msg: preparation, type: "revised" });
       }
   }
+
   
   function hatsugen(q) {
     transcript2 = segmenter.segment(q);
     junbanko = 0;
+    junbanparent2 ++;
 
     transcript2.forEach(function (t) {
       //junban++と同意
       junbanko = junbanko + 1;
-      const a = document.createElement("a");
+      var a = document.createElement("a");
+      alert(a);
       a.classList.add('ichigo');
       //分かち書きの一語一語にaっていうタグを追加：htmlのため
       a.innerText = t;
-      a.id = "target_" + (a.parentElement.id.split("_"))[1] + "_" + junbanko;
-      console.log(a.id);
+      a.id = "target_" + junbanparent2 + "_" + junbanko;
       a.onclick = (e) => {
         // var Element = document.getElementById("target");
         n = (a.id.split("_"))[1];
         genbun = zenbun[n - 1];
 
         junban = (a.id.split("_"))[2];
+        console.log(a.id);
         // // var s = Element.previousElementSibling;
         // // var u = Element.nextElementSibling;
         // shitekibox(genbun, junban);
