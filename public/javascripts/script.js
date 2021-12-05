@@ -47,7 +47,6 @@ const metoosend = document.getElementById("Metoosend");
 const checkmine = document.getElementById("CheckMine");
 const checkedmine = document.getElementById("CheckedMine");
 
-  ShitekiButton.style.display = "none";
   Already.style.display = "none";
   OthersCorrect.style.display = "none";
   SmallExplanation.style.display = "none";
@@ -493,7 +492,7 @@ else {
     // }
   });
 
-  // const radios = document.getElementsByName('correct');
+  const radios = document.getElementsByName('correct');
 
   // radios[0].checked = true;
 
@@ -706,6 +705,7 @@ else {
 
     transcript2.forEach(function (t) {
       //junban++と同意
+      genbun = transcript2;
       junbanko = junbanko + 1;
       var a = document.createElement("a");
       a.classList.add('ichigo');
@@ -713,15 +713,13 @@ else {
       a.innerText = t;
       a.id = "target_" + junbanparent2 + "_" + junbanko;
 
+      // junbanparent2は0から、junbankoは1からスタートする
       a.onclick = (e) => {
-        // var Element = document.getElementById("target");
-      console.log(a.id);
+      // console.log(a.id);クリア
       FBList.style.display = "none";
       Element0.style.display = "block";
-      genbun = p;
       junban = (a.id.split("_"))[2];
-
-        // shitekibox(genbun, junban);
+      //   // shitekibox(genbun, junban);
         for (var j = 0; j < radios.length; j++) {
           radios[j].checked = false;
         }
@@ -742,64 +740,64 @@ else {
           }
           
         });
-        // console.log(moji);
-        messages.innerHTML = "<br>" + jimo;
-        ShitekiButton.style.display = "block";
+        
+        messages.innerHTML = genbun.join(" ") + "<br>" + jimo;
+      }
 
-        // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
-        // alert(t);
-        if (group == false) {
-          MyShiteki.innerHTML = "";
-          othersShitekibox.innerHTML = "";
+      //   // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
+      //   // alert(t);
+      //   if (group == false) {
+      //     MyShiteki.innerHTML = "";
+      //     othersShitekibox.innerHTML = "";
 
-          for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
-              // Radiojunban++;
-              // console.log(i + "あああああああああああああああ");
-              Element0.style.display = "none";
-              // messages.style.display = "none";
-              MyShiteki.style.display = "none";
-              checkmine.style.display = "none";
-              checkedmine.style.display = "none";
-              Already.style.display = "block";
-              SmallExplanation.style.display = "none";
-              OthersCorrect.style.display = "block";
-              othersShitekibox.style.display = "block";
-              metoosend.disabled = true;
-              othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
-              othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
-              othersShitekibox.innerHTML += othersShiteki1;
-              othersShitekibox.innerHTML += othersShiteki2;
+      //     for (i = 0; i < AllShiteki.length; i++) {
+      //       if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
+      //         // Radiojunban++;
+      //         // console.log(i + "あああああああああああああああ");
+      //         Element0.style.display = "none";
+      //         // messages.style.display = "none";
+      //         MyShiteki.style.display = "none";
+      //         checkmine.style.display = "none";
+      //         checkedmine.style.display = "none";
+      //         Already.style.display = "block";
+      //         SmallExplanation.style.display = "none";
+      //         OthersCorrect.style.display = "block";
+      //         othersShitekibox.style.display = "block";
+      //         metoosend.disabled = true;
+      //         othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
+      //         othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+      //         othersShitekibox.innerHTML += othersShiteki1;
+      //         othersShitekibox.innerHTML += othersShiteki2;
 
-            }
-          }
+      //       }
+      //     }
 
-          for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
-              // messages.innerHTML ="";
-              Already.style.display = "none";
-              OthersCorrect.style.display = "none";
-              othersShitekibox.style.display = "none";
-              ShitekiButton.style.display = "none";
-              messages.style.display = "none";
-              checkmine.style.display = "block";
-              MyShiteki.style.display = "block";
-              checkedmine.style.display = "block";
-              // alert(AllShiteki[i][4]);
-              if(AllShiteki[i][4]==0){
-                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
-              }
-              else if(AllShiteki[i][4]==1){
-                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
-              }
-              else if(AllShiteki[i][4]==2){
-                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
-              }
-            }
-          }
+      //     for (i = 0; i < AllShiteki.length; i++) {
+      //       if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
+      //         // messages.innerHTML ="";
+      //         Already.style.display = "none";
+      //         OthersCorrect.style.display = "none";
+      //         othersShitekibox.style.display = "none";
+      //         ShitekiButton.style.display = "none";
+      //         messages.style.display = "none";
+      //         checkmine.style.display = "block";
+      //         MyShiteki.style.display = "block";
+      //         checkedmine.style.display = "block";
+      //         // alert(AllShiteki[i][4]);
+      //         if(AllShiteki[i][4]==0){
+      //           MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+      //         }
+      //         else if(AllShiteki[i][4]==1){
+      //           MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
+      //         }
+      //         else if(AllShiteki[i][4]==2){
+      //           MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
+      //         }
+      //       }
+      //     }
 
-        }
-      };
+        // }
+      // };
       FBContent.appendChild(a);
 
 

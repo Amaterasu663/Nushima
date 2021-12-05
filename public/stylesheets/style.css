@@ -55,10 +55,6 @@ html,body{
   padding: 8px;
 }
 
-.room .messages0 .ichigo{
-  background-color: #fffcf9;
-  margin: 10px 3px;
-}
 
 /* 指摘欄 */
 .room .messages {
@@ -76,6 +72,11 @@ html,body{
   word-wrap: normal;
   overflow-y:scroll;
   
+}
+
+.room .messages .ichigo{
+  background-color: #F3F0D7;
+  margin: 10px 3px;
 }
 
 /* 届いた指摘 */
