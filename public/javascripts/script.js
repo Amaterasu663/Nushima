@@ -827,13 +827,14 @@ else {
     dontscroll = false;
   })
 
-  var dontscroll2 = false;
-  messages.addEventListener( "mouseenter", function() {
-    dontscroll2 = true;
-  })
-  messages.addEventListener( "mouseleave", function(){
-    dontscroll2 = false;
-  })
+
+  // var dontscroll2 = false;
+  // messages.addEventListener( "mouseenter", function() {
+  //   dontscroll2 = true;
+  // })
+  // messages.addEventListener( "mouseleave", function(){
+  //   dontscroll2 = false;
+  // })
 
   //留学生の発言の認識（更新2021/12/05）
   recognition.onresult = (event) => {
