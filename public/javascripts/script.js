@@ -271,7 +271,6 @@ else {
           break;
 
         case 'revised':
-          // alert("スイッチ構文です");いけてない
           hatsugen(data.msg);
           break;
 
@@ -663,7 +662,7 @@ else {
   // var othersShiteki2;
   // const Kanri = document.getElementById('js-kanri');
 
-  if(group == true){
+  if(group == true && Myname=="管理"){
   recognition.start();
   }
   const segmenter = new TinySegmenter();
@@ -677,6 +676,11 @@ else {
       revisebyKanri.appendChild(div);
       div.innerText = transcript;
       div.id = "target_" + junbanparent;
+
+      if(dontscroll == false){
+        revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
+      }
+
       div.onclick = (e) => {
         div.contentEditable = 'true';
       }
@@ -687,16 +691,9 @@ else {
       }
   }
   
-  function hatsugen(t) {
-    var transcript2 = segmenter.segment(t);
-    alert(transcript2);
-
-    // //zenbunのjunbanparent番目に一文ずつ入る
-    // zenbun[junbanparent] = transcript2;
-
-    // junbanparent++;
-
-    // junbanko = 0;
+  function hatsugen(q) {
+    transcript2 = segmenter.segment(q);
+    junbanko = 0;
 
     transcript2.forEach(function (t) {
       //junban++と同意
@@ -705,11 +702,10 @@ else {
       a.classList.add('ichigo');
       //分かち書きの一語一語にaっていうタグを追加：htmlのため
       a.innerText = t;
-      a.id = "target_" + junbanparent + "_" + junbanko;
-      // console.log(a);
+      a.id = "target_" + (a.parentElement.id.split("_"))[1] + "_" + junbanko;
+      console.log(a.id);
       a.onclick = (e) => {
         // var Element = document.getElementById("target");
-
         n = (a.id.split("_"))[1];
         genbun = zenbun[n - 1];
 
@@ -795,11 +791,11 @@ else {
 
         }
       };
-      revisebyKanri.appendChild(a);
+      messages.appendChild(a);
 
 
-        if(dontscroll == false){
-          revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
+        if(dontscroll2 == false){
+          messages.scrollTop = messages.scrollHeight;
         }
 
       //genbunがp（配列）で、junbanがq
@@ -828,6 +824,14 @@ else {
     dontscroll = true;
   })
   revisebyKanri.addEventListener( "mouseleave", function(){
+    dontscroll = false;
+  })
+
+  var dontscroll2 = false;
+  messages.addEventListener( "mouseenter", function() {
+    dontscroll = true;
+  })
+  messages.addEventListener( "mouseleave", function(){
     dontscroll = false;
   })
 
