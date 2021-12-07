@@ -802,7 +802,7 @@ else {
     junbanparent2++;
   }
 
-  if(Element0.style.display = "block"){
+  if(group == false && Element0.style.display == "block"){
   var closeShitekibox = document.getElementById('js-close-trigger');
   closeShitekibox.addEventListener('click', onClickCloseShitekibox);
   }
