@@ -794,24 +794,22 @@ else {
       FBContent.appendChild(a);
 
 
-        // if(dontscroll2 == false){
-        //   FBContent.scrollTop = FBContent.scrollHeight;
-        // }
+        if(dontscroll2 == false){
+          FBList.scrollTop = FBList.scrollHeight;
+        }
 
     });
     junbanparent2++;
   }
 
-  if(group == false && Element0.style.display == "block"){
+  if(group == false){
   var closeShitekibox = document.getElementById('js-close-trigger');
   closeShitekibox.disabled = false;
   closeShitekibox.addEventListener('click', onClickCloseShitekibox);
-  alert("定義");
   }
   function onClickCloseShitekibox() {
     Element0.style.display = "none";
-    FBContent.style.display = "block";
-    alert("Clickイベント");
+    FBList.style.display = "block";
   }
 
 
@@ -824,13 +822,13 @@ else {
   })
 
 
-  // var dontscroll2 = false;
-  // FBContent.addEventListener( "mouseenter", function() {
-  //   dontscroll2 = true;
-  // })
-  // FBContent.addEventListener( "mouseleave", function(){
-  //   dontscroll2 = false;
-  // })
+  var dontscroll2 = false;
+  FBList.addEventListener( "mouseenter", function() {
+    dontscroll2 = true;
+  })
+  FBList.addEventListener( "mouseleave", function() {
+    dontscroll2 = false;
+  })
 
   //留学生の発言の認識（更新2021/12/05）
   recognition.onresult = (event) => {
