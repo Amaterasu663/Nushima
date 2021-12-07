@@ -741,7 +741,7 @@ else {
           
         });
         
-        messages.innerHTML = genbun.join(" ") + "<br>" + jimo;
+        messages.innerHTML = genbun.join(" ") + "<br><br>" + jimo;
       }
 
       //   // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
@@ -805,27 +805,17 @@ else {
         //   FBContent.scrollTop = FBContent.scrollHeight;
         // }
 
-      //genbunがp（配列）で、junbanがq
-      // function shitekibox(p, q) {
-      //   // console.log(p, q);
-      //   moji = "";
-      //   r = 0;
-      //   p.forEach(function (t) {
-      //     r++;
-      //     if (r == q) {
-      //       moji = moji + "□" + " ";
-      //     }
-      //     else {
-      //       moji = moji + t + " ";
-      //     }
-      //   });
-      //   // console.log(moji);
-      //   messages.textContent = "\n\n" + p.join(" ") + "\n" + moji;
-
-      // }
     });
     junbanparent2++;
   }
+
+  var closeShitekibox = document.getElementById('js-close-trigger');
+  closeShitekibox.addEventListener('click', onClickCloseShitekibox);
+  function onClickCloseShitekibox() {
+    Element0.style.display = "none";
+    FBContent.style.display = "block";
+  }
+
 
   var dontscroll = false;
   revisebyKanri.addEventListener( "mouseenter", function() {
@@ -834,6 +824,7 @@ else {
   revisebyKanri.addEventListener( "mouseleave", function(){
     dontscroll = false;
   })
+
 
 
   // var dontscroll2 = false;
