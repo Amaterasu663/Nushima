@@ -494,8 +494,6 @@ else {
 
   const radios = document.getElementsByName('correct');
 
-  // radios[0].checked = true;
-
   // for (var i = 0; i < radios.length; i++) {
   //   radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
   //     for (var j = 0; j < radios.length; j++) {
@@ -744,18 +742,14 @@ else {
         messages.innerHTML = genbun.join(" ") + "<br><br>" + jimo;
       }
 
-      //   // prompt(genbun + "\n「" + t + "」" + "をどう修正しましょうか");
-      //   // alert(t);
       //   if (group == false) {
       //     MyShiteki.innerHTML = "";
       //     othersShitekibox.innerHTML = "";
 
+      //  //クリックした文章に対して他の人が既に指摘をしていたときの表示
       //     for (i = 0; i < AllShiteki.length; i++) {
       //       if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
-      //         // Radiojunban++;
-      //         // console.log(i + "あああああああああああああああ");
       //         Element0.style.display = "none";
-      //         // messages.style.display = "none";
       //         MyShiteki.style.display = "none";
       //         checkmine.style.display = "none";
       //         checkedmine.style.display = "none";
@@ -772,9 +766,9 @@ else {
       //       }
       //     }
 
+      //    //自分が送った指摘を確認するための表示
       //     for (i = 0; i < AllShiteki.length; i++) {
       //       if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
-      //         // messages.innerHTML ="";
       //         Already.style.display = "none";
       //         OthersCorrect.style.display = "none";
       //         othersShitekibox.style.display = "none";
@@ -783,7 +777,6 @@ else {
       //         checkmine.style.display = "block";
       //         MyShiteki.style.display = "block";
       //         checkedmine.style.display = "block";
-      //         // alert(AllShiteki[i][4]);
       //         if(AllShiteki[i][4]==0){
       //           MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
       //         }
@@ -809,8 +802,10 @@ else {
     junbanparent2++;
   }
 
+  if(Element0.style.display = "block"){
   var closeShitekibox = document.getElementById('js-close-trigger');
   closeShitekibox.addEventListener('click', onClickCloseShitekibox);
+  }
   function onClickCloseShitekibox() {
     Element0.style.display = "none";
     FBContent.style.display = "block";
@@ -826,12 +821,11 @@ else {
   })
 
 
-
   // var dontscroll2 = false;
-  // messages.addEventListener( "mouseenter", function() {
+  // FBContent.addEventListener( "mouseenter", function() {
   //   dontscroll2 = true;
   // })
-  // messages.addEventListener( "mouseleave", function(){
+  // FBContent.addEventListener( "mouseleave", function(){
   //   dontscroll2 = false;
   // })
 
@@ -839,13 +833,9 @@ else {
   recognition.onresult = (event) => {
     for (var i = event.resultIndex; i < event.results.length; i++) {
       var transcript = Myname + "：" + event.results[i][0].transcript + "\n\n";
-      // transcript = segmenter.segment(transcript).join("|");
-      // alert(transcript +"ああああああ");
       room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId });
 
-      //後で消す部分
       originalHatsugen(transcript);
-      // revisebyKanri.innerHTML += transcript + "<br><br>";
     }
   }
 
