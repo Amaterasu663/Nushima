@@ -270,6 +270,22 @@ else {
           originalHatsugen(data.msg);
           break;
 
+        case 'Hah':
+          if(Myname=="管理"){
+            var div_Hah = document.createElement("div");
+            revisebyKanri.appendChild(div_Hah);
+            div_Hah.innerText = data.name + "さんによる「え？」";
+            var btn_Hah = document.createElement("button");
+            btn_Hah.innerText = "確認";
+            revisebyKanri.appendChild(btn_Hah);
+            btn_Hah.onclick = (e) => {
+              btn_Hah.remove();
+              room.send({ name: data.name, type: "HahBack" });
+              console.log(data.name);
+            }  
+          }
+          break;
+
         case 'revised':
           hatsugen(data.msg);
           break;
@@ -310,19 +326,9 @@ else {
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
           //いいねの数をカウントアップ→表示用のAllshitekiをつくる
 
-          // NextButton.disabled = false;
-          // GobackButton.disabled = false;
           for (i = 0; i < NewAllShiteki.length; i++) {
             if (NewAllShiteki[i][0] == data.msg1 && NewAllShiteki[i][1] == data.msg2) {
               NewAllShiteki[i][4]++;
-              // sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[i][0] + "<br><br>" + NewAllShiteki[i][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[i][2] + "　👍" + NewAllShiteki[i][4];
-              // CurrentShiteki = i;
-              // if(i == NewAllShiteki.length-1){
-              //   NextButton.disabled = true;
-              // }
-              // if(i == 0){
-              //   GobackButton.disabled = true;
-              // }
               break;
             }
           }
@@ -343,25 +349,8 @@ else {
               NextButton.disabled = false;
               GobackButton.disabled = false;
             }
-            // sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name;
-            // CurrentShiteki = NewAllShiteki.length-1;
-            // NextButton.disabled = true;
-            // if(NewAllShiteki.length == 1){
-            //   GobackButton.disabled = true;
-            // }
+
           }
-
-          // for(i=0; i<numberofI.length;i++){
-          // if(numberofI[i][0] == numberofI[i+1][0]){
-          //   ThumbsUp++;
-          // }
-          // // else{
-
-          // // }
-          // }
-
-          // console.log(AllShiteki);
-
           break;
       }
       // Show a message sent to the room and who sent
@@ -398,7 +387,7 @@ else {
     if(group == false){
     hahButton.addEventListener('click', onClickHah);
     function onClickHah (){
-      alert("hah");
+      room.send({ name: Myname, type: 'Hah'});
     }
     }
 
@@ -454,42 +443,44 @@ else {
     //   }
     // }
 
-    // sendTrigger.addEventListener('click', onClickSend);
+    if(group == false){
+    sendTrigger.addEventListener('click', onClickSend);
+    }
 
-    // // 「送る」を押したとき働く関数
-    // function onClickSend() {
-    //   var moji2 = "";
-    //   for (var j = 0; j < radios.length; j++) {
-    //     if (radios[j].checked == true) {
-    //       sendTrigger.disabled = false;
-    //       switch (radios[j].value) {
-    //         case 'remove':
-    //           moji2 = moji;
-    //           break;
-    //         case 'justcorrect':
-    //           moji2 = moji.replace("□", "<font color = green>" + localText.value + "</font>");
-    //           break;
-    //         case 'allcorrect':
-    //           moji2 = namae + "<font color = green>" + localText.value + "</font>";
-    //           break;
-    //       }
+    // 「送る」を押したとき働く関数
+    function onClickSend() {
+      var moji2 = "";
+      for (var j = 0; j < radios.length; j++) {
+        if (radios[j].checked == true) {
+          sendTrigger.disabled = false;
+          switch (radios[j].value) {
+            case 'remove':
+              moji2 = moji;
+              break;
+            case 'justcorrect':
+              moji2 = moji.replace("□", "<font color = green>" + localText.value + "</font>");
+              break;
+            case 'allcorrect':
+              moji2 = namae + "<font color = green>" + localText.value + "</font>";
+              break;
+          }
 
-    //       AllShiteki.push([jimo, moji2, Myname, genbun,0]);
-    //       // console.log(AllShiteki);
+          AllShiteki.push([jimo, moji2, Myname, genbun,0]);
+          console.log(AllShiteki);
 
-    //       room.send({ name: Myname, type: 'teisei', msg1: jimo, msg2: moji2, genbun: genbun });
-    //       var checkresults = document.getElementById("checkresults");
+          room.send({ name: Myname, type: 'teisei', msg1: jimo, msg2: moji2, genbun: genbun });
+          // var checkresults = document.getElementById("checkresults");
 
-    //       for (var j = 0; j < radios.length; j++) {
-    //         radios[j].checked = false;
-    //       }
-    //       sendTrigger.disabled = true;
-    //       localText.value = "";
-    //       messages.innerHTML ="";
-    //       ShitekiButton.style.display = "none";
-    //     }
-    //   }
-    // }
+          for (var j = 0; j < radios.length; j++) {
+            radios[j].checked = false;
+          }
+          sendTrigger.disabled = true;
+          localText.value = "";
+          messages.innerHTML ="";
+          ShitekiButton.style.display = "none";
+        }
+      }
+    }
   });
 
   const radios = document.getElementsByName('correct');
