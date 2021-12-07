@@ -795,7 +795,7 @@ else {
 
 
         if(dontscroll2 == false){
-          FBContent.scrollTop = FBContent.scrollHeight;
+          messages.scrollTop = messages.scrollHeight;
         }
 
     });
@@ -821,14 +821,15 @@ else {
     dontscroll = false;
   })
 
-
+if(group == false){
   var dontscroll2 = false;
-  FBContent.addEventListener( "mouseenter", function() {
+  messages.addEventListener( "mouseenter", function() {
     dontscroll2 = true;
   })
-  FBContent.addEventListener( "mouseleave", function() {
+  messages.addEventListener( "mouseleave", function() {
     dontscroll2 = false;
   })
+}
 
   //留学生の発言の認識（更新2021/12/05）
   recognition.onresult = (event) => {
