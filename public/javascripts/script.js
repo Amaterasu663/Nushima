@@ -804,6 +804,7 @@ else {
 
   if(group == false && Element0.style.display == "block"){
   var closeShitekibox = document.getElementById('js-close-trigger');
+  closeShitekibox.disabled = false;
   closeShitekibox.addEventListener('click', onClickCloseShitekibox);
   }
   function onClickCloseShitekibox() {
