@@ -292,8 +292,9 @@ else {
             div_Eh.innerText = "え？🤔";
             FBContent.appendChild(div_Eh);
             FBContent.appendChild(document.createElement("br"))
-            // console.log(dontscroll2 + "え？");->false
+            // console.log(dontscroll2 + "お？");
             if(dontscroll2 == false){
+              // console.log(dontscroll2 + "か？");
               FBContent.scrollTop = FBContent.scrollHeight;
             }    
           }
@@ -490,7 +491,8 @@ else {
           sendTrigger.disabled = true;
           localText.value = "";
           messages.innerHTML ="";
-          ShitekiButton.style.display = "none";
+          Element0.style.display = "none";
+          FBList.style.display = "block";
         }
       }
     }
@@ -799,8 +801,9 @@ else {
       FBContent.appendChild(a);
       }
 
-      console.log(dontscroll2 + "文字おこし");
+      // console.log(dontscroll2 + "お");
         if(dontscroll2 == false){
+          // console.log(dontscroll2 + "か");
           FBContent.scrollTop = FBContent.scrollHeight;
         }
 
