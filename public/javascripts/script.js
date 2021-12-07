@@ -806,10 +806,12 @@ else {
   var closeShitekibox = document.getElementById('js-close-trigger');
   closeShitekibox.disabled = false;
   closeShitekibox.addEventListener('click', onClickCloseShitekibox);
+  alert("定義");
   }
   function onClickCloseShitekibox() {
     Element0.style.display = "none";
     FBContent.style.display = "block";
+    alert("Clickイベント");
   }
 
 
