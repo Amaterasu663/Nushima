@@ -79,6 +79,17 @@ html,body{
   margin: 10px 3px;
 }
 
+.room .messages .Hah {
+  /* font-size: 18px; */
+  border: solid;
+  color: #000000;
+  border-radius: 10px;
+  border-color: #FFBF86;
+  background-color: #F3F0D7;
+  text-align: center;
+
+  }
+
 /* 届いた指摘 */
 .room .messages0 {
   border: solid;

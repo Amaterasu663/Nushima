@@ -274,15 +274,24 @@ else {
           if(Myname=="管理"){
             var div_Hah = document.createElement("div");
             revisebyKanri.appendChild(div_Hah);
-            div_Hah.innerText = data.name + "さんによる「え？」";
+            div_Hah.innerHTML = data.name + "さんによる「え？」<br><br>";
             var btn_Hah = document.createElement("button");
             btn_Hah.innerText = "確認";
             revisebyKanri.appendChild(btn_Hah);
             btn_Hah.onclick = (e) => {
               btn_Hah.remove();
               room.send({ name: data.name, type: "HahBack" });
-              console.log(data.name);
             }  
+          }
+          break;
+        
+        case 'HahBack':
+          if(Myname==data.name){
+            var div_Eh = document.createElement("div");
+            div_Eh.classList.add("Hah");
+            div_Eh.innerText = "え？🤔";
+            FBContent.appendChild(div_Eh);
+            FBContent.appendChild(document.createElement("br"))
           }
           break;
 
@@ -730,7 +739,7 @@ else {
           
         });
         
-        messages.innerHTML = genbun.join(" ") + "<br><br>" + jimo;
+        messages.innerHTML = "<br>" + genbun.join(" ") + "<br><br>" + jimo;
       }
 
       //   if (group == false) {
