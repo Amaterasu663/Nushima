@@ -795,7 +795,7 @@ else {
 
 
         if(dontscroll2 == false){
-          FBList.scrollTop = FBList.scrollHeight;
+          FBContent.scrollTop = FBContent.scrollHeight;
         }
 
     });
@@ -823,10 +823,10 @@ else {
 
 
   var dontscroll2 = false;
-  FBList.addEventListener( "mouseenter", function() {
+  FBContent.addEventListener( "mouseenter", function() {
     dontscroll2 = true;
   })
-  FBList.addEventListener( "mouseleave", function() {
+  FBContent.addEventListener( "mouseleave", function() {
     dontscroll2 = false;
   })
 
