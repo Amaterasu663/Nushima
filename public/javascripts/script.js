@@ -292,6 +292,10 @@ else {
             div_Eh.innerText = "え？🤔";
             FBContent.appendChild(div_Eh);
             FBContent.appendChild(document.createElement("br"))
+            // console.log(dontscroll2 + "え？");->false
+            if(dontscroll2 == false){
+              FBContent.scrollTop = FBContent.scrollHeight;
+            }    
           }
           break;
 
@@ -795,8 +799,9 @@ else {
       FBContent.appendChild(a);
       }
 
+      console.log(dontscroll2 + "文字おこし");
         if(dontscroll2 == false){
-          messages.scrollTop = messages.scrollHeight;
+          FBContent.scrollTop = FBContent.scrollHeight;
         }
 
     });
@@ -815,6 +820,8 @@ else {
 
 
   var dontscroll = false;
+  var dontscroll2 = false;
+
   revisebyKanri.addEventListener( "mouseenter", function() {
     dontscroll = true;
   })
@@ -823,11 +830,10 @@ else {
   })
 
 if(group == false){
-  var dontscroll2 = false;
-  messages.addEventListener( "mouseenter", function() {
+  FBContent.addEventListener( "mouseenter", function() {
     dontscroll2 = true;
   })
-  messages.addEventListener( "mouseleave", function() {
+  FBContent.addEventListener( "mouseleave", function() {
     dontscroll2 = false;
   })
 }
