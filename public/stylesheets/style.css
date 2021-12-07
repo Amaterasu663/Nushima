@@ -142,6 +142,23 @@ html,body{
   /* overflow-y:scroll; */
 }
 
+.Button-Huh{
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  background-color: #F3F0D7;
+  border-radius: 50%;
+  border-color: #CEE5D0;
+  color: #000000;
+  text-align: center;
+  position: relative;
+  top:100px ; left: 110px;
+
+  font-size: xx-large;
+  font-family:system-ui;
+}
+
+
 .Button-style {
   /* font-size: 18px; */
   display: inline-block;
@@ -151,6 +168,7 @@ html,body{
   background-color: #FFBF86;
   border: none;
   cursor: pointer;
+  
   }
 
   .Button-style2 {
