@@ -494,77 +494,77 @@ else {
 
   const radios = document.getElementsByName('correct');
 
-  // for (var i = 0; i < radios.length; i++) {
-  //   radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
-  //     for (var j = 0; j < radios.length; j++) {
-  //       if (radios[j].checked == true) {
-  //         sendTrigger.disabled = false;
-  //         switch (radios[j].value) {
-  //           case 'remove':
-  //             jimo = "";
-  //             moji = "";
-  //             r = 0;
-  //             genbun.forEach(function (t) {
-  //               r++;
-  //               if (r != junban) {
-  //                 jimo = jimo + t + " ";
-  //                 //moji += t + " "と下は同意
-  //                 moji = moji + t + " ";
-  //               }
-  //               else {
-  //                 jimo = jimo + "<font color = red>" + t + "</font>" + " ";
-  //               }
-  //             });
-  //             // console.log(moji);
-  //             messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
-  //             break;
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
+      for (var j = 0; j < radios.length; j++) {
+        if (radios[j].checked == true) {
+          sendTrigger.disabled = false;
+          switch (radios[j].value) {
+            case 'remove':
+              jimo = "";
+              moji = "";
+              r = 0;
+              genbun.forEach(function (t) {
+                r++;
+                if (r != junban) {
+                  jimo = jimo + t + " ";
+                  //moji += t + " "と下は同意
+                  moji = moji + t + " ";
+                }
+                else {
+                  jimo = jimo + "<font color = red>" + t + "</font>" + " ";
+                }
+              });
+              // console.log(moji);
+              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
+              break;
 
-  //           case 'justcorrect':
-  //             jimo = "";
-  //             moji = "";
-  //             r = 0;
-  //             genbun.forEach(function (t) {
-  //               r++;
-  //               if (r == junban) {
-  //                 jimo = jimo + "<font color = red>" + t + "</font>" + " ";
-  //                 moji = moji + "□" + " ";
-  //               }
-  //               else {
-  //                 jimo = jimo + t + " ";
-  //                 moji = moji + t + " ";
-  //               }
-  //             });
-  //             // console.log(moji);
-  //             messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
-  //             break;
+            case 'justcorrect':
+              jimo = "";
+              moji = "";
+              r = 0;
+              genbun.forEach(function (t) {
+                r++;
+                if (r == junban) {
+                  jimo = jimo + "<font color = red>" + t + "</font>" + " ";
+                  moji = moji + "□" + " ";
+                }
+                else {
+                  jimo = jimo + t + " ";
+                  moji = moji + t + " ";
+                }
+              });
+              // console.log(moji);
+              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
+              break;
 
-  //           case 'allcorrect':
-  //             jimo = "";
-  //             moji = "";
-  //             namae = "";
+            case 'allcorrect':
+              jimo = "";
+              moji = "";
+              namae = "";
 
-  //             for (i = 0; i < genbun.length; i++) {
-  //               if (genbun[i] == "：") {
-  //                 koitsu = i;
-  //                 // console.log(koitsu);
-  //               }
-  //             }
-  //             for (t = 0; t < koitsu + 1; t++) {
-  //               namae = namae + genbun[t];
-  //               // console.log(namae);
-  //             }
+              for (i = 0; i < genbun.length; i++) {
+                if (genbun[i] == "：") {
+                  koitsu = i;
+                  // console.log(koitsu);
+                }
+              }
+              for (t = 0; t < koitsu + 1; t++) {
+                namae = namae + genbun[t];
+                // console.log(namae);
+              }
 
-  //             // namae = genbun[0] + genbun[1];
-  //             jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
-  //             moji = namae + "？？？";
-  //             messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
-  //             break;
-  //         }
+              // namae = genbun[0] + genbun[1];
+              jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
+              moji = namae + "？？？";
+              messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
+              break;
+          }
 
-  //       }
-  //     }
-  //   }
-  // }
+        }
+      }
+    }
+  }
  
 //他の人が既に指摘をしていたときのリアクション
   // const othersShitekibox = document.getElementById('othersShitekibox');
@@ -791,8 +791,9 @@ else {
 
         // }
       // };
+      if(group == false){
       FBContent.appendChild(a);
-
+      }
 
         if(dontscroll2 == false){
           messages.scrollTop = messages.scrollHeight;
