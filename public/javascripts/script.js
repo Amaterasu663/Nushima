@@ -457,8 +457,11 @@ else {
               break;
           }
 
+          //jimoは原文（クリックしたところが分かる文字列）
+          //moji2は修正後の文字列
+          //genbunは","で区切られた配列（元の文
           AllShiteki.push([jimo, moji2, Myname, genbun, 0]);
-          console.log(AllShiteki);
+          // alert(AllShiteki);
 
           room.send({ name: Myname, type: 'teisei', msg1: jimo, msg2: moji2, genbun: genbun });
           // var checkresults = document.getElementById("checkresults");
@@ -478,6 +481,7 @@ else {
 
   const radios = document.getElementsByName('correct');
 
+  //ラジオボタンによる文章の書き換え
   for (var i = 0; i < radios.length; i++) {
     radios[i].onchange = function () { //配列を取り出し一つ一つにonchangeを設定
       for (var j = 0; j < radios.length; j++) {
@@ -632,6 +636,7 @@ else {
   var transcript;
   var transcript2;
   var zenbun = new Array();
+  var zenbun2 = new Array();
   var genbun;
   var junban;
   var jimo;
@@ -697,10 +702,10 @@ else {
     // alert(q);できた
     transcript2 = segmenter.segment(p);
     junbanko = 0;
+    zenbun[junbanparent2] = transcript2;
 
     transcript2.forEach(function (t) {
       //junban++と同意
-      genbun = transcript2;
       junbanko = junbanko + 1;
       var a = document.createElement("a");
       a.classList.add('ichigo');
@@ -713,7 +718,11 @@ else {
         // console.log(a.id);クリア
         FBList.style.display = "none";
         Element0.style.display = "block";
+
+        n = (a.id.split("_"))[1];
+        genbun = zenbun[n];
         junban = (a.id.split("_"))[2];
+
         //   // shitekibox(genbun, junban);
         for (var j = 0; j < radios.length; j++) {
           radios[j].checked = false;
