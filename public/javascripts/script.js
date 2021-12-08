@@ -271,18 +271,21 @@ else {
           break;
 
         case 'Hah':
-          if(Myname=="管理"){
-            var div_Hah = document.createElement("div");
-            revisebyKanri.appendChild(div_Hah);
-            div_Hah.innerHTML = data.name + "さんによる「え？」<br><br>";
-            var btn_Hah = document.createElement("button");
-            btn_Hah.innerText = "確認";
-            revisebyKanri.appendChild(btn_Hah);
-            btn_Hah.onclick = (e) => {
-              btn_Hah.remove();
-              room.send({ name: data.name, type: "HahBack" });
-            }  
-          }
+          didyousayHah = true;
+          HahbyWho.push([data.name]);
+
+          // if(Myname=="管理"){
+          //   var div_Hah = document.createElement("div");
+          //   revisebyKanri.appendChild(div_Hah);
+          //   div_Hah.innerHTML = data.name + "さんによる「え？」<br><br>";
+          //   var btn_Hah = document.createElement("button");
+          //   btn_Hah.innerText = "確認";
+          //   revisebyKanri.appendChild(btn_Hah);
+          //   btn_Hah.onclick = (e) => {
+          //     btn_Hah.remove();
+          //     room.send({ name: data.name, type: "HahBack" });
+          //   }  
+          // }
           break;
         
         case 'HahBack':
@@ -651,6 +654,7 @@ else {
 
   junbanparent = 0;
   junbanparent2 = 0;
+  var transcript;
   var transcript2;
   var zenbun = new Array();
   var genbun;
@@ -667,6 +671,9 @@ else {
   // var othersShiteki2;
   var btn;
   var preparation;
+  var didyousayHah = false;
+  var HahbyWho = new Array();
+
   // const Kanri = document.getElementById('js-kanri');
 
   if(group == true && Myname!="管理"){
@@ -844,10 +851,20 @@ if(group == false){
   //留学生の発言の認識（更新2021/12/05）
   recognition.onresult = (event) => {
     for (var i = event.resultIndex; i < event.results.length; i++) {
-      var transcript = Myname + "：" + event.results[i][0].transcript + "\n\n";
-      room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId });
+      transcript = Myname + "：" + event.results[i][0].transcript + "\n\n";
+      if(didyousayHah == false){
+        room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId }); 
+        alert("didyousayHahはfalseでした"); 
+        // originalHatsugen(transcript); 
+      }
+      else{
+      alert(HahbyWho + didyousayHah);
+      alert("didyousayHahはtrueです"); 
+      HahbyWho.length = 0;
+      didyousayHah = false;
+      alert(HahbyWho + didyousayHah);
 
-      originalHatsugen(transcript);
+      }
     }
   }
 
