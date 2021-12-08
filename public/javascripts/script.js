@@ -35,7 +35,7 @@ const Element2 = document.getElementById('ToshowFB');
 const revisebyKanri = document.getElementById('reviseRecognition');
 const GobackButton = document.getElementById('js-goback');
 const IgotitButton = document.getElementById('js-igotit');
-const IdontgetitButton =document.getElementById('js-idontgetit');
+const IdontgetitButton = document.getElementById('js-idontgetit');
 const NextButton = document.getElementById('js-next');
 const Already = document.getElementById('already');
 const OthersCorrect = document.getElementById("otherscorrect");
@@ -47,20 +47,20 @@ const metoosend = document.getElementById("Metoosend");
 const checkmine = document.getElementById("CheckMine");
 const checkedmine = document.getElementById("CheckedMine");
 
-  Already.style.display = "none";
-  OthersCorrect.style.display = "none";
-  SmallExplanation.style.display = "none";
-  metoosend.style.display = "none";
-  checkmine.style.display = "none";
-  checkedmine.style.display = "none";
+Already.style.display = "none";
+OthersCorrect.style.display = "none";
+SmallExplanation.style.display = "none";
+metoosend.style.display = "none";
+checkmine.style.display = "none";
+checkedmine.style.display = "none";
 
 // モーダルダイアログ：閉じるまで、同じアプリケーションの他のウィンドウに対する操作ができないダイアログボックスのこと
 // <->モードレスダイアログ
-if(group == true　&& Myname=="管理"){
+if (group == true && Myname == "管理") {
   HahButtons.remove();
   NativeSpeakers.remove();
 }
-else if(group == true　&& Myname!="管理"){
+else if (group == true && Myname != "管理") {
   Element0.style.display = "none";
   HahButtons.remove();
   NativeSpeakers.remove();
@@ -180,7 +180,7 @@ else {
 
       // 自分の名前をみんなに送信
       room.send({ name: Myname, type: "open" });
-      if (group == true && Myname !="管理") {
+      if (group == true && Myname != "管理") {
         room.send({ name: Myname, msg: joho, type: "leftdown" });
       }
 
@@ -209,7 +209,7 @@ else {
 
       room.send({ name: Myname, type: "login", peerId: MypeerId });
 
-      if (group == true && Myname !="管理") {
+      if (group == true && Myname != "管理") {
         room.send({ name: Myname, msg: joho, type: "leftdown" });
         // alert("送ったよ！");
       }
@@ -263,57 +263,29 @@ else {
         //代入の時の＝は一個、比較（if文）の中だったら＝は二個
         case 'leftdown':
           // alert(data.msg); 
-          ryugakusei.innerHTML = "◎参加する留学生の情報<br>"+ data.msg;
+          ryugakusei.innerHTML = "◎参加する留学生の情報<br>" + data.msg;
           break;
 
         case 'text':
           //え？ボタンが押されていない文字おこしはdata.mark="0"
           //それ以外はdata.mark=HahbyWho
-            originalHatsugen(data.msg, data.mark);
+          originalHatsugen(data.msg, data.mark);
           break;
 
         case 'Hah':
           didyousayHah = true;
           HahbyWho.push([data.name]);
-
-          // if(Myname=="管理"){
-          //   var div_Hah = document.createElement("div");
-          //   revisebyKanri.appendChild(div_Hah);
-          //   div_Hah.innerHTML = data.name + "さんによる「え？」<br><br>";
-          //   var btn_Hah = document.createElement("button");
-          //   btn_Hah.innerText = "確認";
-          //   revisebyKanri.appendChild(btn_Hah);
-          //   btn_Hah.onclick = (e) => {
-          //     btn_Hah.remove();
-          //     room.send({ name: data.name, type: "HahBack" });
-          //   }  
-          // }
-          break;
-        
-        case 'HahBack':
-          if(Myname==data.name){
-            var div_Eh = document.createElement("div");
-            div_Eh.classList.add("Hah");
-            div_Eh.innerText = "え？🤔";
-            FBContent.appendChild(div_Eh);
-            FBContent.appendChild(document.createElement("br"))
-            // console.log(dontscroll2 + "お？");
-            if(dontscroll2 == false){
-              // console.log(dontscroll2 + "か？");
-              FBContent.scrollTop = FBContent.scrollHeight;
-            }    
-          }
           break;
 
         case 'revised':
           hatsugen(data.msg, data.mark);
-          alert(data.mark);
+          // alert(data.mark);できた
           break;
 
         case 'understand':
           // console.log(data.genbun+data.name+data.msg);ここで、data.msgは届いてる
           // console.log("オールしてきの長さ" +AllShiteki.length);
-          for(i=0; i<AllShiteki.length; i++){
+          for (i = 0; i < AllShiteki.length; i++) {
             // console.log(AllShiteki[i][3]);
             // console.log(data.genbun);
             // alert(AllShiteki[i][2]);
@@ -322,20 +294,20 @@ else {
             //   console.log("1つ目の条件");
             // }
 
-            if(AllShiteki[i][3].join(",")==data.genbun.join(",") && AllShiteki[i][2]==data.name){
+            if (AllShiteki[i][3].join(",") == data.genbun.join(",") && AllShiteki[i][2] == data.name) {
               //表示追加
               // alert("ああああああああ");
               // alert(AllShiteki[i][4]);
 
-              AllShiteki[i][4]=data.msg;
+              AllShiteki[i][4] = data.msg;
               // alert(AllShiteki[i][4]);
-              
+
               break;
             }
           }
-          for(i=0;i<NewAllShiteki.length;i++){
-            if(NewAllShiteki[i][3].join(",")==data.genbun.join(",") && NewAllShiteki[i][2]==data.name){
-              NewAllShiteki[i][5]=data.msg;
+          for (i = 0; i < NewAllShiteki.length; i++) {
+            if (NewAllShiteki[i][3].join(",") == data.genbun.join(",") && NewAllShiteki[i][2] == data.name) {
+              NewAllShiteki[i][5] = data.msg;
               break;
             }
           }
@@ -361,11 +333,11 @@ else {
               NextButton.disabled = true;
               GobackButton.disabled = true;
             }
-            else if(CurrentShiteki == 0){
+            else if (CurrentShiteki == 0) {
               NextButton.disabled = false;
               GobackButton.disabled = true;
             }
-            else{
+            else {
               NextButton.disabled = false;
               GobackButton.disabled = false;
             }
@@ -404,11 +376,11 @@ else {
     //え？ボタンが押されたとき
     const hahButton = document.getElementById('Button-Hah');
 
-    if(group == false){
-    hahButton.addEventListener('click', onClickHah);
-    function onClickHah (){
-      room.send({ name: Myname, type: 'Hah'});
-    }
+    if (group == false) {
+      hahButton.addEventListener('click', onClickHah);
+      function onClickHah() {
+        room.send({ name: Myname, type: 'Hah' });
+      }
     }
 
     // //届いた指摘に対する言語学習者のリアクション
@@ -463,8 +435,8 @@ else {
     //   }
     // }
 
-    if(group == false){
-    sendTrigger.addEventListener('click', onClickSend);
+    if (group == false) {
+      sendTrigger.addEventListener('click', onClickSend);
     }
 
     // 「送る」を押したとき働く関数
@@ -485,7 +457,7 @@ else {
               break;
           }
 
-          AllShiteki.push([jimo, moji2, Myname, genbun,0]);
+          AllShiteki.push([jimo, moji2, Myname, genbun, 0]);
           console.log(AllShiteki);
 
           room.send({ name: Myname, type: 'teisei', msg1: jimo, msg2: moji2, genbun: genbun });
@@ -496,7 +468,7 @@ else {
           }
           sendTrigger.disabled = true;
           localText.value = "";
-          messages.innerHTML ="";
+          messages.innerHTML = "";
           Element0.style.display = "none";
           FBList.style.display = "block";
         }
@@ -577,8 +549,8 @@ else {
       }
     }
   }
- 
-//他の人が既に指摘をしていたときのリアクション
+
+  //他の人が既に指摘をしていたときのリアクション
   // const othersShitekibox = document.getElementById('othersShitekibox');
   // const MyShiteki = document.getElementById("MyShiteki");
   // const metoosend = document.getElementById("Metoosend");
@@ -679,49 +651,50 @@ else {
 
   // const Kanri = document.getElementById('js-kanri');
 
-  if(group == true && Myname!="管理"){
-  recognition.start();
+  if (group == true && Myname != "管理") {
+    recognition.start();
   }
   const segmenter = new TinySegmenter();
 
-  function originalHatsugen(transcript, Hahmark){
+  function originalHatsugen(transcript, Hahmark) {
     //zenbunのjunbanparent番目に一文ずつ入る
     zenbun[junbanparent] = transcript;
     junbanparent++;
     // console.log(zenbun);
-      var div = document.createElement("div");
-      revisebyKanri.appendChild(div);
-      div.innerText = transcript;
-      div.id = "target_" + junbanparent;
-      var btn = document.createElement("button");
-      btn.innerText = "送信";
-      revisebyKanri.appendChild(btn);
+    var div = document.createElement("div");
+    revisebyKanri.appendChild(div);
+    div.innerText = transcript;
+    div.id = "target_" + junbanparent;
+    var btn = document.createElement("button");
+    btn.innerText = "送信";
+    revisebyKanri.appendChild(btn);
 
-      if(Hahmark!="0" && Myname=="管理"){
-        for(var i=0; i<Hahmark.length; i++){
+    if (Hahmark != "0" && Myname == "管理") {
+      for (var i = 0; i < Hahmark.length; i++) {
         var div_Hah = document.createElement("div");
         revisebyKanri.appendChild(div_Hah);
         div_Hah.innerHTML = "<font color = red>" + Hahmark[i] + "さんによる「え？」</font><br><br>";
-        }
       }
+    }
 
-      if(dontscroll == false){
-        revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
-      }
+    if (dontscroll == false) {
+      revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
+    }
 
-      div.onclick = (e) => {
-        div.contentEditable = 'true';
-      }
+    div.onclick = (e) => {
+      div.contentEditable = 'true';
+    }
 
-      btn.onclick = (e) => {
-        preparation = div.innerText;
-        div.contentEditable = "false";
-        btn.remove();
-        room.send({ msg: preparation, mark: Hahmark, type: "revised" });
-      }
+    btn.onclick = (e) => {
+      preparation = div.innerText;
+      div.contentEditable = "false";
+      btn.remove();
+      room.send({ msg: preparation, mark: Hahmark, type: "revised" });
+    }
   }
-  
+
   function hatsugen(p, q) {
+    // alert(q);できた
     transcript2 = segmenter.segment(p);
     junbanko = 0;
 
@@ -737,11 +710,11 @@ else {
 
       // junbanparent2は0から、junbankoは1からスタートする
       a.onclick = (e) => {
-      // console.log(a.id);クリア
-      FBList.style.display = "none";
-      Element0.style.display = "block";
-      junban = (a.id.split("_"))[2];
-      //   // shitekibox(genbun, junban);
+        // console.log(a.id);クリア
+        FBList.style.display = "none";
+        Element0.style.display = "block";
+        junban = (a.id.split("_"))[2];
+        //   // shitekibox(genbun, junban);
         for (var j = 0; j < radios.length; j++) {
           radios[j].checked = false;
         }
@@ -760,9 +733,9 @@ else {
           else {
             jimo = jimo + "<font color = red>" + t + "</font>" + " ";
           }
-          
+
         });
-        
+
         messages.innerHTML = "<br>" + genbun.join(" ") + "<br><br>" + jimo;
       }
 
@@ -813,29 +786,40 @@ else {
       //       }
       //     }
 
-        // }
+      // }
       // };
-      if(group == false){
-      FBContent.appendChild(a);
-        // if(q!=0){
-        //   alert(q);
-        // }
+      if (group == false) {
+        FBContent.appendChild(a);
       }
 
       // console.log(dontscroll2 + "お");
-        if(dontscroll2 == false){
-          // console.log(dontscroll2 + "か");
-          FBContent.scrollTop = FBContent.scrollHeight;
-        }
+      if (dontscroll2 == false) {
+        // console.log(dontscroll2 + "か");
+        FBContent.scrollTop = FBContent.scrollHeight;
+      }
 
     });
+    if (q != 0) {
+      for (var i = 0; i < q.length; i++) {
+        if (q[i] == Myname) {
+          var div_Eh = document.createElement("div");
+          div_Eh.classList.add("Hah");
+          div_Eh.innerText = "え？🤔";
+          FBContent.appendChild(div_Eh);
+          FBContent.appendChild(document.createElement("br"))
+          if (dontscroll2 == false) {
+            FBContent.scrollTop = FBContent.scrollHeight;
+          }
+        }
+      }
+    }
     junbanparent2++;
   }
 
-  if(group == false){
-  var closeShitekibox = document.getElementById('js-close-trigger');
-  closeShitekibox.disabled = false;
-  closeShitekibox.addEventListener('click', onClickCloseShitekibox);
+  if (group == false) {
+    var closeShitekibox = document.getElementById('js-close-trigger');
+    closeShitekibox.disabled = false;
+    closeShitekibox.addEventListener('click', onClickCloseShitekibox);
   }
   function onClickCloseShitekibox() {
     Element0.style.display = "none";
@@ -846,33 +830,33 @@ else {
   var dontscroll = false;
   var dontscroll2 = false;
 
-  revisebyKanri.addEventListener( "mouseenter", function() {
+  revisebyKanri.addEventListener("mouseenter", function () {
     dontscroll = true;
   })
-  revisebyKanri.addEventListener( "mouseleave", function(){
+  revisebyKanri.addEventListener("mouseleave", function () {
     dontscroll = false;
   })
 
-if(group == false){
-  FBContent.addEventListener( "mouseenter", function() {
-    dontscroll2 = true;
-  })
-  FBContent.addEventListener( "mouseleave", function() {
-    dontscroll2 = false;
-  })
-}
+  if (group == false) {
+    FBContent.addEventListener("mouseenter", function () {
+      dontscroll2 = true;
+    })
+    FBContent.addEventListener("mouseleave", function () {
+      dontscroll2 = false;
+    })
+  }
 
   //留学生の発言の認識（更新2021/12/05）
   recognition.onresult = (event) => {
     for (var i = event.resultIndex; i < event.results.length; i++) {
       transcript = Myname + "：" + event.results[i][0].transcript + "\n\n";
-      if(didyousayHah == false){
-        room.send({ name: Myname, msg: transcript, mark: "0", type: "text"}); 
+      if (didyousayHah == false) {
+        room.send({ name: Myname, msg: transcript, mark: "0", type: "text" });
         // originalHatsugen(transcript); 
       }
       //え？が押されているときの場合
-      else{
-        room.send({ name: Myname, msg: transcript, mark: HahbyWho, type: "text"}); 
+      else {
+        room.send({ name: Myname, msg: transcript, mark: HahbyWho, type: "text" });
         HahbyWho.splice(0);
         didyousayHah = false;
       }
