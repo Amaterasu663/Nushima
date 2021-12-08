@@ -267,12 +267,9 @@ else {
           break;
 
         case 'text':
-          if(data.mark == "0"){
-            originalHatsugen(data.msg);
-          }
-          else{
-            alert(data.mark);
-          }
+          //え？ボタンが押されていない文字おこしはdata.mark="0"
+          //それ以外はdata.mark=HahbyWho
+            originalHatsugen(data.msg, data.mark);
           break;
 
         case 'Hah':
@@ -686,7 +683,7 @@ else {
   }
   const segmenter = new TinySegmenter();
 
-  function originalHatsugen(transcript){
+  function originalHatsugen(transcript, Hahmark){
     //zenbunのjunbanparent番目に一文ずつ入る
     zenbun[junbanparent] = transcript;
     junbanparent++;
@@ -698,6 +695,14 @@ else {
       var btn = document.createElement("button");
       btn.innerText = "送信";
       revisebyKanri.appendChild(btn);
+
+      if(Hahmark!="0" && Myname=="管理"){
+        for(var i=0; i<Hahmark.length; i++){
+        var div_Hah = document.createElement("div");
+        revisebyKanri.appendChild(div_Hah);
+        div_Hah.innerHTML = Hahmark[i] + "さんによる「え？」<br><br>";
+        }
+      }
 
       if(dontscroll == false){
         revisebyKanri.scrollTop = revisebyKanri.scrollHeight;
