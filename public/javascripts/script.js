@@ -306,7 +306,8 @@ else {
           break;
 
         case 'revised':
-          hatsugen(data.msg);
+          hatsugen(data.msg, data.mark);
+          alert(data.mark);
           break;
 
         case 'understand':
@@ -700,7 +701,7 @@ else {
         for(var i=0; i<Hahmark.length; i++){
         var div_Hah = document.createElement("div");
         revisebyKanri.appendChild(div_Hah);
-        div_Hah.innerHTML = Hahmark[i] + "さんによる「え？」<br><br>";
+        div_Hah.innerHTML = "<font color = red>" + Hahmark[i] + "さんによる「え？」</font><br><br>";
         }
       }
 
@@ -716,11 +717,11 @@ else {
         preparation = div.innerText;
         div.contentEditable = "false";
         btn.remove();
-        room.send({ msg: preparation, type: "revised" });
+        room.send({ msg: preparation, mark: Hahmark, type: "revised" });
       }
   }
   
-  function hatsugen(p) {
+  function hatsugen(p, q) {
     transcript2 = segmenter.segment(p);
     junbanko = 0;
 
@@ -816,6 +817,9 @@ else {
       // };
       if(group == false){
       FBContent.appendChild(a);
+        // if(q!=0){
+        //   alert(q);
+        // }
       }
 
       // console.log(dontscroll2 + "お");
