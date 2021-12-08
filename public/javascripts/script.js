@@ -279,28 +279,13 @@ else {
 
         case 'revised':
           hatsugen(data.msg, data.mark);
-          // alert(data.mark);できた
           break;
 
         case 'understand':
-          // console.log(data.genbun+data.name+data.msg);ここで、data.msgは届いてる
-          // console.log("オールしてきの長さ" +AllShiteki.length);
           for (i = 0; i < AllShiteki.length; i++) {
-            // console.log(AllShiteki[i][3]);
-            // console.log(data.genbun);
-            // alert(AllShiteki[i][2]);
-            // alert(data.name);
-            // if(AllShiteki[i][3].join(",")==data.genbun.join(",")){
-            //   console.log("1つ目の条件");
-            // }
 
             if (AllShiteki[i][3].join(",") == data.genbun.join(",") && AllShiteki[i][2] == data.name) {
-              //表示追加
-              // alert("ああああああああ");
-              // alert(AllShiteki[i][4]);
-
               AllShiteki[i][4] = data.msg;
-              // alert(AllShiteki[i][4]);
 
               break;
             }
@@ -328,19 +313,25 @@ else {
           if (NewAllShiteki.length == i) {
             NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0, 0]);
             // alert("あああああああああああ"+CurrentShiteki);
-            if (NewAllShiteki.length == 1) {
-              sentfB.innerHTML = "◎届いた指摘<br>" + data.msg1 + "<br><br>" + data.msg2 + "<br><br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
-              NextButton.disabled = true;
-              GobackButton.disabled = true;
-            }
-            else if (CurrentShiteki == 0) {
-              NextButton.disabled = false;
-              GobackButton.disabled = true;
-            }
-            else {
-              NextButton.disabled = false;
-              GobackButton.disabled = false;
-            }
+            // if (NewAllShiteki.length == 1) {
+              // FBsent.innerText = "◎届いた指摘\n" + data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
+              Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
+              Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
+              if (dontscroll3 == false) {
+                Element2.scrollTop = Element2.scrollHeight;
+              }
+
+              // NextButton.disabled = true;
+              // GobackButton.disabled = true;
+            // }
+            // else if (CurrentShiteki == 0) {
+            //   NextButton.disabled = false;
+            //   GobackButton.disabled = true;
+            // }
+            // else {
+            //   NextButton.disabled = false;
+            //   GobackButton.disabled = false;
+            // }
 
           }
           break;
@@ -838,13 +829,16 @@ else {
 
   var dontscroll = false;
   var dontscroll2 = false;
+  var dontscroll3 = false;
 
+  if (group == true && Myname=="管理") {
   revisebyKanri.addEventListener("mouseenter", function () {
     dontscroll = true;
   })
   revisebyKanri.addEventListener("mouseleave", function () {
     dontscroll = false;
   })
+  }
 
   if (group == false) {
     FBContent.addEventListener("mouseenter", function () {
@@ -852,6 +846,15 @@ else {
     })
     FBContent.addEventListener("mouseleave", function () {
       dontscroll2 = false;
+    })
+  }
+
+  if (group == true && Myname!="管理") {
+    Element2.addEventListener("mouseenter", function () {
+      dontscroll3 = true;
+    })
+    Element2.addEventListener("mouseleave", function () {
+      dontscroll3 = false;
     })
   }
 
