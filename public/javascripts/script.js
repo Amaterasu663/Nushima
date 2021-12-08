@@ -267,7 +267,12 @@ else {
           break;
 
         case 'text':
-          originalHatsugen(data.msg);
+          if(data.mark == "0"){
+            originalHatsugen(data.msg);
+          }
+          else{
+            alert(data.mark);
+          }
           break;
 
         case 'Hah':
@@ -853,17 +858,14 @@ if(group == false){
     for (var i = event.resultIndex; i < event.results.length; i++) {
       transcript = Myname + "：" + event.results[i][0].transcript + "\n\n";
       if(didyousayHah == false){
-        room.send({ name: Myname, msg: transcript, type: "text", peerId: MypeerId }); 
-        alert("didyousayHahはfalseでした"); 
+        room.send({ name: Myname, msg: transcript, mark: "0", type: "text"}); 
         // originalHatsugen(transcript); 
       }
+      //え？が押されているときの場合
       else{
-      alert(HahbyWho + didyousayHah);
-      alert("didyousayHahはtrueです"); 
-      HahbyWho.length = 0;
-      didyousayHah = false;
-      alert(HahbyWho + didyousayHah);
-
+        room.send({ name: Myname, msg: transcript, mark: HahbyWho, type: "text"}); 
+        HahbyWho.splice(0);
+        didyousayHah = false;
       }
     }
   }
