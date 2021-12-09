@@ -286,7 +286,6 @@ else {
 
             if (AllShiteki[i][3].join(",") == data.genbun.join(",") && AllShiteki[i][2] == data.name) {
               AllShiteki[i][4] = data.msg;
-
               break;
             }
           }
@@ -316,6 +315,13 @@ else {
                 IgotitButton.classList.add('Button-style3');
                 IgotitButton.id = "btnId_" + j;
                 Element2.appendChild(IgotitButton);
+
+                IgotitButton.onclick = (e) => {
+                  var ClickedButtonId = (IgotitButton.id.split("_"))[1];
+                  NewAllShiteki[ClickedButtonId][5] = 1;
+                  alert(NewAllShiteki[ClickedButtonId][3], NewAllShiteki[ClickedButtonId][5], NewAllShiteki[ClickedButtonId][2]);
+                }            
+
                 }
                 Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
               }
@@ -378,15 +384,18 @@ else {
     }
 
     // //届いた指摘に対する言語学習者のリアクション
+    // if(group == true && Myname!="管理"){
     // IgotitButton.addEventListener('click', onClickIgotit);
+    // }
     // IdontgetitButton.addEventListener('click', onClickIdontgetit);
     // NextButton.addEventListener('click', onClickNext);
     // GobackButton.addEventListener('click', onClickGoback);
 
     // function onClickIgotit(){
-    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
-    //   NewAllShiteki[CurrentShiteki][5] = 1;
-    //   room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2] });
+    //   var ClickedButtonId = (a.id.split("_"))[1];
+    //   NewAllShiteki[ClickedButtonId][5] = 1;
+    //   room.send({type: "understand", genbun: NewAllShiteki[ClickedButtonId][3], msg:NewAllShiteki[ClickedButtonId][5], name:NewAllShiteki[ClickedButtonId][2] });
+    //   alert(NewAllShiteki[ClickedButtonId][3], NewAllShiteki[ClickedButtonId][5], NewAllShiteki[ClickedButtonId][2]);
     // }
 
     // function onClickIdontgetit(){
@@ -395,39 +404,6 @@ else {
     //   room.send({type: "understand", genbun: NewAllShiteki[CurrentShiteki][3], msg:NewAllShiteki[CurrentShiteki][5], name:NewAllShiteki[CurrentShiteki][2]  });
     // }
 
-    // function onClickNext() {
-    //   GobackButton.disabled = false;
-    //   CurrentShiteki++;
-    //   if(NewAllShiteki[CurrentShiteki][5]==0){
-    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
-    //   }
-    //   else if(NewAllShiteki[CurrentShiteki][5]==1){
-    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
-    //   }
-    //   else if(NewAllShiteki[CurrentShiteki][5]==2){
-    //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
-    //   }
-    //   if (CurrentShiteki == NewAllShiteki.length - 1) {
-    //     NextButton.disabled = true;
-    //   }
-    // }
-
-    // function onClickGoback() {
-    //   NextButton.disabled = false;
-    //   CurrentShiteki--;
-    //   if(NewAllShiteki[CurrentShiteki][5]==0){
-    //     sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4];
-    //     }
-    //     else if(NewAllShiteki[CurrentShiteki][5]==1){
-    //     sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💖";
-    //     }
-    //     else if(NewAllShiteki[CurrentShiteki][5]==2){
-    //     sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
-    //     }
-    //     if (CurrentShiteki == 0) {
-    //     GobackButton.disabled = true;
-    //   }
-    // }
 
     if (group == false) {
       sendTrigger.addEventListener('click', onClickSend);
