@@ -311,16 +311,15 @@ else {
                 Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 if(Myname!="管理"){
                 var IgotitButton = document.createElement("button");
-                IgotitButton.innerHTML = "理解した！";
+                IgotitButton.innerText = "理解した！";
                 IgotitButton.classList.add('Button-style3');
                 IgotitButton.id = "btnId_" + j;
-                Element2.appendChild(IgotitButton);
-
+                
                 IgotitButton.onclick = (e) => {
-                  var ClickedButtonId = (IgotitButton.id.split("_"))[1];
-                  NewAllShiteki[ClickedButtonId][5] = 1;
-                  alert(NewAllShiteki[ClickedButtonId][3], NewAllShiteki[ClickedButtonId][5], NewAllShiteki[ClickedButtonId][2]);
-                }            
+                  alert("onclicked");
+                }
+
+                Element2.appendChild(IgotitButton);
 
                 }
                 Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
@@ -341,7 +340,12 @@ else {
               IgotitButton.innerText = "理解した！";
               IgotitButton.classList.add('Button-style3');
               IgotitButton.id = "btnId_" + i;
+
+              IgotitButton.onclick = (e) => {
+                alert("onclicked2");
+              }
               Element2.appendChild(IgotitButton);
+
               }
               Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
           
