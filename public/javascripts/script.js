@@ -33,10 +33,10 @@ const NativeSpeakers = document.getElementById('nativeSpeakers');
 const Element0 = document.getElementById('TosendFB');
 const Element2 = document.getElementById('ToshowFB');
 const revisebyKanri = document.getElementById('reviseRecognition');
-const GobackButton = document.getElementById('js-goback');
-const IgotitButton = document.getElementById('js-igotit');
-const IdontgetitButton = document.getElementById('js-idontgetit');
-const NextButton = document.getElementById('js-next');
+// const GobackButton = document.getElementById('js-goback');
+// const IgotitButton = document.getElementById('js-igotit');
+// const IdontgetitButton = document.getElementById('js-idontgetit');
+// const NextButton = document.getElementById('js-next');
 const Already = document.getElementById('already');
 const OthersCorrect = document.getElementById("otherscorrect");
 const SmallExplanation = document.getElementById("smallexplanation");
@@ -301,47 +301,46 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
-          //いいねの数をカウントアップ→表示用のAllshitekiをつくる
 
+          //いいねの数をカウントアップ
           for (i = 0; i < NewAllShiteki.length; i++) {
             if (NewAllShiteki[i][0] == data.msg1 && NewAllShiteki[i][1] == data.msg2) {
               NewAllShiteki[i][4]++;
+              //Element2内全体の更新
+              Element2.innerHTML = "◎届いた指摘<br>";
+              for (j = 0; j < NewAllShiteki.length; j++) {
+                Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
+                var IgotitButton = document.createElement("button");
+                IgotitButton.innerHTML = "理解した！";
+                IgotitButton.classList.add('Button-style3');
+                IgotitButton.id = "btnId_" + j;
+                Element2.appendChild(IgotitButton);
+                Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"  
+              }
               break;
             }
           }
 
+          //いいねじゃなくて、新規の指摘だった場合
           if (NewAllShiteki.length == i) {
             NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0, 0]);
             // alert("あああああああああああ"+CurrentShiteki);
             // if (NewAllShiteki.length == 1) {
               // FBsent.innerText = "◎届いた指摘\n" + data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
               Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
+              var IgotitButton = document.createElement("button");
+              IgotitButton.innerText = "理解した！";
+              IgotitButton.classList.add('Button-style3');
+              IgotitButton.id = "btnId_" + i;
+              Element2.appendChild(IgotitButton);
               Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
+          
               if (dontscroll3 == false) {
                 Element2.scrollTop = Element2.scrollHeight;
               }
-
-              // NextButton.disabled = true;
-              // GobackButton.disabled = true;
-            // }
-            // else if (CurrentShiteki == 0) {
-            //   NextButton.disabled = false;
-            //   GobackButton.disabled = true;
-            // }
-            // else {
-            //   NextButton.disabled = false;
-            //   GobackButton.disabled = false;
-            // }
-
           }
           break;
       }
-      // Show a message sent to the room and who sent
-      // peer.listAllPeers((peers) => {
-      //   console.log("あああ" + loginChildren.length);
-      //   console.log(data.name);
-      // });
-      // messages1.textContent += `${data}\n`;
     });
 
     // 退室時の処理（for closing room members
@@ -793,9 +792,11 @@ else {
       }
 
       // console.log(dontscroll2 + "お");
+      if(group == false){
       if (dontscroll2 == false) {
         // console.log(dontscroll2 + "か");
         FBContent.scrollTop = FBContent.scrollHeight;
+      }
       }
 
     });
