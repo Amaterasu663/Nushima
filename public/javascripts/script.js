@@ -315,9 +315,6 @@ else {
                   // IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   
-                  IgotitButton.onclick = (e) => {
-                    alert("onclicked");
-                  }
                 // alert("イベントリスナーの前");うごく
                 // IgotitButton.addEventListener('click', onClickIgotit);
   
@@ -325,6 +322,9 @@ else {
                                 
                 // }要復活
                 Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
+                IgotitButton.onclick = (e) => {
+                  alert("onclicked");
+                }
                 
               }
               break;
@@ -344,11 +344,10 @@ else {
                 // IgotitButton.classList.add('Button-style3');
                 IgotitButton.id = "btnId_" + j;
                 
-                IgotitButton.onclick = (e) => {
-                  alert("onclicked222222");
-                }
-
               Element2.appendChild(IgotitButton);
+              IgotitButton.onclick = (e) => {
+                alert("onclicked222222");
+              }
 
               // alert("イベントリスナーの前2");
               // IgotitButton.addEventListener('click', onClickIgotit);
