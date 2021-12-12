@@ -269,7 +269,6 @@ else {
         case 'text':
           //え？ボタンが押されていない文字おこしはdata.mark="0"
           //それ以外はdata.mark=HahbyWho
-          alert(data.mark);
           originalHatsugen(data.msg, data.mark);
           break;
 
@@ -277,6 +276,7 @@ else {
           // alert("はあ？を認識");
           didyousayHah = true;
           HahbyWho.push([data.name]);
+          alert(HahbyWho);
           break;
 
         case 'revised':
@@ -639,6 +639,7 @@ else {
   const segmenter = new TinySegmenter();
 
   function originalHatsugen(transcript, Hahmark) {
+    alert(Hahmark);
     //zenbunのjunbanparent番目に一文ずつ入る
     zenbun[junbanparent] = transcript;
     junbanparent++;
@@ -677,7 +678,6 @@ else {
 
   function hatsugen(p, q) {
     // alert(q);
-    alert(q);
     transcript2 = segmenter.segment(p);
     junbanko = 0;
     zenbun[junbanparent2] = transcript2;
