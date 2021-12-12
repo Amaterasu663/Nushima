@@ -273,6 +273,7 @@ else {
           break;
 
         case 'Hah':
+          alert("はあ？を認識");
           didyousayHah = true;
           HahbyWho.push([data.name]);
           break;
@@ -310,7 +311,7 @@ else {
               for (j = 0; j < NewAllShiteki.length; j++) {
                 Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 // if(Myname!="管理"){要復活
-                  IgotitButton = document.createElement("button");
+                  var IgotitButton = document.createElement("button");
                   IgotitButton.innerText = "理解した！";
                   // IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
@@ -339,7 +340,7 @@ else {
               // FBsent.innerText = "◎届いた指摘\n" + data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
               Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
               // if(Myname!="管理"){要復活
-                IgotitButton = document.createElement("button");
+                var IgotitButton = document.createElement("button");
                 IgotitButton.innerText = "理解した！";
                 // IgotitButton.classList.add('Button-style3');
                 IgotitButton.id = "btnId_" + j;
@@ -362,8 +363,6 @@ else {
           break;
       }
     });
-
-    var IgotitButton;
 
     // 退室時の処理（for closing room members
     room.on('peerLeave', peerId => {
