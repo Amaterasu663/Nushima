@@ -269,6 +269,7 @@ else {
         case 'text':
           //え？ボタンが押されていない文字おこしはdata.mark="0"
           //それ以外はdata.mark=HahbyWho
+          alert(data.mark);
           originalHatsugen(data.msg, data.mark);
           break;
 
@@ -313,7 +314,7 @@ else {
                 // if(Myname!="管理"){要復活
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
-                  IgotitButton.innerText = "理解した！";
+                  IgotitButton.innerHTML = "理解した！";
                   // IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   
@@ -339,17 +340,13 @@ else {
               Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
               // if(Myname!="管理"){要復活
                 var IgotitButton = document.createElement("button");
-                IgotitButton.innerHTML = "理解した！";
+                IgotitButton.innerHTML = "理解した!?!?!?!";
                 // IgotitButton.classList.add('Button-style3');
                 IgotitButton.id = "btnId_" + j;
                 
               Element2.appendChild(IgotitButton);
-              IgotitButton.onclick = (e) => {
-                alert("onclicked222222");
-              }
 
-              // alert("イベントリスナーの前2");
-              // IgotitButton.addEventListener('click', onClickIgotit);
+              IgotitButton.addEventListener('click', onClickIgotit);
 
               // }要復活
               Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
@@ -393,15 +390,15 @@ else {
     }
 
     // //届いた指摘に対する言語学習者のリアクション
-    // if(group == true && Myname!="管理"){
-    // IgotitButton.addEventListener('click', onClickIgotit);
-    // }
+    if(group == true && Myname!="管理"){
+    IgotitButton.addEventListener('click', onClickIgotit);
+    }
     // IdontgetitButton.addEventListener('click', onClickIdontgetit);
     // NextButton.addEventListener('click', onClickNext);
     // GobackButton.addEventListener('click', onClickGoback);
 
     function onClickIgotit(){
-      alert("関数で");
+      alert("関数動いています");
     //   var ClickedButtonId = (a.id.split("_"))[1];
     //   NewAllShiteki[ClickedButtonId][5] = 1;
     //   room.send({type: "understand", genbun: NewAllShiteki[ClickedButtonId][3], msg:NewAllShiteki[ClickedButtonId][5], name:NewAllShiteki[ClickedButtonId][2] });
