@@ -345,7 +345,7 @@ else {
                 var IgotitButton2 = document.createElement("button");
                 IgotitButton2.innerHTML = "理解した!?!?!?!";
                 // IgotitButton.classList.add('Button-style3');
-                IgotitButton2.id = "btnId_" + j;
+                IgotitButton2.id = "btnId_" + NewAllShiteki.length-1;
                 
                 Element2.appendChild(IgotitButton2);
                 IgotitButton2.onclick = (e) => {
