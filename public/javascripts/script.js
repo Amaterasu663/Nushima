@@ -300,7 +300,8 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
-
+          var IgotitButton;
+          var IgotitButton2;
           //いいねの数をカウントアップ
           for (i = 0; i < NewAllShiteki.length; i++) {  
             if (NewAllShiteki[i][0] == data.msg1 && NewAllShiteki[i][1] == data.msg2) {
@@ -309,27 +310,18 @@ else {
               Element2.innerHTML = "◎届いた指摘<br>";
               for (j = 0; j < NewAllShiteki.length; j++) {
                 Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
-                if(Myname!="管理"){
+                // if(Myname!="管理"){要復活
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
-                  IgotitButton.innerHTML = "理解した！";
+                  IgotitButton.innerHTML = "理解した!";
                   // IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
-                  // alert("イベントリスナーの前");うごく
-                  // IgotitButton.addEventListener('click', onClickIgotit);
-                  // function onClickIgotit(){
-                  //   alert("関数動いています");
-                  // }
                   IgotitButton.onclick = (e) => {
+                    console.log("onclicked1");
                     alert("onclicked");
                   }
-              
-                }
-                
+                // } 要復活
                 Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
-                // IgotitButton.onclick = (e) => {
-                //   alert("onclicked");
-                // }
               }
               break;
             }
@@ -338,20 +330,18 @@ else {
           //いいねじゃなくて、新規の指摘だった場合
           if (NewAllShiteki.length == i || NewAllShiteki.length == 1) {
             NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0, 0]);
-              // if (NewAllShiteki.length == 1) {
-              // FBsent.innerText = "◎届いた指摘\n" + data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
               Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
-              if(Myname!="管理"){
+              // if(Myname!="管理"){要復活
                 var IgotitButton2 = document.createElement("button");
                 IgotitButton2.innerHTML = "理解した!?!?!?!";
                 // IgotitButton.classList.add('Button-style3');
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
-                
                 Element2.appendChild(IgotitButton2);
                 IgotitButton2.onclick = (e) => {
+                  console.log("onclicked2");
                   alert("onclicked2");
                 }
-              }
+              // }要復活
               Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
           
               if (dontscroll3 == false) {
@@ -405,7 +395,6 @@ else {
     // //   room.send({type: "understand", genbun: NewAllShiteki[ClickedButtonId][3], msg:NewAllShiteki[ClickedButtonId][5], name:NewAllShiteki[ClickedButtonId][2] });
     // //   alert(NewAllShiteki[ClickedButtonId][3], NewAllShiteki[ClickedButtonId][5], NewAllShiteki[ClickedButtonId][2]);
     // }
-
 
     if (group == false) {
       sendTrigger.addEventListener('click', onClickSend);
