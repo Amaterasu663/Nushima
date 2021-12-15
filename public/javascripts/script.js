@@ -273,7 +273,6 @@ else {
           break;
 
         case 'Hah':
-          // alert("はあ？を認識");
           didyousayHah = true;
           HahbyWho.push([data.name]);
           break;
@@ -317,14 +316,19 @@ else {
                   // IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   
-                // alert("イベントリスナーの前");うごく
-                // IgotitButton.addEventListener('click', onClickIgotit);
-                }
-                Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
-                IgotitButton.onclick = (e) => {
-                  alert("onclicked");
+                  // alert("イベントリスナーの前");うごく
+                  IgotitButton.addEventListener('click', onClickIgotit);
+                  
+                  function onClickIgotit(){
+                    alert("関数動いています");
+                  }
+              
                 }
                 
+                Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
+                // IgotitButton.onclick = (e) => {
+                //   alert("onclicked");
+                // }
               }
               break;
             }
@@ -333,19 +337,19 @@ else {
           //いいねじゃなくて、新規の指摘だった場合
           if (NewAllShiteki.length == i) {
             NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0, 0]);
-            // alert("あああああああああああ"+CurrentShiteki);
-            // if (NewAllShiteki.length == 1) {
+              // if (NewAllShiteki.length == 1) {
               // FBsent.innerText = "◎届いた指摘\n" + data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
               Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
               if(Myname!="管理"){
-                var IgotitButton = document.createElement("button");
-                IgotitButton.innerHTML = "理解した!?!?!?!";
+                var IgotitButton2 = document.createElement("button");
+                IgotitButton2.innerHTML = "理解した!?!?!?!";
                 // IgotitButton.classList.add('Button-style3');
-                IgotitButton.id = "btnId_" + j;
+                IgotitButton2.id = "btnId_" + j;
                 
-              Element2.appendChild(IgotitButton);
-              IgotitButton.addEventListener('click', onClickIgotit);
-
+              Element2.appendChild(IgotitButton2);
+              IgotitButton2.onclick = (e) => {
+                  alert("onclicked");
+                }
               }
               Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
           
@@ -388,20 +392,20 @@ else {
     }
 
     // //届いた指摘に対する言語学習者のリアクション
-    if(group == true && Myname!="管理"){
-    IgotitButton.addEventListener('click', onClickIgotit);
-    }
-    // IdontgetitButton.addEventListener('click', onClickIdontgetit);
-    // NextButton.addEventListener('click', onClickNext);
-    // GobackButton.addEventListener('click', onClickGoback);
+    // if(group == true && Myname!="管理"){
+    // IgotitButton.addEventListener('click', onClickIgotit);
+    // }
+    // // IdontgetitButton.addEventListener('click', onClickIdontgetit);
+    // // NextButton.addEventListener('click', onClickNext);
+    // // GobackButton.addEventListener('click', onClickGoback);
 
-    function onClickIgotit(){
-      alert("関数動いています");
-    //   var ClickedButtonId = (a.id.split("_"))[1];
-    //   NewAllShiteki[ClickedButtonId][5] = 1;
-    //   room.send({type: "understand", genbun: NewAllShiteki[ClickedButtonId][3], msg:NewAllShiteki[ClickedButtonId][5], name:NewAllShiteki[ClickedButtonId][2] });
-    //   alert(NewAllShiteki[ClickedButtonId][3], NewAllShiteki[ClickedButtonId][5], NewAllShiteki[ClickedButtonId][2]);
-    }
+    // function onClickIgotit(){
+    //   alert("関数動いています");
+    // //   var ClickedButtonId = (a.id.split("_"))[1];
+    // //   NewAllShiteki[ClickedButtonId][5] = 1;
+    // //   room.send({type: "understand", genbun: NewAllShiteki[ClickedButtonId][3], msg:NewAllShiteki[ClickedButtonId][5], name:NewAllShiteki[ClickedButtonId][2] });
+    // //   alert(NewAllShiteki[ClickedButtonId][3], NewAllShiteki[ClickedButtonId][5], NewAllShiteki[ClickedButtonId][2]);
+    // }
 
     // function onClickIdontgetit(){
     //   sentfB.innerHTML = "◎届いた指摘<br>" + NewAllShiteki[CurrentShiteki][0] + "<br><br>" + NewAllShiteki[CurrentShiteki][1] + "<br><br>訂正してくれた人：" + NewAllShiteki[CurrentShiteki][2] + "　👍" + NewAllShiteki[CurrentShiteki][4]+ "　💭";
