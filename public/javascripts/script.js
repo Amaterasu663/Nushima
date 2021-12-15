@@ -616,9 +616,9 @@ else {
 
   // const Kanri = document.getElementById('js-kanri');
 
-  if (group == true && Myname != "管理") {
+  // if (group == true && Myname != "管理") {要復活
     recognition.start();
-  }
+  // }要復活
   const segmenter = new TinySegmenter();
 
   function originalHatsugen(transcript, Hahmark) {
