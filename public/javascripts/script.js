@@ -317,10 +317,13 @@ else {
                   IgotitButton.id = "btnId_" + j;
                   
                   // alert("イベントリスナーの前");うごく
-                  IgotitButton.addEventListener('click', onClickIgotit);
+                  // IgotitButton.addEventListener('click', onClickIgotit);
                   
-                  function onClickIgotit(){
-                    alert("関数動いています");
+                  // function onClickIgotit(){
+                  //   alert("関数動いています");
+                  // }
+                  IgotitButton2.onclick = (e) => {
+                    alert("onclicked");
                   }
               
                 }
@@ -346,9 +349,9 @@ else {
                 // IgotitButton.classList.add('Button-style3');
                 IgotitButton2.id = "btnId_" + j;
                 
-              Element2.appendChild(IgotitButton2);
-              IgotitButton2.onclick = (e) => {
-                  alert("onclicked");
+                Element2.appendChild(IgotitButton2);
+                IgotitButton2.onclick = (e) => {
+                  alert("onclicked2");
                 }
               }
               Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
