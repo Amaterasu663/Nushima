@@ -276,7 +276,6 @@ else {
           // alert("はあ？を認識");
           didyousayHah = true;
           HahbyWho.push([data.name]);
-          alert(HahbyWho);
           break;
 
         case 'revised':
@@ -311,7 +310,7 @@ else {
               Element2.innerHTML = "◎届いた指摘<br>";
               for (j = 0; j < NewAllShiteki.length; j++) {
                 Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
-                // if(Myname!="管理"){要復活
+                if(Myname!="管理"){
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
                   IgotitButton.innerHTML = "理解した！";
@@ -320,7 +319,7 @@ else {
                   
                 // alert("イベントリスナーの前");うごく
                 // IgotitButton.addEventListener('click', onClickIgotit);
-                // }要復活
+                }
                 Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
                 IgotitButton.onclick = (e) => {
                   alert("onclicked");
@@ -338,17 +337,16 @@ else {
             // if (NewAllShiteki.length == 1) {
               // FBsent.innerText = "◎届いた指摘\n" + data.msg1 + "\n\n" + data.msg2 + "\n\n訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[CurrentShiteki][4];
               Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
-              // if(Myname!="管理"){要復活
+              if(Myname!="管理"){
                 var IgotitButton = document.createElement("button");
                 IgotitButton.innerHTML = "理解した!?!?!?!";
                 // IgotitButton.classList.add('Button-style3');
                 IgotitButton.id = "btnId_" + j;
                 
               Element2.appendChild(IgotitButton);
-
               IgotitButton.addEventListener('click', onClickIgotit);
 
-              // }要復活
+              }
               Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
           
               if (dontscroll3 == false) {
@@ -633,13 +631,13 @@ else {
 
   // const Kanri = document.getElementById('js-kanri');
 
-  // if (group == true && Myname != "管理") {
+  if (group == true && Myname != "管理") {
     recognition.start();
-  // }
+  }
   const segmenter = new TinySegmenter();
 
   function originalHatsugen(transcript, Hahmark) {
-    alert(Hahmark);
+    // alert(Hahmark);
     //zenbunのjunbanparent番目に一文ずつ入る
     zenbun[junbanparent] = transcript;
     junbanparent++;
