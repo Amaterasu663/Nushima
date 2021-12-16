@@ -321,9 +321,7 @@ else {
                   IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   IgotitButton.onclick = (e) => {
-                    var NumberOfId = (IgotitButton.id.split("_"))[1];
-                    NewAllShiteki[NumberOfId][5] = 1;
-                    alert(NumberOfId + "clicked");
+                    alert((IgotitButton.id.split("_"))[1]);
                   }
                 // } 要復活
 
@@ -347,14 +345,12 @@ else {
               // Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
               // if(Myname!="管理"){要復活
                 var IgotitButton2 = document.createElement("button");
+                Element2.appendChild(IgotitButton2);
                 IgotitButton2.innerHTML = "理解した!?!?!?!";
                 IgotitButton.classList.add('Button-style3');
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
-                Element2.appendChild(IgotitButton2);
                 IgotitButton2.onclick = (e) => {
-                  var NumberOfId2 = (IgotitButton2.id.split("_"))[1];
-                  NewAllShiteki[NumberOfId2][5] = 1;
-                  alert(NumberOfId + "clicked2");
+                  alert((IgotitButton2.id.split("_"))[1] + "後");
               }
               // }要復活
               var div_Stick2 = document.createElement("div");
