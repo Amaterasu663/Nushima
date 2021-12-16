@@ -353,8 +353,10 @@ else {
                   alert("onclicked2");
                 }
               // }要復活
-              Element2.insertAdjacentHTML('afterend', '<hr width=\"300px\" color=\"#CEE5D0\"></hr>') 
-          
+              var div_Stick2 = document.createElement("div");
+              div_Stick2.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
+              Element2.appendChild(div_Stick2); 
+        
               if (dontscroll3 == false) {
                 Element2.scrollTop = Element2.scrollHeight;
               }
