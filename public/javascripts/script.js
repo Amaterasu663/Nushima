@@ -307,7 +307,8 @@ else {
               //Element2内全体の更新
               Element2.innerHTML = "<div id=\"js-sentfB\">◎届いた指摘<br></div>";
               for (j = 0; j < NewAllShiteki.length; j++) {
-                var div_Shiteki = createElement();
+                var div_Shiteki = document.createElement("div");
+                div_Shiteki.id = "ShitekiId_" + j;
                 div_Shiteki.innerText = "\n" + NewAllShiteki[j][0] + "\n" + NewAllShiteki[j][1] + "\n訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "\n\n";
                 // Element2.insertAdjacentHTML('afterend', div_Shiteki); 
                 Element2.appendChild(div_Shiteki); 
