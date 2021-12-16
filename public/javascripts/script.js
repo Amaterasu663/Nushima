@@ -300,8 +300,6 @@ else {
         //他の人の指摘をここで蓄積（二次元配列で）＋自分の指摘は送るときに別途蓄積
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
-          var IgotitButton;
-          var IgotitButton2;
           //いいねの数をカウントアップ
           for (i = 0; i < NewAllShiteki.length; i++) {  
             if (NewAllShiteki[i][0] == data.msg1 && NewAllShiteki[i][1] == data.msg2) {
@@ -317,11 +315,10 @@ else {
                   // IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   IgotitButton.onclick = (e) => {
-                    console.log("onclicked1");
                     alert("onclicked");
                   }
                 // } 要復活
-                Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
+                Element2.insertAdjacentHTML('afterend', '<hr width=\"300px\" color=\"#CEE5D0\"></hr>') 
               }
               break;
             }
@@ -338,11 +335,10 @@ else {
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
                 Element2.appendChild(IgotitButton2);
                 IgotitButton2.onclick = (e) => {
-                  console.log("onclicked2");
                   alert("onclicked2");
                 }
               // }要復活
-              Element2.innerHTML += "<hr width=\"300px\" color=\"#CEE5D0\"></hr>"
+              Element2.insertAdjacentHTML('afterend', '<hr width=\"300px\" color=\"#CEE5D0\"></hr>') 
           
               if (dontscroll3 == false) {
                 Element2.scrollTop = Element2.scrollHeight;
