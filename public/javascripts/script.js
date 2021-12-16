@@ -321,7 +321,7 @@ else {
                   IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   IgotitButton.onclick = (e) => {
-                    alert((IgotitButton.id.split("_"))[1]);
+                    alert(j + "←FOR文内、押されたボタンのId" + IgotitButton.id);
                   }
                 // } 要復活
 
@@ -347,10 +347,10 @@ else {
                 var IgotitButton2 = document.createElement("button");
                 Element2.appendChild(IgotitButton2);
                 IgotitButton2.innerHTML = "理解した!?!?!?!";
-                IgotitButton.classList.add('Button-style3');
+                // IgotitButton.classList.add('Button-style3');
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
                 IgotitButton2.onclick = (e) => {
-                  alert((IgotitButton2.id.split("_"))[1] + "後");
+                  alert("押されたボタンのID" + IgotitButton2.id);
               }
               // }要復活
               var div_Stick2 = document.createElement("div");
