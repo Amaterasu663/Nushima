@@ -327,7 +327,7 @@ else {
 
                 var div_Stick = document.createElement("div");
                 div_Stick.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
-                Element2.appendChild(div_Shiteki); 
+                Element2.appendChild(div_Stick); 
               }
               break;
             }
