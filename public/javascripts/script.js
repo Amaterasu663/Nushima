@@ -318,10 +318,12 @@ else {
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
                   IgotitButton.innerText = "理解した!";
-                  // IgotitButton.classList.add('Button-style3');
+                  IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   IgotitButton.onclick = (e) => {
-                    alert("onclicked");
+                    var NumberOfId = (IgotitButton.id.split("_"))[1];
+                    NewAllShiteki[NumberOfId][5] = 1;
+                    alert(NumberOfId + "clicked");
                   }
                 // } 要復活
 
@@ -346,12 +348,14 @@ else {
               // if(Myname!="管理"){要復活
                 var IgotitButton2 = document.createElement("button");
                 IgotitButton2.innerHTML = "理解した!?!?!?!";
-                // IgotitButton.classList.add('Button-style3');
+                IgotitButton.classList.add('Button-style3');
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
                 Element2.appendChild(IgotitButton2);
                 IgotitButton2.onclick = (e) => {
-                  alert("onclicked2");
-                }
+                  var NumberOfId2 = (IgotitButton2.id.split("_"))[1];
+                  NewAllShiteki[NumberOfId2][5] = 1;
+                  alert(NumberOfId + "clicked2");
+              }
               // }要復活
               var div_Stick2 = document.createElement("div");
               div_Stick2.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
@@ -396,11 +400,6 @@ else {
     }
 
     // //届いた指摘に対する言語学習者のリアクション
-    // if(group == true && Myname!="管理"){
-    // IgotitButton.addEventListener('click', onClickIgotit);
-    // }
-    // // IdontgetitButton.addEventListener('click', onClickIdontgetit);
-
     // function onClickIgotit(){
     //   alert("関数動いています");
     // //   var ClickedButtonId = (a.id.split("_"))[1];
