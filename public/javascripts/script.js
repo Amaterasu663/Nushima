@@ -334,7 +334,7 @@ else {
           if (NewAllShiteki.length == i || NewAllShiteki.length == 1) {
             NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0, 0]);
             var div_Shiteki2 = document.createElement("div");
-            div_Shiteki2.id = "Shiteki2Id_" + j;
+            div_Shiteki2.id = "Shiteki2Id_" + (NewAllShiteki.length-1);
             div_Shiteki2.innerHTML = "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
             // Element2.insertAdjacentHTML('afterend', div_Shiteki); 
             Element2.appendChild(div_Shiteki2); 
