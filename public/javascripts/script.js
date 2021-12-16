@@ -324,7 +324,10 @@ else {
                     alert("onclicked");
                   }
                 // } 要復活
-                Element2.insertAdjacentHTML('afterend', '<hr width=\"300px\" color=\"#CEE5D0\"></hr>') 
+
+                var div_Stick = document.createElement("div");
+                div_Stick.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
+                Element2.appendChild(div_Shiteki); 
               }
               break;
             }
