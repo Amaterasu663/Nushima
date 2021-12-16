@@ -305,13 +305,18 @@ else {
             if (NewAllShiteki[i][0] == data.msg1 && NewAllShiteki[i][1] == data.msg2) {
               NewAllShiteki[i][4]++;
               //Element2内全体の更新
-              Element2.innerHTML = "◎届いた指摘<br>";
+              Element2.innerHTML = "<div id=\"js-sentfB\">◎届いた指摘<br></div>";
               for (j = 0; j < NewAllShiteki.length; j++) {
-                Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
+                var div_Shiteki = createElement();
+                div_Shiteki.value = "\n" + NewAllShiteki[j][0] + "\n" + NewAllShiteki[j][1] + "\n訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "\n\n";
+                // Element2.insertAdjacentHTML('afterend', div_Shiteki); 
+                Element2.appendChild(div_Shiteki); 
+                
+                // Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 // if(Myname!="管理"){要復活
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
-                  IgotitButton.innerHTML = "理解した!";
+                  IgotitButton.innerText = "理解した!";
                   // IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   IgotitButton.onclick = (e) => {
