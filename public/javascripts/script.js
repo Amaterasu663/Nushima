@@ -309,7 +309,7 @@ else {
               for (j = 0; j < NewAllShiteki.length; j++) {
                 var div_Shiteki = document.createElement("div");
                 div_Shiteki.id = "ShitekiId_" + j;
-                div_Shiteki.innerHTML = "\n" + NewAllShiteki[j][0] + "\n" + NewAllShiteki[j][1] + "\n訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "\n\n";
+                div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 // Element2.insertAdjacentHTML('afterend', div_Shiteki); 
                 Element2.appendChild(div_Shiteki); 
                 
