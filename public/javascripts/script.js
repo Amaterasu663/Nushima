@@ -769,8 +769,7 @@ else {
               Already.style.display = "none";
               OthersCorrect.style.display = "none";
               othersShitekibox.style.display = "none";
-              ShitekiButton.style.display = "none";
-              messages.style.display = "none";
+              Element2.style.display = "none";
               checkmine.style.display = "block";
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
@@ -780,9 +779,9 @@ else {
               else if(AllShiteki[i][4]==1){
                 MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
               }
-              else if(AllShiteki[i][4]==2){
-                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
-              }
+              // else if(AllShiteki[i][4]==2){
+              //   MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
+              // }
             }
           }
 
