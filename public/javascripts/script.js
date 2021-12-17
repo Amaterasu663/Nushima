@@ -321,7 +321,7 @@ else {
                   IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                   IgotitButton.onclick = (e) => {
-                    alert(j + "←FOR文内、押されたボタンのId" + IgotitButton.id);
+                    alert("押されたボタンのId" + IgotitButton.id);
                   }
                 // } 要復活
 
@@ -350,9 +350,11 @@ else {
                 IgotitButton2.classList.add('Button-style3');
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
                 IgotitButton2.onclick = (e) => {
+                  var heart = document.createElement("a");
+                  heart.innerHTML = "　💖";
+                  IgotitButton2.appendChild(heart);
                   var BtnId = (IgotitButton2.id.split("_"))[1];
                   NewAllShiteki[BtnId][5] = 1;
-                  alert(NewAllShiteki[BtnId][5] + "にゃははは"+ NewAllShiteki[BtnId][3]);
                   room.send({type: "understand", genbun: NewAllShiteki[BtnId][3], msg:NewAllShiteki[BtnId][5], name:NewAllShiteki[BtnId][2] });
                   // alert("押されたボタンのID" + IgotitButton2.id);ちゃんとIDついてる（0からスタート
               }
