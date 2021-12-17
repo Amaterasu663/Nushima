@@ -769,7 +769,7 @@ else {
               Already.style.display = "none";
               OthersCorrect.style.display = "none";
               othersShitekibox.style.display = "none";
-              Element2.style.display = "none";
+              Element0.style.display = "none";
               checkmine.style.display = "block";
               MyShiteki.style.display = "block";
               checkedmine.style.display = "block";
