@@ -546,25 +546,25 @@ else {
   }
 
   //他の人が既に指摘をしていたときのリアクション
-  const othersShitekibox = document.getElementById('othersShitekibox');
-  const MyShiteki = document.getElementById("MyShiteki");
-  const metoosend = document.getElementById("Metoosend");
-  const Yes = document.getElementById('yesbutton');
-  const No = document.getElementById('nobutton');
-  const radios2 = document.getElementsByName('bestanswer');
-  checkedmine.addEventListener('click', onClickedMine);
+  // const othersShitekibox = document.getElementById('othersShitekibox');
+  // const MyShiteki = document.getElementById("MyShiteki");
+  // const metoosend = document.getElementById("Metoosend");
+  // const Yes = document.getElementById('yesbutton');
+  // const No = document.getElementById('nobutton');
+  // const radios2 = document.getElementsByName('bestanswer');
+  // checkedmine.addEventListener('click', onClickedMine);
   // Yes.addEventListener('click', onClickYes);
   // No.addEventListener('click', onClickNo);
   // metoosend.addEventListener('click', onClickMeToo);
 
-  function onClickedMine() {
-    MyShiteki.style.display = "none";
-    checkmine.style.display = "none";
-    Element0.style.display = "block";
-    messages.innerHTML = "";
-    messages.style.display = "block";
-    // ShitekiButton.style.display = "block";
-  }
+  // function onClickedMine() {
+  //   MyShiteki.style.display = "none";
+  //   checkmine.style.display = "none";
+  //   Element0.style.display = "block";
+  //   messages.innerHTML = "";
+  //   messages.style.display = "block";
+  //   // ShitekiButton.style.display = "block";
+  // }
 
   // //既にある指摘と別の指摘を送る場合
   // function onClickYes() {
@@ -735,9 +735,9 @@ else {
           }
 
         });
+        }
 
         messages.innerHTML = "<br>" + genbun.join(" ") + "<br><br>" + jimo;
-      }
 
         if (group == false) {
           MyShiteki.innerHTML = "";
@@ -764,26 +764,26 @@ else {
       //     }
 
       //    //自分が送った指摘を確認するための表示
-          for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
-              Already.style.display = "none";
-              OthersCorrect.style.display = "none";
-              othersShitekibox.style.display = "none";
-              Element2.style.display = "none";
-              checkmine.style.display = "block";
-              MyShiteki.style.display = "block";
-              checkedmine.style.display = "block";
-              if(AllShiteki[i][4]==0){
-                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
-              }
-              else if(AllShiteki[i][4]==1){
-                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
-              }
-              // else if(AllShiteki[i][4]==2){
-              //   MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
-              // }
-            }
-          }
+          // for (i = 0; i < AllShiteki.length; i++) {
+          //   if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
+          //     Already.style.display = "none";
+          //     OthersCorrect.style.display = "none";
+          //     othersShitekibox.style.display = "none";
+          //     Element2.style.display = "none";
+          //     checkmine.style.display = "block";
+          //     MyShiteki.style.display = "block";
+          //     checkedmine.style.display = "block";
+          //     if(AllShiteki[i][4]==0){
+          //       MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+          //     }
+          //     else if(AllShiteki[i][4]==1){
+          //       MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
+          //     }
+          //     // else if(AllShiteki[i][4]==2){
+          //     //   MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
+          //     // }
+          //   }
+          // }
 
       }
       // };
