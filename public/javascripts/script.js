@@ -535,7 +535,7 @@ else {
               jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
               
               // jimo = namae + "<font color = red>" + koitsu + "</font>";
-              moji = namae + "： ？？？";
+              moji = namae + " ？？？";
               messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
               break;
           }
