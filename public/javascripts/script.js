@@ -517,25 +517,25 @@ else {
               moji = "";
               namae = "";
 
-              // for (i = 0; i < genbun.length; i++) {
-              //   if (genbun[i] == "：") {
-              //     koitsu = i;
-              //     // console.log(koitsu);
-              //   }
-              // }
-              // for (t = 0; t < koitsu + 1; t++) {
-              //   namae = namae + genbun[t];
-              //   // console.log(namae);
-              // }
+              for (i = 0; i < genbun.length; i++) {
+                if (genbun[i] == "：") {
+                  koitsu = i;
+                  // console.log(koitsu);
+                }
+              }
+              for (var t = 0; t < koitsu + 1; t++) {
+                namae = namae + genbun[t];
+                // console.log(namae);
+              }
 
               namae = (genbun.split("："))[0];
               koitsu = (genbun.split("："))[1];
 
               // namae = genbun[0] + genbun[1];
-              // jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
+              jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
               
-              jimo = namae + "<font color = red>" + koitsu + "</font>";
-              moji = namae + "：？？？";
+              // jimo = namae + "<font color = red>" + koitsu + "</font>";
+              moji = namae + "： ？？？";
               messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
               break;
           }
