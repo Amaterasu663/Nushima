@@ -306,10 +306,12 @@ else {
               NewAllShiteki[i][4]++;
               //Element2内全体の更新
               Element2.innerHTML = "<div id=\"js-sentfB\">◎届いた指摘<br></div>";
+              var countShiteki = 0;
               for (j = 0; j < NewAllShiteki.length; j++) {
+                countShiteki++;
                 var div_Shiteki = document.createElement("div");
                 Element2.appendChild(div_Shiteki); 
-                div_Shiteki.id = "ShitekiId_" + (NewAllShiteki.length-1);
+                div_Shiteki.id = "ShitekiId_" + countShiteki;
                 div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 div_Shiteki.onclick = (e) => {
                   alert(div_Shiteki.id);
@@ -355,7 +357,7 @@ else {
                 IgotitButton2.onclick = (e) => {
                   var heart = document.createElement("a");
                   heart.innerHTML = "💖";
-                  IgotitButton2.before(heart);
+                  IgotitButton2.appendChild(heart);
                   IgotitButton2.disabled = "true";
                   var BtnId = (IgotitButton2.id.split("_"))[1];
                   NewAllShiteki[BtnId][5] = 1;
