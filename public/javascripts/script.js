@@ -560,9 +560,9 @@ else {
   function onClickedMine() {
     MyShiteki.style.display = "none";
     checkmine.style.display = "none";
-    Element0.style.display = "block";
     messages.innerHTML = "";
-    messages.style.display = "block";
+    Element0.style.display = "none";
+    FBList.style.display = "block";
     // ShitekiButton.style.display = "block";
   }
 
