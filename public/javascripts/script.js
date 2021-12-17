@@ -550,11 +550,11 @@ else {
   const MyShiteki = document.getElementById("MyShiteki");
   const metoosend = document.getElementById("Metoosend");
   const Yes = document.getElementById('yesbutton');
-  const No = document.getElementById('nobutton');
+  // const No = document.getElementById('nobutton');
   // const radios2 = document.getElementsByName('bestanswer');
   // checkedmine.addEventListener('click', onClickedMine);
   Yes.addEventListener('click', onClickYes);
-  No.addEventListener('click', onClickNo);
+  // No.addEventListener('click', onClickNo);
   // metoosend.addEventListener('click', onClickMeToo);
 
   // function onClickedMine() {要復活
@@ -577,11 +577,11 @@ else {
   }
 
   // //ラジオボタン（いいね！）の選択をさせる場合
-  function onClickNo() {
-    SmallExplanation.style.display = "block";
-    metoosend.style.display = "block";
-    metoosend.disabled = false;
-  }
+  // function onClickNo() {
+  //   SmallExplanation.style.display = "block";
+  //   metoosend.style.display = "block";
+  //   metoosend.disabled = false;
+  // }
 
   // function onClickMeToo() {
   //   for (var i = 0; i < radios2.length; i++) {
