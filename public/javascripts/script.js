@@ -420,14 +420,6 @@ else {
       }
     }
 
-    // //届いた指摘に対する言語学習者のリアクション
-    // function onClickIgotit(){
-    //   alert("関数動いています");
-    // //   var ClickedButtonId = (a.id.split("_"))[1];
-    // //   NewAllShiteki[ClickedButtonId][5] = 1;
-    // //   room.send({type: "understand", genbun: NewAllShiteki[ClickedButtonId][3], msg:NewAllShiteki[ClickedButtonId][5], name:NewAllShiteki[ClickedButtonId][2] });
-    // //   alert(NewAllShiteki[ClickedButtonId][3], NewAllShiteki[ClickedButtonId][5], NewAllShiteki[ClickedButtonId][2]);
-    // }
 
     if (group == false) {
       sendTrigger.addEventListener('click', onClickSend);
@@ -525,20 +517,25 @@ else {
               moji = "";
               namae = "";
 
-              for (i = 0; i < genbun.length; i++) {
-                if (genbun[i] == "：") {
-                  koitsu = i;
-                  // console.log(koitsu);
-                }
-              }
-              for (t = 0; t < koitsu + 1; t++) {
-                namae = namae + genbun[t];
-                // console.log(namae);
-              }
+              // for (i = 0; i < genbun.length; i++) {
+              //   if (genbun[i] == "：") {
+              //     koitsu = i;
+              //     // console.log(koitsu);
+              //   }
+              // }
+              // for (t = 0; t < koitsu + 1; t++) {
+              //   namae = namae + genbun[t];
+              //   // console.log(namae);
+              // }
+
+              namae = (genbun.split("："))[0];
+              koitsu = (genbun.split("："))[1];
 
               // namae = genbun[0] + genbun[1];
-              jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
-              moji = namae + "？？？";
+              // jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
+              
+              jimo = namae + "<font color = red>" + koitsu + "</font>";
+              moji = namae + "：？？？";
               messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
               break;
           }
