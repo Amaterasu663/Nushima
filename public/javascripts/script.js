@@ -549,11 +549,11 @@ else {
   const othersShitekibox = document.getElementById('othersShitekibox');
   const MyShiteki = document.getElementById("MyShiteki");
   const metoosend = document.getElementById("Metoosend");
-  const Yes = document.getElementById('yesbutton');
+  // const Yes = document.getElementById('yesbutton');
   // const No = document.getElementById('nobutton');
   // const radios2 = document.getElementsByName('bestanswer');
   // checkedmine.addEventListener('click', onClickedMine);
-  Yes.addEventListener('click', onClickYes);
+  // Yes.addEventListener('click', onClickYes);
   // No.addEventListener('click', onClickNo);
   // metoosend.addEventListener('click', onClickMeToo);
 
@@ -567,14 +567,14 @@ else {
   // }
 
   // //既にある指摘と別の指摘を送る場合
-  function onClickYes() {
-    Already.style.display = "none";
-    OthersCorrect.style.display = "none";
-    othersShitekibox.style.display = "none";
-    Element0.style.display = "block";
-    ShitekiButton.style.display = "block";
-    messages.style.display = "block";
-  }
+  // function onClickYes() {
+  //   Already.style.display = "none";
+  //   OthersCorrect.style.display = "none";
+  //   othersShitekibox.style.display = "none";
+  //   Element0.style.display = "block";
+  //   ShitekiButton.style.display = "block";
+  //   messages.style.display = "block";
+  // }
 
   // //ラジオボタン（いいね！）の選択をさせる場合
   // function onClickNo() {
