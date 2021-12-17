@@ -309,7 +309,7 @@ else {
               for (j = 0; j < NewAllShiteki.length; j++) {
                 var div_Shiteki = document.createElement("div");
                 Element2.appendChild(div_Shiteki); 
-                div_Shiteki.id = "ShitekiId_" + j;
+                div_Shiteki.id = "ShitekiId_" + (NewAllShiteki.length-1);
                 div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 div_Shiteki.onclick = (e) => {
                   alert(div_Shiteki.id);
@@ -354,8 +354,8 @@ else {
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
                 IgotitButton2.onclick = (e) => {
                   var heart = document.createElement("a");
-                  heart.innerHTML = "　💖";
-                  IgotitButton2.after(heart);
+                  heart.innerHTML = "💖";
+                  IgotitButton2.before(heart);
                   IgotitButton2.disabled = "true";
                   var BtnId = (IgotitButton2.id.split("_"))[1];
                   NewAllShiteki[BtnId][5] = 1;
