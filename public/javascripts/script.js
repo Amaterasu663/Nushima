@@ -549,13 +549,15 @@ else {
   const othersShitekibox = document.getElementById('othersShitekibox');
   const MyShiteki = document.getElementById("MyShiteki");
   const metoosend = document.getElementById("Metoosend");
-  // const Yes = document.getElementById('yesbutton');
-  // const No = document.getElementById('nobutton');
+  const Yes = document.getElementById('yesbutton');
+  const No = document.getElementById('nobutton');
   // const radios2 = document.getElementsByName('bestanswer');
+  if(group == false){
   // checkedmine.addEventListener('click', onClickedMine);
-  // Yes.addEventListener('click', onClickYes);
-  // No.addEventListener('click', onClickNo);
+  Yes.addEventListener('click', onClickYes);
+  No.addEventListener('click', onClickNo);
   // metoosend.addEventListener('click', onClickMeToo);
+  }
 
   // function onClickedMine() {要復活
   //   MyShiteki.style.display = "none";
