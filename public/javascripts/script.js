@@ -552,10 +552,10 @@ else {
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
   const radios2 = document.getElementsByName('bestanswer');
-  // checkedmine.addEventListener('click', onClickedMine);
-  // Yes.addEventListener('click', onClickYes);
-  // No.addEventListener('click', onClickNo);
-  // metoosend.addEventListener('click', onClickMeToo);
+  checkedmine.addEventListener('click', onClickedMine);
+  Yes.addEventListener('click', onClickYes);
+  No.addEventListener('click', onClickNo);
+  metoosend.addEventListener('click', onClickMeToo);
 
   // function onClickedMine() {要復活
   //   MyShiteki.style.display = "none";
@@ -566,44 +566,44 @@ else {
   //   // ShitekiButton.style.display = "block";
   // }
 
-  // // //既にある指摘と別の指摘を送る場合
-  // function onClickYes() {
-  //   Already.style.display = "none";
-  //   OthersCorrect.style.display = "none";
-  //   othersShitekibox.style.display = "none";
-  //   Element0.style.display = "block";
-  //   ShitekiButton.style.display = "block";
-  //   messages.style.display = "block";
-  // }
+  // //既にある指摘と別の指摘を送る場合
+  function onClickYes() {
+    Already.style.display = "none";
+    OthersCorrect.style.display = "none";
+    othersShitekibox.style.display = "none";
+    Element0.style.display = "block";
+    ShitekiButton.style.display = "block";
+    messages.style.display = "block";
+  }
 
-  // // //ラジオボタン（いいね！）の選択をさせる場合
-  // function onClickNo() {
-  //   SmallExplanation.style.display = "block";
-  //   metoosend.style.display = "block";
-  //   metoosend.disabled = false;
-  // }
+  // //ラジオボタン（いいね！）の選択をさせる場合
+  function onClickNo() {
+    SmallExplanation.style.display = "block";
+    metoosend.style.display = "block";
+    metoosend.disabled = false;
+  }
 
-  // function onClickMeToo() {
-  //   for (var i = 0; i < radios2.length; i++) {
-  //     if (radios2[i].checked == true) {
-  //       // console.log(AllShiteki[i][1]);
-  //       Radiojunban = radios2[i].value
-  //     }
-  //   }
-  //   AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
-  //   room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
+  function onClickMeToo() {
+    for (var i = 0; i < radios2.length; i++) {
+      if (radios2[i].checked == true) {
+        // console.log(AllShiteki[i][1]);
+        Radiojunban = radios2[i].value
+      }
+    }
+    AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
+    room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
 
-  //   Already.style.display = "none";
-  //   OthersCorrect.style.display = "none";
-  //   othersShitekibox.style.display = "none";
-  //   Element0.style.display = "block";
-  //   messages.innerHTML = "";
-  //   messages.style.display = "block";
-  //   Element0.style.display = "none";
-  //   FBList.style.display = "block";
+    Already.style.display = "none";
+    OthersCorrect.style.display = "none";
+    othersShitekibox.style.display = "none";
+    Element0.style.display = "block";
+    messages.innerHTML = "";
+    messages.style.display = "block";
+    Element0.style.display = "none";
+    FBList.style.display = "block";
 
-  //   // ShitekiButton.style.display = "block";
-  // }
+    // ShitekiButton.style.display = "block";
+  }
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
