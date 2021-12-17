@@ -332,8 +332,8 @@ else {
                   IgotitButton.onclick = (e) => {
                     var heart2 = document.createElement("a");
                     heart2.innerHTML = "💖";
-                    IgotitButton2.appendChild(heart2);
-                    IgotitButton2.disabled = true;
+                    IgotitButton.appendChild(heart2);
+                    IgotitButton.disabled = true;
                     var BtnId = (IgotitButton.id.split("_"))[1];
                     console.log(BtnId);
                     // NewAllShiteki[BtnId][5] = 1;
