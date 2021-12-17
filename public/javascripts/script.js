@@ -306,16 +306,16 @@ else {
               NewAllShiteki[i][4]++;
               //Element2内全体の更新
               Element2.innerHTML = "<div id=\"js-sentfB\">◎届いた指摘<br></div>";
-              var countShiteki = 0;
-              for (j = 0; j < NewAllShiteki.length; j++) {
-                countShiteki++;
+              for (var j = 0; j < NewAllShiteki.length; j++) {
                 var div_Shiteki = document.createElement("div");
                 Element2.appendChild(div_Shiteki); 
-                div_Shiteki.id = "ShitekiId_" + countShiteki;
+                div_Shiteki2.forEach(function (t) {
+                div_Shiteki.id = "ShitekiId_" + j;
+                })
                 div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 div_Shiteki.onclick = (e) => {
                   alert(div_Shiteki.id);
-                  }
+                }
                 // Element2.insertAdjacentHTML('afterend', div_Shiteki); 
                 
                 // Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
