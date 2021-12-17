@@ -546,25 +546,25 @@ else {
   }
 
   //他の人が既に指摘をしていたときのリアクション
-  // const othersShitekibox = document.getElementById('othersShitekibox');
-  // const MyShiteki = document.getElementById("MyShiteki");
-  // const metoosend = document.getElementById("Metoosend");
-  // const Yes = document.getElementById('yesbutton');
-  // const No = document.getElementById('nobutton');
-  // const radios2 = document.getElementsByName('bestanswer');
-  // checkedmine.addEventListener('click', onClickedMine);
+  const othersShitekibox = document.getElementById('othersShitekibox');
+  const MyShiteki = document.getElementById("MyShiteki");
+  const metoosend = document.getElementById("Metoosend");
+  const Yes = document.getElementById('yesbutton');
+  const No = document.getElementById('nobutton');
+  const radios2 = document.getElementsByName('bestanswer');
+  checkedmine.addEventListener('click', onClickedMine);
   // Yes.addEventListener('click', onClickYes);
   // No.addEventListener('click', onClickNo);
   // metoosend.addEventListener('click', onClickMeToo);
 
-  // function onClickedMine() {
-  //   MyShiteki.style.display = "none";
-  //   checkmine.style.display = "none";
-  //   Element0.style.display = "block";
-  //   messages.innerHTML = "";
-  //   messages.style.display = "block";
-  //   // ShitekiButton.style.display = "block";
-  // }
+  function onClickedMine() {
+    MyShiteki.style.display = "none";
+    checkmine.style.display = "none";
+    Element0.style.display = "block";
+    messages.innerHTML = "";
+    messages.style.display = "block";
+    // ShitekiButton.style.display = "block";
+  }
 
   // //既にある指摘と別の指摘を送る場合
   // function onClickYes() {
