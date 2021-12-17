@@ -532,7 +532,7 @@ else {
               // koitsu = (genbun.split("："))[1];
 
               // namae = genbun[0] + genbun[1];
-              jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
+              jimo = namae + " <font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
               
               // jimo = namae + "<font color = red>" + koitsu + "</font>";
               moji = namae + " ？？？";
