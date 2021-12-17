@@ -308,22 +308,25 @@ else {
               Element2.innerHTML = "<div id=\"js-sentfB\">◎届いた指摘<br></div>";
               for (j = 0; j < NewAllShiteki.length; j++) {
                 var div_Shiteki = document.createElement("div");
+                Element2.appendChild(div_Shiteki); 
                 div_Shiteki.id = "ShitekiId_" + j;
                 div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
+                div_Shiteki.onclick = (e) => {
+                  alert(div_Shiteki.id);
+                  }
                 // Element2.insertAdjacentHTML('afterend', div_Shiteki); 
-                Element2.appendChild(div_Shiteki); 
                 
                 // Element2.innerHTML += "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
-                // if(Myname!="管理"){要復活
-                  var IgotitButton = document.createElement("button");
-                  Element2.appendChild(IgotitButton);
-                  IgotitButton.innerText = "理解した!";
-                  IgotitButton.classList.add('Button-style3');
-                  IgotitButton.id = "btnId_" + j;
-                  IgotitButton.onclick = (e) => {
-                    alert("押されたボタンのId" + IgotitButton.id);
-                  }
-                // } 要復活
+                // // if(Myname!="管理"){要復活
+                //   var IgotitButton = document.createElement("button");
+                //   Element2.appendChild(IgotitButton);
+                //   IgotitButton.innerText = "理解した!";
+                //   IgotitButton.classList.add('Button-style3');
+                //   IgotitButton.id = "btnId_" + j;
+                //   IgotitButton.onclick = (e) => {
+                //     alert("押されたボタンのId" + IgotitButton.id);
+                //   }
+                // // } 要復活
 
                 var div_Stick = document.createElement("div");
                 div_Stick.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
@@ -352,7 +355,8 @@ else {
                 IgotitButton2.onclick = (e) => {
                   var heart = document.createElement("a");
                   heart.innerHTML = "　💖";
-                  IgotitButton2.appendChild(heart);
+                  IgotitButton2.after(heart);
+                  IgotitButton2.disabled = "true";
                   var BtnId = (IgotitButton2.id.split("_"))[1];
                   NewAllShiteki[BtnId][5] = 1;
                   room.send({type: "understand", genbun: NewAllShiteki[BtnId][3], msg:NewAllShiteki[BtnId][5], name:NewAllShiteki[BtnId][2] });
