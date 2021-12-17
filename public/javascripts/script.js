@@ -336,9 +336,9 @@ else {
                     e.target.appendChild(heart2);
                     e.target.disabled = true;
                     var BtnId2 = (e.target.id.split("_"))[1];
-                    console.log(BtnId2);
-                    // NewAllShiteki[BtnId][5] = 1;
-                    // room.send({type: "understand", genbun: NewAllShiteki[BtnId][3], msg:NewAllShiteki[BtnId][5], name:NewAllShiteki[BtnId][2] });
+                    // console.log(BtnId2);うまくいってる
+                    NewAllShiteki[BtnId2][5] = 1;
+                    room.send({type: "understand", genbun: NewAllShiteki[BtnId2][3], msg:NewAllShiteki[BtnId2][5], name:NewAllShiteki[BtnId2][2] });
                     }
                   // // } 要復活
                 }
@@ -364,7 +364,7 @@ else {
               // if(Myname!="管理"){要復活
                 var IgotitButton2 = document.createElement("button");
                 Element2.appendChild(IgotitButton2);
-                IgotitButton2.innerHTML = "理解した!?";
+                IgotitButton2.innerHTML = "理解した！";
                 IgotitButton2.classList.add('Button-style3');
                 IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
                 IgotitButton2.onclick = (e) => {
