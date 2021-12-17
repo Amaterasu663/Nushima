@@ -735,9 +735,32 @@ else {
           }
 
         });
+
+        if (group == false) {
+          MyShiteki.innerHTML = "";
+          othersShitekibox.innerHTML = "";
+           for (i = 0; i < AllShiteki.length; i++) {
+            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
+              Already.style.display = "none";
+              OthersCorrect.style.display = "none";
+              othersShitekibox.style.display = "none";
+              Element2.style.display = "none";
+              checkmine.style.display = "block";
+              MyShiteki.style.display = "block";
+              checkedmine.style.display = "block";
+              if(AllShiteki[i][4]==0){
+                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+              }
+              else if(AllShiteki[i][4]==1){
+                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
+              }
+            }
+          }
+
         }
 
         messages.innerHTML = "<br>" + genbun.join(" ") + "<br><br>" + jimo;
+      }
 
         if (group == false) {
           MyShiteki.innerHTML = "";
