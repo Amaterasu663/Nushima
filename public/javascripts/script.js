@@ -309,9 +309,8 @@ else {
               for (var j = 0; j < NewAllShiteki.length; j++) {
                 var div_Shiteki = document.createElement("div");
                 Element2.appendChild(div_Shiteki); 
-                div_Shiteki2.forEach(function (t) {
-                div_Shiteki.id = "ShitekiId_" + j;
-                })
+
+                div_Shiteki.id = "ShitekiId_" + i;
                 div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                 div_Shiteki.onclick = (e) => {
                   alert(div_Shiteki.id);
