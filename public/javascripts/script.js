@@ -315,7 +315,7 @@ else {
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
                   IgotitButton.innerHTML = "理解した！💖";
-                  IgotitButton.disabled = "true";
+                  IgotitButton.disabled = true;
                   IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + countFB;
                   countFB++;
@@ -330,8 +330,15 @@ else {
                   IgotitButton.id = "btnId_" + countFB;
                   countFB++;
                   IgotitButton.onclick = (e) => {
-                    alert("押されたボタンのId" + IgotitButton.id);
-                  }
+                    var heart2 = document.createElement("a");
+                    heart2.innerHTML = "💖";
+                    IgotitButton2.appendChild(heart2);
+                    IgotitButton2.disabled = true;
+                    var BtnId = (IgotitButton.id.split("_"))[1];
+                    console.log(BtnId);
+                    // NewAllShiteki[BtnId][5] = 1;
+                    // room.send({type: "understand", genbun: NewAllShiteki[BtnId][3], msg:NewAllShiteki[BtnId][5], name:NewAllShiteki[BtnId][2] });
+                    }
                   // // } 要復活
                 }
                 var div_Stick = document.createElement("div");
@@ -362,7 +369,7 @@ else {
                   var heart = document.createElement("a");
                   heart.innerHTML = "💖";
                   IgotitButton2.appendChild(heart);
-                  IgotitButton2.disabled = "true";
+                  IgotitButton2.disabled = true;
                   var BtnId = (IgotitButton2.id.split("_"))[1];
                   NewAllShiteki[BtnId][5] = 1;
                   room.send({type: "understand", genbun: NewAllShiteki[BtnId][3], msg:NewAllShiteki[BtnId][5], name:NewAllShiteki[BtnId][2] });
