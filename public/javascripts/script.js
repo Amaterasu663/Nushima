@@ -735,7 +735,8 @@ else {
 
           //クリックした文章に対して他の人が既に指摘をしていたときの表示
           for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] != Myname) {
+            // if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] != Myname) {要復活
+            if (AllShiteki[i][3].join(",") == genbun.join(",")) {
               Element0.style.display = "none";
               MyShiteki.style.display = "none";
               checkmine.style.display = "none";
