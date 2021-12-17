@@ -318,6 +318,7 @@ else {
                   IgotitButton.disabled = "true";
                   IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + countFB;
+                  countFB++;
                 }
                 else{
                   div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
@@ -327,12 +328,12 @@ else {
                   IgotitButton.innerHTML = "理解した！";
                   IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + countFB;
+                  countFB++;
                   IgotitButton.onclick = (e) => {
                     alert("押されたボタンのId" + IgotitButton.id);
                   }
                   // // } 要復活
                 }
-                countFB++;
                 var div_Stick = document.createElement("div");
                 div_Stick.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
                 Element2.appendChild(div_Stick); 
