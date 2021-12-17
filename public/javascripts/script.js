@@ -301,7 +301,7 @@ else {
         case 'teisei':
           AllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0]);
           //いいねの数をカウントアップ
-          for (i = 0; i < NewAllShiteki.length; i++) {
+          for (i = 0; i < NewAllShiteki.length; i++) {  
             if (NewAllShiteki[i][0] == data.msg1 && NewAllShiteki[i][1] == data.msg2) {
               NewAllShiteki[i][4]++;
               //Element2内全体の更新
@@ -310,9 +310,9 @@ else {
               var IgotitButton;
               for (var j = 0; j < NewAllShiteki.length; j++) {
                 var div_Shiteki = document.createElement("div");
-                Element2.appendChild(div_Shiteki);
-                if (NewAllShiteki[j][5] == 1) {
-                  div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
+                Element2.appendChild(div_Shiteki); 
+                if(NewAllShiteki[j][5]==1){
+                  div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";  
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
                   IgotitButton.innerHTML = "理解した！💖";
@@ -321,7 +321,7 @@ else {
                   IgotitButton.id = "btnId_" + countFB;
                   countFB++;
                 }
-                else {
+                else{
                   div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                   // // if(Myname!="管理"){要復活
                   var IgotitButton = document.createElement("button");
@@ -338,14 +338,14 @@ else {
                     var BtnId2 = (e.target.id.split("_"))[1];
                     // console.log(BtnId2);うまくいってる
                     NewAllShiteki[BtnId2][5] = 1;
-                    room.send({ type: "understand", genbun: NewAllShiteki[BtnId2][3], msg: NewAllShiteki[BtnId2][5], name: NewAllShiteki[BtnId2][2] });
-                  }
+                    room.send({type: "understand", genbun: NewAllShiteki[BtnId2][3], msg:NewAllShiteki[BtnId2][5], name:NewAllShiteki[BtnId2][2] });
+                    }
                   // // } 要復活
                 }
 
                 var div_Stick = document.createElement("div");
                 div_Stick.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
-                Element2.appendChild(div_Stick);
+                Element2.appendChild(div_Stick); 
               }
               break;
             }
@@ -355,36 +355,36 @@ else {
           if (NewAllShiteki.length == i || NewAllShiteki.length == 1) {
             NewAllShiteki.push([data.msg1, data.msg2, data.name, data.genbun, 0, 0]);
             var div_Shiteki2 = document.createElement("div");
-            div_Shiteki2.id = "Shiteki2Id_" + (NewAllShiteki.length - 1);
+            div_Shiteki2.id = "Shiteki2Id_" + (NewAllShiteki.length-1);
             div_Shiteki2.innerHTML = "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
             // Element2.insertAdjacentHTML('afterend', div_Shiteki); 
-            Element2.appendChild(div_Shiteki2);
+            Element2.appendChild(div_Shiteki2); 
 
-            // Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
-            // if(Myname!="管理"){要復活
-            var IgotitButton2 = document.createElement("button");
-            Element2.appendChild(IgotitButton2);
-            IgotitButton2.innerHTML = "理解した！";
-            IgotitButton2.classList.add('Button-style3');
-            IgotitButton2.id = "btnId_" + (NewAllShiteki.length - 1);
-            IgotitButton2.onclick = (e) => {
-              var heart = document.createElement("a");
-              heart.innerHTML = "💖";
-              IgotitButton2.appendChild(heart);
-              IgotitButton2.disabled = true;
-              var BtnId = (IgotitButton2.id.split("_"))[1];
-              NewAllShiteki[BtnId][5] = 1;
-              room.send({ type: "understand", genbun: NewAllShiteki[BtnId][3], msg: NewAllShiteki[BtnId][5], name: NewAllShiteki[BtnId][2] });
-              // alert("押されたボタンのID" + IgotitButton2.id);ちゃんとIDついてる（0からスタート
-            }
-            // }要復活
-            var div_Stick2 = document.createElement("div");
-            div_Stick2.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
-            Element2.appendChild(div_Stick2);
-
-            if (dontscroll3 == false) {
-              Element2.scrollTop = Element2.scrollHeight;
-            }
+              // Element2.innerHTML += "<br>" + data.msg1 + "<br>" + data.msg2 + "<br>訂正してくれた人：" + data.name + "　👍" + NewAllShiteki[i][4] + "<br><br>";
+              // if(Myname!="管理"){要復活
+                var IgotitButton2 = document.createElement("button");
+                Element2.appendChild(IgotitButton2);
+                IgotitButton2.innerHTML = "理解した！";
+                IgotitButton2.classList.add('Button-style3');
+                IgotitButton2.id = "btnId_" + (NewAllShiteki.length-1);
+                IgotitButton2.onclick = (e) => {
+                  var heart = document.createElement("a");
+                  heart.innerHTML = "💖";
+                  IgotitButton2.appendChild(heart);
+                  IgotitButton2.disabled = true;
+                  var BtnId = (IgotitButton2.id.split("_"))[1];
+                  NewAllShiteki[BtnId][5] = 1;
+                  room.send({type: "understand", genbun: NewAllShiteki[BtnId][3], msg:NewAllShiteki[BtnId][5], name:NewAllShiteki[BtnId][2] });
+                  // alert("押されたボタンのID" + IgotitButton2.id);ちゃんとIDついてる（0からスタート
+                }
+              // }要復活
+              var div_Stick2 = document.createElement("div");
+              div_Stick2.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
+              Element2.appendChild(div_Stick2); 
+        
+              if (dontscroll3 == false) {
+                Element2.scrollTop = Element2.scrollHeight;
+              }
           }
           break;
       }
@@ -533,7 +533,7 @@ else {
 
               // namae = genbun[0] + genbun[1];
               jimo = namae + " <font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
-
+              
               // jimo = namae + "<font color = red>" + koitsu + "</font>";
               moji = namae + " ？？？";
               messages.innerHTML = "<br>" + jimo + "<br><br>" + moji;
@@ -647,7 +647,7 @@ else {
   // const Kanri = document.getElementById('js-kanri');
 
   // if (group == true && Myname != "管理") {要復活
-  recognition.start();
+    recognition.start();
   // }要復活
   const segmenter = new TinySegmenter();
 
@@ -739,51 +739,51 @@ else {
         messages.innerHTML = "<br>" + genbun.join(" ") + "<br><br>" + jimo;
       }
 
-      if (group == false) {
-        MyShiteki.innerHTML = "";
-        othersShitekibox.innerHTML = "";
+        if (group == false) {
+          MyShiteki.innerHTML = "";
+          othersShitekibox.innerHTML = "";
 
-        //  //クリックした文章に対して他の人が既に指摘をしていたときの表示
-        //     for (i = 0; i < AllShiteki.length; i++) {
-        //       if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
-        //         Element0.style.display = "none";
-        //         MyShiteki.style.display = "none";
-        //         checkmine.style.display = "none";
-        //         checkedmine.style.display = "none";
-        //         Already.style.display = "block";
-        //         SmallExplanation.style.display = "none";
-        //         OthersCorrect.style.display = "block";
-        //         othersShitekibox.style.display = "block";
-        //         metoosend.disabled = true;
-        //         othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
-        //         othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
-        //         othersShitekibox.innerHTML += othersShiteki1;
-        //         othersShitekibox.innerHTML += othersShiteki2;
+      //  //クリックした文章に対して他の人が既に指摘をしていたときの表示
+      //     for (i = 0; i < AllShiteki.length; i++) {
+      //       if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
+      //         Element0.style.display = "none";
+      //         MyShiteki.style.display = "none";
+      //         checkmine.style.display = "none";
+      //         checkedmine.style.display = "none";
+      //         Already.style.display = "block";
+      //         SmallExplanation.style.display = "none";
+      //         OthersCorrect.style.display = "block";
+      //         othersShitekibox.style.display = "block";
+      //         metoosend.disabled = true;
+      //         othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
+      //         othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+      //         othersShitekibox.innerHTML += othersShiteki1;
+      //         othersShitekibox.innerHTML += othersShiteki2;
 
-        //       }
-        //     }
+      //       }
+      //     }
 
-        //    //自分が送った指摘を確認するための表示
-        for (i = 0; i < AllShiteki.length; i++) {
-          if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
-            Already.style.display = "none";
-            OthersCorrect.style.display = "none";
-            othersShitekibox.style.display = "none";
-            Element0.style.display = "none";
-            checkmine.style.display = "block";
-            MyShiteki.style.display = "block";
-            checkedmine.style.display = "block";
-            if (AllShiteki[i][4] == 0) {
-              MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+      //    //自分が送った指摘を確認するための表示
+          for (i = 0; i < AllShiteki.length; i++) {
+            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
+              Already.style.display = "none";
+              OthersCorrect.style.display = "none";
+              othersShitekibox.style.display = "none";
+              Element2.style.display = "none";
+              checkmine.style.display = "block";
+              MyShiteki.style.display = "block";
+              checkedmine.style.display = "block";
+              if(AllShiteki[i][4]==0){
+                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+              }
+              else if(AllShiteki[i][4]==1){
+                MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💖"+ "</p></label></div><br>";
+              }
+              // else if(AllShiteki[i][4]==2){
+              //   MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
+              // }
             }
-            else if (AllShiteki[i][4] == 1) {
-              MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "　💖" + "</p></label></div><br>";
-            }
-            // else if(AllShiteki[i][4]==2){
-            //   MyShiteki.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] +"　💭"+ "</p></label></div><br>";
-            // }
           }
-        }
 
       }
       // };
@@ -793,31 +793,29 @@ else {
       }
 
       // console.log(dontscroll2 + "お");
-      if (group == false) {
-        if (dontscroll2 == false) {
-          // console.log(dontscroll2 + "か");
-          FBContent.scrollTop = FBContent.scrollHeight;
-        }
+      if(group == false){
+      if (dontscroll2 == false) {
+        // console.log(dontscroll2 + "か");
+        FBContent.scrollTop = FBContent.scrollHeight;
+      }
       }
 
-
-      if (q != 0) {
-        for (var i = 0; i < q.length; i++) {
-          if (q[i] == Myname) {
-            var div_Eh = document.createElement("div");
-            div_Eh.classList.add("Hah");
-            div_Eh.innerText = "え？🤔";
-            FBContent.appendChild(div_Eh);
-            FBContent.appendChild(document.createElement("br"))
-            if (dontscroll2 == false) {
-              FBContent.scrollTop = FBContent.scrollHeight;
-            }
+    });
+    if (q != 0) {
+      for (var i = 0; i < q.length; i++) {
+        if (q[i] == Myname) {
+          var div_Eh = document.createElement("div");
+          div_Eh.classList.add("Hah");
+          div_Eh.innerText = "え？🤔";
+          FBContent.appendChild(div_Eh);
+          FBContent.appendChild(document.createElement("br"))
+          if (dontscroll2 == false) {
+            FBContent.scrollTop = FBContent.scrollHeight;
           }
         }
       }
-      junbanparent2++;
-
-    });
+    }
+    junbanparent2++;
   }
 
   if (group == false) {
@@ -835,13 +833,13 @@ else {
   var dontscroll2 = false;
   var dontscroll3 = false;
 
-  if (group == true && Myname == "管理") {
-    revisebyKanri.addEventListener("mouseenter", function () {
-      dontscroll = true;
-    })
-    revisebyKanri.addEventListener("mouseleave", function () {
-      dontscroll = false;
-    })
+  if (group == true && Myname=="管理") {
+  revisebyKanri.addEventListener("mouseenter", function () {
+    dontscroll = true;
+  })
+  revisebyKanri.addEventListener("mouseleave", function () {
+    dontscroll = false;
+  })
   }
 
   if (group == false) {
@@ -853,7 +851,7 @@ else {
     })
   }
 
-  if (group == true && Myname != "管理") {
+  if (group == true && Myname!="管理") {
     Element2.addEventListener("mouseenter", function () {
       dontscroll3 = true;
     })
