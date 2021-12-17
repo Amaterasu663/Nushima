@@ -317,6 +317,7 @@ else {
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
                   IgotitButton.innerHTML = "理解した！💖";
+                  IgotitButton.disabled = "true";
                   IgotitButton.classList.add('Button-style3');
                   IgotitButton.id = "btnId_" + j;
                 }
