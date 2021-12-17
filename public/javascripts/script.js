@@ -528,8 +528,8 @@ else {
                 // console.log(namae);
               }
 
-              namae = (genbun.split("："))[0];
-              koitsu = (genbun.split("："))[1];
+              // namae = (genbun.split("："))[0];
+              // koitsu = (genbun.split("："))[1];
 
               // namae = genbun[0] + genbun[1];
               jimo = namae + "<font color = red>" + genbun.slice(koitsu + 1).join(" ") + "</font>";
