@@ -545,7 +545,7 @@ else {
     }
   }
 
-  //他の人が既に指摘をしていたときのリアクション
+  //他の人が既に指摘をしていたときのリアクション要復活
   const othersShitekibox = document.getElementById('othersShitekibox');
   const MyShiteki = document.getElementById("MyShiteki");
   const metoosend = document.getElementById("Metoosend");
@@ -553,11 +553,11 @@ else {
   const No = document.getElementById('nobutton');
   const radios2 = document.getElementsByName('bestanswer');
   // checkedmine.addEventListener('click', onClickedMine);
-  Yes.addEventListener('click', onClickYes);
-  No.addEventListener('click', onClickNo);
-  metoosend.addEventListener('click', onClickMeToo);
+  // Yes.addEventListener('click', onClickYes);
+  // No.addEventListener('click', onClickNo);
+  // metoosend.addEventListener('click', onClickMeToo);
 
-  // function onClickedMine() {
+  // function onClickedMine() {要復活
   //   MyShiteki.style.display = "none";
   //   checkmine.style.display = "none";
   //   messages.innerHTML = "";
@@ -566,44 +566,44 @@ else {
   //   // ShitekiButton.style.display = "block";
   // }
 
-  // //既にある指摘と別の指摘を送る場合
-  function onClickYes() {
-    Already.style.display = "none";
-    OthersCorrect.style.display = "none";
-    othersShitekibox.style.display = "none";
-    Element0.style.display = "block";
-    ShitekiButton.style.display = "block";
-    messages.style.display = "block";
-  }
+  // // //既にある指摘と別の指摘を送る場合
+  // function onClickYes() {
+  //   Already.style.display = "none";
+  //   OthersCorrect.style.display = "none";
+  //   othersShitekibox.style.display = "none";
+  //   Element0.style.display = "block";
+  //   ShitekiButton.style.display = "block";
+  //   messages.style.display = "block";
+  // }
 
-  // //ラジオボタン（いいね！）の選択をさせる場合
-  function onClickNo() {
-    SmallExplanation.style.display = "block";
-    metoosend.style.display = "block";
-    metoosend.disabled = false;
-  }
+  // // //ラジオボタン（いいね！）の選択をさせる場合
+  // function onClickNo() {
+  //   SmallExplanation.style.display = "block";
+  //   metoosend.style.display = "block";
+  //   metoosend.disabled = false;
+  // }
 
-  function onClickMeToo() {
-    for (var i = 0; i < radios2.length; i++) {
-      if (radios2[i].checked == true) {
-        // console.log(AllShiteki[i][1]);
-        Radiojunban = radios2[i].value
-      }
-    }
-    AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
-    room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
+  // function onClickMeToo() {
+  //   for (var i = 0; i < radios2.length; i++) {
+  //     if (radios2[i].checked == true) {
+  //       // console.log(AllShiteki[i][1]);
+  //       Radiojunban = radios2[i].value
+  //     }
+  //   }
+  //   AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
+  //   room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
 
-    Already.style.display = "none";
-    OthersCorrect.style.display = "none";
-    othersShitekibox.style.display = "none";
-    Element0.style.display = "block";
-    messages.innerHTML = "";
-    messages.style.display = "block";
-    Element0.style.display = "none";
-    FBList.style.display = "block";
+  //   Already.style.display = "none";
+  //   OthersCorrect.style.display = "none";
+  //   othersShitekibox.style.display = "none";
+  //   Element0.style.display = "block";
+  //   messages.innerHTML = "";
+  //   messages.style.display = "block";
+  //   Element0.style.display = "none";
+  //   FBList.style.display = "block";
 
-    // ShitekiButton.style.display = "block";
-  }
+  //   // ShitekiButton.style.display = "block";
+  // }
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -735,7 +735,7 @@ else {
 
           //クリックした文章に対して他の人が既に指摘をしていたときの表示
           for (i = 0; i < AllShiteki.length; i++) {
-            if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
+            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] != Myname) {
               Element0.style.display = "none";
               MyShiteki.style.display = "none";
               checkmine.style.display = "none";
@@ -754,7 +754,7 @@ else {
           }
 
            //自分が送った指摘を確認するための表示
-          //  for (i = 0; i < AllShiteki.length; i++) {
+          //  for (i = 0; i < AllShiteki.length; i++) {要復活
           //   if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
           //     Already.style.display = "none";
           //     OthersCorrect.style.display = "none";
@@ -776,28 +776,6 @@ else {
 
         messages.innerHTML = "<br>" + genbun.join(" ") + "<br><br>" + jimo;
       }
-
-      //  //クリックした文章に対して他の人が既に指摘をしていたときの表示
-      //     for (i = 0; i < AllShiteki.length; i++) {
-      //       if (AllShiteki[i][3].join(",") == genbun.join(",")　&& AllShiteki[i][2] != Myname) {
-      //         Element0.style.display = "none";
-      //         MyShiteki.style.display = "none";
-      //         checkmine.style.display = "none";
-      //         checkedmine.style.display = "none";
-      //         Already.style.display = "block";
-      //         SmallExplanation.style.display = "none";
-      //         OthersCorrect.style.display = "block";
-      //         othersShitekibox.style.display = "block";
-      //         metoosend.disabled = true;
-      //         othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
-      //         othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
-      //         othersShitekibox.innerHTML += othersShiteki1;
-      //         othersShitekibox.innerHTML += othersShiteki2;
-
-      //       }
-      //     }
-
-      // };
 
       if (group == false) {
         FBContent.appendChild(a);
