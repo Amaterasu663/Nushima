@@ -309,7 +309,7 @@ else {
               for (var j = 0; j < NewAllShiteki.length; j++) {
                 var div_Shiteki = document.createElement("div");
                 Element2.appendChild(div_Shiteki); 
-
+                var countFB = 0;
                 if(NewAllShiteki[j][5]==1){
                   div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";  
                   var IgotitButton = document.createElement("button");
@@ -317,22 +317,22 @@ else {
                   IgotitButton.innerHTML = "理解した！💖";
                   IgotitButton.disabled = "true";
                   IgotitButton.classList.add('Button-style3');
-                  IgotitButton.id = "btnId_" + j;
+                  IgotitButton.id = "btnId_" + countFB;
                 }
                 else{
                   div_Shiteki.innerHTML = "<br>" + NewAllShiteki[j][0] + "<br>" + NewAllShiteki[j][1] + "<br>訂正してくれた人：" + NewAllShiteki[j][2] + "　👍" + NewAllShiteki[j][4] + "<br><br>";
                   // // if(Myname!="管理"){要復活
                   var IgotitButton = document.createElement("button");
                   Element2.appendChild(IgotitButton);
-                  IgotitButton.innerText = "理解した！";
+                  IgotitButton.innerHTML = "理解した！";
                   IgotitButton.classList.add('Button-style3');
-                  IgotitButton.id = "btnId_" + j;
+                  IgotitButton.id = "btnId_" + countFB;
                   IgotitButton.onclick = (e) => {
                     alert("押されたボタンのId" + IgotitButton.id);
                   }
                   // // } 要復活
                 }
-
+                countFB++;
                 var div_Stick = document.createElement("div");
                 div_Stick.innerHTML = "<hr width=\"300px\" color=\"#CEE5D0\"></hr>";
                 Element2.appendChild(div_Stick); 
