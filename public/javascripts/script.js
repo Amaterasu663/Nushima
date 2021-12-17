@@ -552,7 +552,7 @@ else {
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
   const radios2 = document.getElementsByName('bestanswer');
-  checkedmine.addEventListener('click', onClickedMine);
+  // checkedmine.addEventListener('click', onClickedMine);
   Yes.addEventListener('click', onClickYes);
   No.addEventListener('click', onClickNo);
   metoosend.addEventListener('click', onClickMeToo);
