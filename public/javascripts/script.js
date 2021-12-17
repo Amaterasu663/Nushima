@@ -524,7 +524,7 @@ else {
                 }
               }
               for (var t = 0; t < koitsu + 1; t++) {
-                namae = namae + genbun[t];
+                namae = namae + " " + genbun[t];
                 // console.log(namae);
               }
 
