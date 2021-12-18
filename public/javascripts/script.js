@@ -552,8 +552,8 @@ else {
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
   const radios2 = document.getElementsByName('bestanswer');
-  checkedmine.addEventListener('click', onClickedMine);
   if(group == false){//わんちゃん、編集必要か
+  checkedmine.addEventListener('click', onClickedMine);
   Yes.addEventListener('click', onClickYes);
   No.addEventListener('click', onClickNo);
   metoosend.addEventListener('click', onClickMeToo);
@@ -738,7 +738,7 @@ else {
           //クリックした文章に対して他の人が既に指摘をしていたときの表示
           for (i = 0; i < AllShiteki.length; i++) {
             // if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] != Myname) {要復活
-            if (AllShiteki[i][3].join(",") == genbun.join(",")) {
+            if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] != Myname) {
               Element0.style.display = "none";
               MyShiteki.style.display = "none";
               checkmine.style.display = "none";
@@ -760,7 +760,7 @@ else {
           }
 
            //自分が送った指摘を確認するための表示
-           for (i = 0; i < AllShiteki.length; i++) {要復活
+           for (i = 0; i < AllShiteki.length; i++) {
             if (AllShiteki[i][3].join(",") == genbun.join(",") && AllShiteki[i][2] == Myname) {
               Already.style.display = "none";
               OthersCorrect.style.display = "none";
