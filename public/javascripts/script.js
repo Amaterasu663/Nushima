@@ -551,12 +551,12 @@ else {
   const metoosend = document.getElementById("Metoosend");
   const Yes = document.getElementById('yesbutton');
   const No = document.getElementById('nobutton');
-  // const radios2 = document.getElementsByName('bestanswer');
-  if(group == false){
+  const radios2 = document.getElementsByName('bestanswer');
   // checkedmine.addEventListener('click', onClickedMine);
+  if(group == false){//わんちゃん、編集必要か
   Yes.addEventListener('click', onClickYes);
   No.addEventListener('click', onClickNo);
-  // metoosend.addEventListener('click', onClickMeToo);
+  metoosend.addEventListener('click', onClickMeToo);
   }
 
   // function onClickedMine() {要復活
@@ -569,43 +569,43 @@ else {
   // }
 
   // //既にある指摘と別の指摘を送る場合
-  // function onClickYes() {
-  //   Already.style.display = "none";
-  //   OthersCorrect.style.display = "none";
-  //   othersShitekibox.style.display = "none";
-  //   Element0.style.display = "block";
-  //   ShitekiButton.style.display = "block";
-  //   messages.style.display = "block";
-  // }
+  function onClickYes() {
+    Already.style.display = "none";
+    OthersCorrect.style.display = "none";
+    othersShitekibox.style.display = "none";
+    Element0.style.display = "block";
+    ShitekiButton.style.display = "block";
+    messages.style.display = "block";
+  }
 
   // //ラジオボタン（いいね！）の選択をさせる場合
-  // function onClickNo() {
-  //   SmallExplanation.style.display = "block";
-  //   metoosend.style.display = "block";
-  //   metoosend.disabled = false;
-  // }
+  function onClickNo() {
+    SmallExplanation.style.display = "block";
+    metoosend.style.display = "block";
+    metoosend.disabled = false;
+  }
 
-  // function onClickMeToo() {
-  //   for (var i = 0; i < radios2.length; i++) {
-  //     if (radios2[i].checked == true) {
-  //       // console.log(AllShiteki[i][1]);
-  //       Radiojunban = radios2[i].value
-  //     }
-  //   }
-  //   AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
-  //   room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
+  function onClickMeToo() {
+    for (var i = 0; i < radios2.length; i++) {
+      if (radios2[i].checked == true) {
+        // console.log(AllShiteki[i][1]);
+        Radiojunban = radios2[i].value
+      }
+    }
+    AllShiteki.push([AllShiteki[Radiojunban][0], AllShiteki[Radiojunban][1], Myname, genbun,0]);
+    room.send({ name: Myname, type: 'teisei', msg1: AllShiteki[Radiojunban][0], msg2: AllShiteki[Radiojunban][1], genbun: genbun });
 
-  //   Already.style.display = "none";
-  //   OthersCorrect.style.display = "none";
-  //   othersShitekibox.style.display = "none";
-  //   Element0.style.display = "block";
-  //   messages.innerHTML = "";
-  //   messages.style.display = "block";
-  //   Element0.style.display = "none";
-  //   FBList.style.display = "block";
+    Already.style.display = "none";
+    OthersCorrect.style.display = "none";
+    othersShitekibox.style.display = "none";
+    Element0.style.display = "block";
+    messages.innerHTML = "";
+    messages.style.display = "block";
+    Element0.style.display = "none";
+    FBList.style.display = "block";
 
-  //   // ShitekiButton.style.display = "block";
-  // }
+    // ShitekiButton.style.display = "block";
+  }
 
   // 音声認識(分かち書き＋暫定結果の表示なし)
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -748,10 +748,13 @@ else {
               OthersCorrect.style.display = "block";
               othersShitekibox.style.display = "block";
               metoosend.disabled = true;
-              othersShiteki1 = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
-              othersShiteki2 = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
-              othersShitekibox.innerHTML += othersShiteki1;
-              othersShitekibox.innerHTML += othersShiteki2;
+              
+              var othersShiteki1 = document.createElement("div");
+              var othersShiteki2 = document.createElement("div");
+              othersShiteki1.innerHTML = "<label><input type=\'radio\' name = \'bestanswer\' value=" + i + ">👍<p>";
+              othersShiteki2.innerHTML = AllShiteki[i][0] + "<br>" + AllShiteki[i][1] + "<br>訂正した人：" + AllShiteki[i][2] + "</p></label></div><br>";
+              othersShitekibox.appendChild(othersShiteki1);
+              othersShitekibox.appendChild(othersShiteki2);
 
             }
           }
