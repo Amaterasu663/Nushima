@@ -1,0 +1,208 @@
+/* normalize */
+body { margin: 0; }
+
+html,body{
+  height: 100%;
+  font-size: 13px;
+  background-color:#CEE5D0;
+}
+
+/* global styles */
+/* video {
+  background-color: #111;
+  width: 100%;
+}
+
+/* .heading {
+  text-align: center;
+  margin-bottom: 0;
+} */
+
+.note {
+  text-align: center;
+} */
+
+.meta {
+  text-align: center;
+  font-size: .8rem;
+  /* color: gray; */
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 980px;
+}
+
+/* room */
+.room {
+  height:100%;
+  display: grid;
+  grid-template-columns: 25% 45% 30%;
+  grid-auto-rows: 550px;
+  gap: 8px;
+  margin: 0 5px;
+}
+
+.room .remote-streams {
+  border: solid;
+  border-color: #FFBF86;
+
+  border-radius: 10px;
+  background-color: #fffcf9;
+  overflow-y:scroll;
+  max-height: 550px;
+  padding: 20px;
+}
+
+
+/* 指摘欄 */
+.room .messages {
+  border: solid;
+  border-color: #FFBF86;
+
+  border-radius: 10px;
+  background-color: #F3F0D7;
+  min-height: 150px;
+  min-width: 200px;
+  max-height: 400px;
+  padding: 20px;
+  margin-top: 0;
+  overflow-x: visible;
+  word-wrap: normal;
+  overflow-y:scroll;
+  
+}
+
+.room .messages .ichigo{
+  background-color: #F3F0D7;
+  margin: 10px 3px;
+}
+
+.room .messages .Hah {
+  /* font-size: 18px; */
+  border: solid;
+  color: #000000;
+  border-radius: 10px;
+  border-color: #FFBF86;
+  background-color: #F3F0D7;
+  text-align: center;
+
+  }
+
+/* 届いた指摘 */
+.room .messages0 {
+  border: solid;
+  border-color: #FFBF86;
+
+  border-radius: 10px;
+  background-color: #fffcf9;
+  min-height: 150px;
+  min-width: 200px;
+  max-height: 400px;
+  padding: 20px;
+  margin-top: 0;
+  overflow-x: visible;
+  word-wrap: normal;
+  overflow-y:scroll;
+  
+}
+
+
+/* 参加者リスト */
+.room .PremierData {
+  border: solid;
+  border-color: #FFBF86;
+
+  border-radius: 10px;
+  background-color: #F3F0D7;
+  min-height: 150px;
+  min-width: 200px;
+  max-height: 300px;
+  padding: 20px;
+  margin-top: 0;
+  overflow-x: visible;
+  word-wrap: normal;
+  
+}
+
+.room .DeuxiemeData {
+  border: solid;
+  border-color: #FFBF86;
+
+  border-radius: 10px;
+  background-color: #F3F0D7;
+  min-height: 150px;
+  min-width: 200px;
+  max-height: 400px;
+  padding: 20px;
+  margin-top: 0;
+  overflow-x: visible;
+  word-wrap: normal;
+  /* overflow-y:scroll; */
+}
+
+.Button-Huh{
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  background-color: #F3F0D7;
+  border-radius: 50%;
+  border-color: #CEE5D0;
+  color: #000000;
+  text-align: center;
+  position: relative;
+  top:100px ; left: 110px;
+
+  font-size: xx-large;
+  font-family:system-ui;
+}
+
+
+.Button-style {
+  /* font-size: 18px; */
+  display: inline-block;
+  padding: 0.5em 1em 0.3em;
+  color: #000000;
+  border-radius: 25px;
+  background-color: #FFBF86;
+  border: none;
+  cursor: pointer;
+  
+  }
+
+  .Button-style2 {
+    /* font-size: 18px; */
+    display: inline-block;
+    padding: 0.5em 1em 0.3em;
+    color: #000000;
+    border-radius: 25px;
+    background-color: #FFBF86;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    left: 180px;
+    }
+  
+  .Button-style3 {
+    /* font-size: 18px; */
+    display: inline-block;
+    padding: 0.5em 1em 0.3em;
+    color: #000000;
+    border-radius: 25px;
+    background-color: #FFBF86;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    left: 150px;
+    }
+
+  .Button-style:disabled {
+    background-color: #fddbbd;
+  }
+  .Button-style2:disabled {
+    background-color: #fddbbd;
+  }
+  .Button-style3:disabled {
+    background-color: #fddbbd;
+  }
